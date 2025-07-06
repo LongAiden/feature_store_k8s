@@ -1,0 +1,30 @@
+# Use a single stage as the base for our final image
+FROM apache/airflow:slim-2.8.0-python3.10 AS airflow-base
+
+# Switch to root to install system-level dependencies
+USER root
+
+# Install Java (JRE) as spark-submit requires Java to run.
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        default-jre-headless \
+        gnupg2 \
+        wget && \
+    # Clean up apt caches to reduce image size.
+    apt-get autoremove -yqq --purge && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Switch to the non-privileged airflow user for Python package installations
+USER airflow
+
+# Best Practice: Copy a requirements.txt file and install from it.
+# This leverages Docker's layer caching. The expensive pip install only runs
+# when the requirements.txt file changes.
+COPY --chown=airflow:airflow requirements.txt .
+
+# Upgrade pip in a separate layer, as it rarely changes.
+RUN pip install --no-cache-dir --upgrade pip
+
+# Install packages from requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt

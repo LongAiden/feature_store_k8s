@@ -1,0 +1,5 @@
+2025-04-28 18:27:47,573 - __main__ - INFO - Starting feature calculation from 2025-03-09 to 2025-03-16
+2025-04-28 18:27:47,573 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data
+2025-04-28 18:28:30,283 - __main__ - INFO - Distinct non-null dates in the data: 8
+2025-04-28 18:28:43,466 - __main__ - INFO - Data written to MinIO bucket: transaction-data/features
+2025-04-28 18:28:43,466 - __main__ - INFO - Feature calculation completed successfully.

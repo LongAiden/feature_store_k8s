@@ -1,0 +1,8 @@
+2025-04-28 17:44:46,478 - __main__ - INFO - Starting get transaction data from a Kafka topic at 2025-03-06
+2025-04-28 17:44:46,478 - __main__ - INFO - Kafka Bootstrap Servers: kafka:29092, CDC Transaction Topic: postgres.public.transaction_data
+2025-04-28 17:44:46,478 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data-raw
+2025-04-28 17:51:18,578 - __main__ - INFO - Starting get transaction data from a Kafka topic at 2025-03-06
+2025-04-28 17:51:18,584 - __main__ - INFO - Kafka Bootstrap Servers: kafka:29092, CDC Transaction Topic: postgres.public.transaction_data
+2025-04-28 17:51:18,584 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data-raw
+2025-04-28 17:52:41,092 - __main__ - INFO - Data written to MinIO bucket: transaction-data-raw/features
+2025-04-28 17:52:41,100 - __main__ - INFO - Get transaction data completed successfully.

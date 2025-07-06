@@ -1,0 +1,399 @@
+[2025-05-07T15:04:58.873+0000] {processor.py:161} INFO - Started process (PID=11034) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:04:58.874+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:04:58.877+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:04:58.876+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:04:59.158+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:04:59.337+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:04:59.337+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:04:59.613+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:04:59.613+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:04:59.728+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.861 seconds
+[2025-05-07T15:05:30.491+0000] {processor.py:161} INFO - Started process (PID=11042) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:05:30.510+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:05:30.518+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:05:30.517+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:05:30.558+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:05:30.613+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:05:30.613+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:05:30.656+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:05:30.656+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:05:30.699+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.213 seconds
+[2025-05-07T15:06:01.311+0000] {processor.py:161} INFO - Started process (PID=11050) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:06:01.321+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:06:01.326+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:06:01.326+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:06:01.343+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:06:01.387+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:06:01.387+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:06:01.425+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:06:01.425+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:06:01.457+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.150 seconds
+[2025-05-07T15:06:32.255+0000] {processor.py:161} INFO - Started process (PID=11059) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:06:32.295+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:06:32.298+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:06:32.297+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:06:32.313+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:06:32.354+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:06:32.353+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:06:32.382+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:06:32.381+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:06:32.452+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.201 seconds
+[2025-05-07T15:07:02.601+0000] {processor.py:161} INFO - Started process (PID=11067) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:07:02.620+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:07:02.626+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:07:02.626+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:07:02.666+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:07:02.729+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:07:02.729+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:07:02.774+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:07:02.774+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:07:02.837+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.246 seconds
+[2025-05-07T15:07:33.416+0000] {processor.py:161} INFO - Started process (PID=11076) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:07:33.427+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:07:33.430+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:07:33.430+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:07:33.445+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:07:33.484+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:07:33.484+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:07:33.515+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:07:33.515+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:07:33.544+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.130 seconds
+[2025-05-07T15:08:04.070+0000] {processor.py:161} INFO - Started process (PID=11084) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:08:04.093+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:08:04.096+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:08:04.095+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:08:04.114+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:08:04.155+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:08:04.155+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:08:04.205+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:08:04.205+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:08:04.240+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.173 seconds
+[2025-05-07T15:08:34.616+0000] {processor.py:161} INFO - Started process (PID=11091) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:08:34.625+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:08:34.629+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:08:34.629+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:08:34.646+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:08:34.692+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:08:34.692+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:08:34.726+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:08:34.726+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:08:34.777+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.167 seconds
+[2025-05-07T15:09:04.868+0000] {processor.py:161} INFO - Started process (PID=11099) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:09:04.890+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:09:04.894+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:09:04.893+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:09:04.947+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:09:05.008+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:09:05.008+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:09:05.037+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:09:05.037+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:09:05.073+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.209 seconds
+[2025-05-07T15:09:35.155+0000] {processor.py:161} INFO - Started process (PID=11107) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:09:35.209+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:09:35.212+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:09:35.212+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:09:35.296+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:09:35.391+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:09:35.390+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:09:35.430+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:09:35.429+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:09:35.469+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.318 seconds
+[2025-05-07T15:10:05.755+0000] {processor.py:161} INFO - Started process (PID=11115) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:10:05.783+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:10:05.786+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:10:05.786+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:10:05.803+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:10:05.839+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:10:05.839+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:10:05.865+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:10:05.864+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:10:05.893+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.142 seconds
+[2025-05-07T15:10:36.287+0000] {processor.py:161} INFO - Started process (PID=11123) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:10:36.315+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:10:36.319+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:10:36.318+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:10:36.335+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:10:36.369+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:10:36.369+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:10:36.397+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:10:36.397+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:10:36.428+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.145 seconds
+[2025-05-07T15:11:07.010+0000] {processor.py:161} INFO - Started process (PID=11131) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:11:07.012+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:11:07.016+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:11:07.016+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:11:07.037+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:11:07.074+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:11:07.074+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:11:07.112+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:11:07.112+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:11:07.141+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.136 seconds
+[2025-05-07T15:11:37.202+0000] {processor.py:161} INFO - Started process (PID=11140) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:11:37.205+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:11:37.209+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:11:37.208+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:11:37.228+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:11:37.263+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:11:37.262+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:11:37.293+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:11:37.293+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:11:37.331+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.133 seconds
+[2025-05-07T15:12:08.221+0000] {processor.py:161} INFO - Started process (PID=11148) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:12:08.249+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:12:08.251+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:12:08.251+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:12:08.267+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:12:08.301+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:12:08.301+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:12:08.326+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:12:08.326+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:12:08.352+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.135 seconds
+[2025-05-07T15:12:39.046+0000] {processor.py:161} INFO - Started process (PID=11156) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:12:39.047+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:12:39.049+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:12:39.049+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:12:39.065+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:12:39.100+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:12:39.100+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:12:39.126+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:12:39.126+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:12:39.150+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.111 seconds
+[2025-05-07T15:13:09.398+0000] {processor.py:161} INFO - Started process (PID=11164) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:13:09.400+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:13:09.405+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:13:09.405+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:13:09.421+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:13:09.455+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:13:09.455+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:13:09.489+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:13:09.489+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:13:09.518+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.129 seconds
+[2025-05-07T15:13:39.843+0000] {processor.py:161} INFO - Started process (PID=11172) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:13:39.845+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:13:39.849+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:13:39.848+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:13:39.869+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:13:39.909+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:13:39.909+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:13:39.937+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:13:39.937+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:13:39.978+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.140 seconds
+[2025-05-07T15:14:10.191+0000] {processor.py:161} INFO - Started process (PID=11180) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:14:10.215+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:14:10.219+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:14:10.219+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:14:10.233+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:14:10.267+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:14:10.266+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:14:10.298+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:14:10.298+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:14:10.329+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.143 seconds
+[2025-05-07T15:14:40.448+0000] {processor.py:161} INFO - Started process (PID=11188) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:14:40.451+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:14:40.457+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:14:40.456+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:14:40.473+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:14:40.507+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:14:40.507+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:14:40.536+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:14:40.536+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:14:40.554+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.114 seconds
+[2025-05-07T15:15:10.889+0000] {processor.py:161} INFO - Started process (PID=11196) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:15:10.890+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:15:10.893+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:15:10.892+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:15:10.918+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:15:10.959+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:15:10.959+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:15:10.994+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:15:10.994+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:15:11.030+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.148 seconds
+[2025-05-07T15:15:41.460+0000] {processor.py:161} INFO - Started process (PID=11204) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:15:41.461+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:15:41.464+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:15:41.464+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:15:41.491+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:15:41.531+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:15:41.531+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:15:41.564+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:15:41.564+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:15:41.599+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.144 seconds
+[2025-05-07T15:16:11.791+0000] {processor.py:161} INFO - Started process (PID=11212) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:16:11.794+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:16:11.797+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:16:11.796+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:16:11.814+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:16:11.846+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:16:11.846+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:16:11.874+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:16:11.874+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:16:11.922+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.136 seconds
+[2025-05-07T15:16:42.117+0000] {processor.py:161} INFO - Started process (PID=11220) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:16:42.144+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:16:42.147+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:16:42.146+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:16:42.163+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:16:42.195+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:16:42.195+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:16:42.217+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:16:42.217+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:16:42.392+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.279 seconds
+[2025-05-07T15:17:13.163+0000] {processor.py:161} INFO - Started process (PID=11228) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:17:13.166+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:17:13.171+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:17:13.170+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:17:13.193+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:17:13.246+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:17:13.246+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:17:13.293+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:17:13.293+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:17:13.354+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.196 seconds
+[2025-05-07T15:17:43.402+0000] {processor.py:161} INFO - Started process (PID=11236) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:17:43.406+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:17:43.409+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:17:43.409+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:17:43.430+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:17:43.478+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:17:43.478+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:17:43.509+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:17:43.509+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:17:43.543+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.145 seconds
+[2025-05-07T15:18:14.160+0000] {processor.py:161} INFO - Started process (PID=11244) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:18:14.161+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:18:14.167+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:18:14.165+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:18:14.182+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:18:14.218+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:18:14.218+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:18:14.246+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:18:14.246+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:18:14.281+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.125 seconds
+[2025-05-07T15:18:44.561+0000] {processor.py:161} INFO - Started process (PID=11252) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:18:44.572+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:18:44.583+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:18:44.582+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:18:44.613+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:18:44.648+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:18:44.647+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:18:44.676+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:18:44.675+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:18:44.703+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.146 seconds
+[2025-05-07T15:19:14.790+0000] {processor.py:161} INFO - Started process (PID=11260) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:19:14.794+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:19:14.797+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:19:14.797+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:19:14.816+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:19:14.848+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:19:14.848+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:19:14.879+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:19:14.879+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:19:14.908+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.125 seconds
+[2025-05-07T15:19:45.163+0000] {processor.py:161} INFO - Started process (PID=11268) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:19:45.165+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:19:45.168+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:19:45.168+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:19:45.184+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:19:45.217+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:19:45.217+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:19:45.245+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:19:45.245+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:19:45.271+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.112 seconds
+[2025-05-07T15:20:16.125+0000] {processor.py:161} INFO - Started process (PID=11276) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:20:16.126+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:20:16.129+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:20:16.129+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:20:16.145+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:20:16.176+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:20:16.176+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:20:16.209+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:20:16.209+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:20:16.241+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.120 seconds
+[2025-05-07T15:20:46.631+0000] {processor.py:161} INFO - Started process (PID=11284) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:20:46.644+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:20:46.648+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:20:46.647+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:20:46.664+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:20:46.698+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:20:46.698+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:20:46.725+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:20:46.725+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:20:46.755+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.129 seconds
+[2025-05-07T15:21:17.031+0000] {processor.py:161} INFO - Started process (PID=11292) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:21:17.044+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:21:17.048+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:21:17.048+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:21:17.079+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:21:17.150+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:21:17.149+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:21:17.188+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:21:17.188+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:21:17.242+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.216 seconds
+[2025-05-07T15:21:47.907+0000] {processor.py:161} INFO - Started process (PID=11305) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:21:47.910+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:21:47.913+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:21:47.912+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:21:47.927+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:21:47.969+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:21:47.969+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:21:47.999+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:21:47.999+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:21:48.028+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.125 seconds
+[2025-05-07T15:22:18.371+0000] {processor.py:161} INFO - Started process (PID=11312) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:22:18.372+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:22:18.377+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:22:18.377+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:22:18.394+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:22:18.427+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:22:18.427+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:22:18.463+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:22:18.463+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:22:18.504+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.137 seconds
+[2025-05-07T15:22:48.567+0000] {processor.py:161} INFO - Started process (PID=11320) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:22:48.580+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:22:48.583+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:22:48.582+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:22:48.598+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:22:48.631+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:22:48.631+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:22:48.662+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:22:48.662+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:22:48.689+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.125 seconds
+[2025-05-07T15:23:19.034+0000] {processor.py:161} INFO - Started process (PID=11329) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:23:19.036+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:23:19.038+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:23:19.038+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:23:19.056+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:23:19.094+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:23:19.094+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:23:19.121+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:23:19.121+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:23:19.153+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.123 seconds
+[2025-05-07T15:23:49.374+0000] {processor.py:161} INFO - Started process (PID=11337) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:23:49.376+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:23:49.379+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:23:49.379+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:23:49.395+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:23:49.436+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:23:49.436+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:23:49.465+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:23:49.464+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:23:49.495+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.128 seconds
+[2025-05-07T15:24:19.716+0000] {processor.py:161} INFO - Started process (PID=11345) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:24:19.725+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:24:19.729+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:24:19.728+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:24:19.747+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:24:19.783+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:24:19.783+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:24:19.811+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:24:19.811+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:24:19.839+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.129 seconds
+[2025-05-07T15:24:50.083+0000] {processor.py:161} INFO - Started process (PID=11353) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:24:50.098+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:24:50.102+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:24:50.101+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:24:50.116+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:24:50.151+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:24:50.151+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:24:50.183+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:24:50.183+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:24:50.213+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.134 seconds
+[2025-05-07T15:25:20.519+0000] {processor.py:161} INFO - Started process (PID=11361) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:25:20.521+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:25:20.528+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:25:20.527+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:25:20.557+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:25:20.723+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:25:20.722+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:25:20.949+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:25:20.949+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:25:21.133+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.619 seconds
+[2025-05-07T15:25:51.421+0000] {processor.py:161} INFO - Started process (PID=11369) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:25:51.440+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:25:51.445+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:25:51.445+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:25:51.480+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:25:51.524+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:25:51.524+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:25:51.566+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:25:51.566+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:25:51.606+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.193 seconds
+[2025-05-07T15:26:21.817+0000] {processor.py:161} INFO - Started process (PID=11377) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:26:21.819+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:26:21.822+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:26:21.821+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:26:21.838+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:26:21.874+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:26:21.874+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:26:21.903+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:26:21.903+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:26:21.933+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.120 seconds
+[2025-05-07T15:26:52.153+0000] {processor.py:161} INFO - Started process (PID=11385) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:26:52.155+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:26:52.157+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:26:52.157+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:26:52.179+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:26:52.221+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:26:52.221+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:26:52.255+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:26:52.254+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:26:52.283+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.134 seconds
+[2025-05-07T15:27:22.540+0000] {processor.py:161} INFO - Started process (PID=11393) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:27:22.552+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:27:22.557+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:27:22.556+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:27:22.576+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:27:22.631+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:27:22.630+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:27:22.665+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:27:22.664+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:27:22.695+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.161 seconds
+[2025-05-07T15:27:52.786+0000] {processor.py:161} INFO - Started process (PID=11401) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:27:52.789+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:27:52.793+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:27:52.792+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:27:52.808+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:27:52.846+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:27:52.846+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:27:52.874+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:27:52.874+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:27:52.903+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.120 seconds
+[2025-05-07T15:28:23.163+0000] {processor.py:161} INFO - Started process (PID=11409) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:28:23.165+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:28:23.169+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:28:23.169+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:28:23.206+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:28:23.264+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:28:23.264+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:28:23.312+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:28:23.312+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:28:23.359+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.201 seconds
+[2025-05-07T15:28:53.567+0000] {processor.py:161} INFO - Started process (PID=11417) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:28:53.569+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:28:53.573+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:28:53.573+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:28:53.588+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:28:53.623+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:28:53.623+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:28:53.659+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:28:53.659+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:28:53.689+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.126 seconds
+[2025-05-07T15:29:24.493+0000] {processor.py:161} INFO - Started process (PID=11425) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:29:24.514+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:29:24.517+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:29:24.517+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:29:24.533+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:29:24.562+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:29:24.561+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:29:24.582+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:29:24.582+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:29:24.610+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.121 seconds
+[2025-05-07T15:29:54.833+0000] {processor.py:161} INFO - Started process (PID=11433) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:29:54.834+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:29:54.838+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:29:54.838+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:29:54.854+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:29:54.892+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:29:54.891+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:29:54.926+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:29:54.925+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:29:54.953+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.123 seconds
+[2025-05-07T15:30:25.279+0000] {processor.py:161} INFO - Started process (PID=11441) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:30:25.281+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:30:25.284+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:30:25.284+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:30:25.301+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:30:25.338+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:30:25.338+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:30:25.371+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:30:25.370+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:30:25.399+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.125 seconds
+[2025-05-07T15:30:55.512+0000] {processor.py:161} INFO - Started process (PID=11449) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:30:55.514+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:30:55.520+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:30:55.519+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:30:55.536+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:30:55.575+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:30:55.575+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:30:55.606+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:30:55.605+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:30:55.640+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.132 seconds
+[2025-05-07T15:31:26.107+0000] {processor.py:161} INFO - Started process (PID=11457) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:31:26.121+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:31:26.123+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:31:26.123+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:31:26.143+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:31:26.198+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:31:26.197+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:31:26.228+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:31:26.228+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:31:26.277+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.173 seconds
+[2025-05-07T15:31:56.853+0000] {processor.py:161} INFO - Started process (PID=11465) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:31:56.854+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:31:56.858+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:31:56.858+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:31:56.875+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:31:56.915+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:31:56.915+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:31:56.938+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:31:56.938+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:31:56.958+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.113 seconds
+[2025-05-07T15:32:27.162+0000] {processor.py:161} INFO - Started process (PID=11473) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:32:27.170+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:32:27.174+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:32:27.172+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:32:27.196+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:32:27.238+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:32:27.237+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:32:27.287+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:32:27.286+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:32:27.330+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.174 seconds
+[2025-05-07T15:32:57.560+0000] {processor.py:161} INFO - Started process (PID=11481) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:32:57.562+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:32:57.566+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:32:57.565+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:32:57.582+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:32:57.618+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:32:57.617+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:32:57.649+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:32:57.648+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:32:57.672+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.115 seconds
+[2025-05-07T15:33:28.213+0000] {processor.py:161} INFO - Started process (PID=11488) to work on /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:33:28.224+0000] {processor.py:830} INFO - Processing file /opt/airflow/dags/gen_lxw_fts.py for tasks to queue
+[2025-05-07T15:33:28.227+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:33:28.226+0000] {dagbag.py:538} INFO - Filling up the DagBag from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:33:28.242+0000] {processor.py:840} INFO - DAG(s) 'gen_lxw_fts' retrieved from /opt/airflow/dags/gen_lxw_fts.py
+[2025-05-07T15:33:28.276+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:33:28.276+0000] {dag.py:3033} INFO - Sync 1 DAGs
+[2025-05-07T15:33:28.304+0000] {logging_mixin.py:188} INFO - [2025-05-07T15:33:28.304+0000] {dag.py:3820} INFO - Setting next_dagrun for gen_lxw_fts to None, run_after=None
+[2025-05-07T15:33:28.330+0000] {processor.py:183} INFO - Processing /opt/airflow/dags/gen_lxw_fts.py took 0.122 seconds

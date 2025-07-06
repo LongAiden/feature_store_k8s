@@ -1,0 +1,107 @@
+[2025-04-01T17:46:50.287+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: gen_data_daily.gen_data_daily scheduled__2025-03-01T22:00:00+00:00 [queued]>
+[2025-04-01T17:46:50.299+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: gen_data_daily.gen_data_daily scheduled__2025-03-01T22:00:00+00:00 [queued]>
+[2025-04-01T17:46:50.299+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2025-04-01T17:46:50.320+0000] {taskinstance.py:2192} INFO - Executing <Task(BashOperator): gen_data_daily> on 2025-03-01 22:00:00+00:00
+[2025-04-01T17:46:50.327+0000] {standard_task_runner.py:60} INFO - Started process 679 to run task
+[2025-04-01T17:46:50.334+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'gen_data_daily', 'gen_data_daily', 'scheduled__2025-03-01T22:00:00+00:00', '--job-id', '19', '--raw', '--subdir', 'DAGS_FOLDER/gen_data_daily.py', '--cfg-path', '/tmp/tmp5g2xxgo7']
+[2025-04-01T17:46:50.336+0000] {standard_task_runner.py:88} INFO - Job 19: Subtask gen_data_daily
+[2025-04-01T17:46:50.416+0000] {task_command.py:423} INFO - Running <TaskInstance: gen_data_daily.gen_data_daily scheduled__2025-03-01T22:00:00+00:00 [running]> on host 0b0a92439eeb
+[2025-04-01T17:46:50.535+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='longnv' AIRFLOW_CTX_DAG_ID='gen_data_daily' AIRFLOW_CTX_TASK_ID='gen_data_daily' AIRFLOW_CTX_EXECUTION_DATE='2025-03-01T22:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-01T22:00:00+00:00'
+[2025-04-01T17:46:50.537+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-04-01T17:46:50.538+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        python /opt/***/external_scripts/1_gen_transaction_data.py 2025-03-02\n        ']
+[2025-04-01T17:46:50.553+0000] {subprocess.py:86} INFO - Output:
+[2025-04-01T17:46:53.030+0000] {subprocess.py:93} INFO - Successfully inserted 5000 rows into transaction_data table at 2025-03-02
+[2025-04-01T17:46:53.031+0000] {subprocess.py:93} INFO - Table contains 5000 rows
+[2025-04-01T17:46:53.031+0000] {subprocess.py:93} INFO - Data generation and insertion complete at 2025-03-02
+[2025-04-01T17:46:53.319+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-04-01T17:46:53.355+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=gen_data_daily, task_id=gen_data_daily, execution_date=20250301T220000, start_date=20250401T174650, end_date=20250401T174653
+[2025-04-01T17:46:53.437+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-04-01T17:46:53.470+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-28T17:08:30.466+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: gen_data_daily.gen_data_daily scheduled__2025-03-01T22:00:00+00:00 [queued]>
+[2025-04-28T17:08:30.554+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: gen_data_daily.gen_data_daily scheduled__2025-03-01T22:00:00+00:00 [queued]>
+[2025-04-28T17:08:30.554+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2025-04-28T17:08:30.595+0000] {taskinstance.py:2192} INFO - Executing <Task(BashOperator): gen_data_daily> on 2025-03-01 22:00:00+00:00
+[2025-04-28T17:08:30.602+0000] {standard_task_runner.py:60} INFO - Started process 44236 to run task
+[2025-04-28T17:08:30.608+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'gen_data_daily', 'gen_data_daily', 'scheduled__2025-03-01T22:00:00+00:00', '--job-id', '154', '--raw', '--subdir', 'DAGS_FOLDER/gen_data_daily.py', '--cfg-path', '/tmp/tmp6all__io']
+[2025-04-28T17:08:30.609+0000] {standard_task_runner.py:88} INFO - Job 154: Subtask gen_data_daily
+[2025-04-28T17:08:30.715+0000] {task_command.py:423} INFO - Running <TaskInstance: gen_data_daily.gen_data_daily scheduled__2025-03-01T22:00:00+00:00 [running]> on host 45b38884c639
+[2025-04-28T17:08:30.837+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:207: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(key, self._deprecation_replacements[key]))
+
+[2025-04-28T17:08:30.934+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='longnv' AIRFLOW_CTX_DAG_ID='gen_data_daily' AIRFLOW_CTX_TASK_ID='gen_data_daily' AIRFLOW_CTX_EXECUTION_DATE='2025-03-01T22:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-01T22:00:00+00:00'
+[2025-04-28T17:08:30.936+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-04-28T17:08:30.958+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        python /opt/***/external_scripts/step_1_1_gen_transaction_data.py 2025-03-02\n        ']
+[2025-04-28T17:08:30.988+0000] {subprocess.py:86} INFO - Output:
+[2025-04-28T17:08:35.582+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-04-28T17:08:35.582+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+[2025-04-28T17:08:35.582+0000] {subprocess.py:93} INFO -     self.dialect.do_execute(
+[2025-04-28T17:08:35.583+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+[2025-04-28T17:08:35.583+0000] {subprocess.py:93} INFO -     cursor.execute(statement, parameters)
+[2025-04-28T17:08:35.583+0000] {subprocess.py:93} INFO - psycopg2.errors.DuplicateTable: relation "transaction_data" already exists
+[2025-04-28T17:08:35.583+0000] {subprocess.py:93} INFO - 
+[2025-04-28T17:08:35.583+0000] {subprocess.py:93} INFO - 
+[2025-04-28T17:08:35.583+0000] {subprocess.py:93} INFO - The above exception was the direct cause of the following exception:
+[2025-04-28T17:08:35.583+0000] {subprocess.py:93} INFO - 
+[2025-04-28T17:08:35.584+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-04-28T17:08:35.587+0000] {subprocess.py:93} INFO -   File "/opt/***/external_scripts/step_1_1_gen_transaction_data.py", line 104, in <module>
+[2025-04-28T17:08:35.587+0000] {subprocess.py:93} INFO -     insert_data_to_postgres(df, table_name="transaction_data")
+[2025-04-28T17:08:35.587+0000] {subprocess.py:93} INFO -   File "/opt/***/external_scripts/step_1_1_gen_transaction_data.py", line 74, in insert_data_to_postgres
+[2025-04-28T17:08:35.587+0000] {subprocess.py:93} INFO -     metadata.create_all(engine)
+[2025-04-28T17:08:35.588+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/sql/schema.py", line 4930, in create_all
+[2025-04-28T17:08:35.588+0000] {subprocess.py:93} INFO -     bind._run_ddl_visitor(
+[2025-04-28T17:08:35.588+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 3238, in _run_ddl_visitor
+[2025-04-28T17:08:35.588+0000] {subprocess.py:93} INFO -     conn._run_ddl_visitor(visitorcallable, element, **kwargs)
+[2025-04-28T17:08:35.588+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2221, in _run_ddl_visitor
+[2025-04-28T17:08:35.588+0000] {subprocess.py:93} INFO -     visitorcallable(self.dialect, self, **kwargs).traverse_single(element)
+[2025-04-28T17:08:35.588+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/sql/visitors.py", line 524, in traverse_single
+[2025-04-28T17:08:35.588+0000] {subprocess.py:93} INFO -     return meth(obj, **kw)
+[2025-04-28T17:08:35.588+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/sql/ddl.py", line 855, in visit_metadata
+[2025-04-28T17:08:35.588+0000] {subprocess.py:93} INFO -     self.traverse_single(
+[2025-04-28T17:08:35.589+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/sql/visitors.py", line 524, in traverse_single
+[2025-04-28T17:08:35.589+0000] {subprocess.py:93} INFO -     return meth(obj, **kw)
+[2025-04-28T17:08:35.589+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/sql/ddl.py", line 899, in visit_table
+[2025-04-28T17:08:35.589+0000] {subprocess.py:93} INFO -     self.connection.execute(
+[2025-04-28T17:08:35.589+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1385, in execute
+[2025-04-28T17:08:35.589+0000] {subprocess.py:93} INFO -     return meth(self, multiparams, params, _EMPTY_EXECUTION_OPTS)
+[2025-04-28T17:08:35.589+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/sql/ddl.py", line 80, in _execute_on_connection
+[2025-04-28T17:08:35.589+0000] {subprocess.py:93} INFO -     return connection._execute_ddl(
+[2025-04-28T17:08:35.589+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1477, in _execute_ddl
+[2025-04-28T17:08:35.589+0000] {subprocess.py:93} INFO -     ret = self._execute_context(
+[2025-04-28T17:08:35.590+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1953, in _execute_context
+[2025-04-28T17:08:35.590+0000] {subprocess.py:93} INFO -     self._handle_dbapi_exception(
+[2025-04-28T17:08:35.590+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 2134, in _handle_dbapi_exception
+[2025-04-28T17:08:35.590+0000] {subprocess.py:93} INFO -     util.raise_(
+[2025-04-28T17:08:35.590+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/util/compat.py", line 211, in raise_
+[2025-04-28T17:08:35.590+0000] {subprocess.py:93} INFO -     raise exception
+[2025-04-28T17:08:35.590+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/engine/base.py", line 1910, in _execute_context
+[2025-04-28T17:08:35.590+0000] {subprocess.py:93} INFO -     self.dialect.do_execute(
+[2025-04-28T17:08:35.590+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/sqlalchemy/engine/default.py", line 736, in do_execute
+[2025-04-28T17:08:35.590+0000] {subprocess.py:93} INFO -     cursor.execute(statement, parameters)
+[2025-04-28T17:08:35.591+0000] {subprocess.py:93} INFO - sqlalchemy.exc.ProgrammingError: (psycopg2.errors.DuplicateTable) relation "transaction_data" already exists
+[2025-04-28T17:08:35.591+0000] {subprocess.py:93} INFO - 
+[2025-04-28T17:08:35.591+0000] {subprocess.py:93} INFO - [SQL:
+[2025-04-28T17:08:35.591+0000] {subprocess.py:93} INFO - CREATE TABLE public.transaction_data (
+[2025-04-28T17:08:35.591+0000] {subprocess.py:93} INFO - 	id INTEGER GENERATED BY DEFAULT AS IDENTITY,
+[2025-04-28T17:08:35.591+0000] {subprocess.py:93} INFO - 	"User ID" VARCHAR(255),
+[2025-04-28T17:08:35.591+0000] {subprocess.py:93} INFO - 	"Transaction ID" VARCHAR(255),
+[2025-04-28T17:08:35.591+0000] {subprocess.py:93} INFO - 	"Amount" FLOAT,
+[2025-04-28T17:08:35.591+0000] {subprocess.py:93} INFO - 	"Vendor" VARCHAR(255),
+[2025-04-28T17:08:35.591+0000] {subprocess.py:93} INFO - 	"Sources" VARCHAR(255),
+[2025-04-28T17:08:35.591+0000] {subprocess.py:93} INFO - 	"Time" VARCHAR(255),
+[2025-04-28T17:08:35.591+0000] {subprocess.py:93} INFO - 	PRIMARY KEY (id)
+[2025-04-28T17:08:35.592+0000] {subprocess.py:93} INFO - )
+[2025-04-28T17:08:35.592+0000] {subprocess.py:93} INFO - 
+[2025-04-28T17:08:35.592+0000] {subprocess.py:93} INFO - ]
+[2025-04-28T17:08:35.592+0000] {subprocess.py:93} INFO - (Background on this error at: https://sqlalche.me/e/14/f405)
+[2025-04-28T17:08:35.740+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-04-28T17:08:35.759+0000] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-04-28T17:08:35.781+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=gen_data_daily, task_id=gen_data_daily, execution_date=20250301T220000, start_date=20250428T170830, end_date=20250428T170835
+[2025-04-28T17:08:35.810+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 154 for task gen_data_daily (Bash command failed. The command returned a non-zero exit code 1.; 44236)
+[2025-04-28T17:08:35.854+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-04-28T17:08:35.880+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

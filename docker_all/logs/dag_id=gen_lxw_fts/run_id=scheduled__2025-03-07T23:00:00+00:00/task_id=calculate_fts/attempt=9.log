@@ -1,0 +1,147 @@
+[2025-04-22T17:14:09.701+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: gen_lxw_fts.calculate_fts scheduled__2025-03-07T23:00:00+00:00 [queued]>
+[2025-04-22T17:14:09.748+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: gen_lxw_fts.calculate_fts scheduled__2025-03-07T23:00:00+00:00 [queued]>
+[2025-04-22T17:14:09.749+0000] {taskinstance.py:2171} INFO - Starting attempt 9 of 10
+[2025-04-22T17:14:09.976+0000] {taskinstance.py:2192} INFO - Executing <Task(BashOperator): calculate_fts> on 2025-03-07 23:00:00+00:00
+[2025-04-22T17:14:09.990+0000] {standard_task_runner.py:60} INFO - Started process 3400 to run task
+[2025-04-22T17:14:10.009+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'gen_lxw_fts', 'calculate_fts', 'scheduled__2025-03-07T23:00:00+00:00', '--job-id', '143', '--raw', '--subdir', 'DAGS_FOLDER/gen_lxw_fts.py', '--cfg-path', '/tmp/tmpliotxk90']
+[2025-04-22T17:14:10.016+0000] {standard_task_runner.py:88} INFO - Job 143: Subtask calculate_fts
+[2025-04-22T17:14:10.222+0000] {task_command.py:423} INFO - Running <TaskInstance: gen_lxw_fts.calculate_fts scheduled__2025-03-07T23:00:00+00:00 [running]> on host 45b38884c639
+[2025-04-22T17:14:10.364+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:207: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(key, self._deprecation_replacements[key]))
+
+[2025-04-22T17:14:10.466+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='longnv' AIRFLOW_CTX_DAG_ID='gen_lxw_fts' AIRFLOW_CTX_TASK_ID='calculate_fts' AIRFLOW_CTX_EXECUTION_DATE='2025-03-07T23:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='9' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-07T23:00:00+00:00'
+[2025-04-22T17:14:10.469+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-04-22T17:14:10.470+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        python /opt/***/external_scripts/2_calculate_features.py 2025-03-08\n        ']
+[2025-04-22T17:14:10.496+0000] {subprocess.py:86} INFO - Output:
+[2025-04-22T17:14:16.287+0000] {subprocess.py:93} INFO - :: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2025-04-22T17:14:16.535+0000] {subprocess.py:93} INFO - Ivy Default Cache set to: /home/***/.ivy2/cache
+[2025-04-22T17:14:16.536+0000] {subprocess.py:93} INFO - The jars for the packages stored in: /home/***/.ivy2/jars
+[2025-04-22T17:14:16.545+0000] {subprocess.py:93} INFO - org.apache.spark#spark-sql-kafka-0-10_2.12 added as a dependency
+[2025-04-22T17:14:16.547+0000] {subprocess.py:93} INFO - io.delta#delta-core_2.12 added as a dependency
+[2025-04-22T17:14:16.547+0000] {subprocess.py:93} INFO - org.apache.hadoop#hadoop-aws added as a dependency
+[2025-04-22T17:14:16.547+0000] {subprocess.py:93} INFO - com.amazonaws#aws-java-sdk-bundle added as a dependency
+[2025-04-22T17:14:16.547+0000] {subprocess.py:93} INFO - org.postgresql#postgresql added as a dependency
+[2025-04-22T17:14:16.548+0000] {subprocess.py:93} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-421e371f-500b-47a0-a60e-f03a68f3d4da;1.0
+[2025-04-22T17:14:16.549+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-04-22T17:14:16.990+0000] {subprocess.py:93} INFO - 	found org.apache.spark#spark-sql-kafka-0-10_2.12;3.4.1 in central
+[2025-04-22T17:14:17.083+0000] {subprocess.py:93} INFO - 	found org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.4.1 in central
+[2025-04-22T17:14:17.129+0000] {subprocess.py:93} INFO - 	found org.apache.kafka#kafka-clients;3.3.2 in central
+[2025-04-22T17:14:17.177+0000] {subprocess.py:93} INFO - 	found org.lz4#lz4-java;1.8.0 in central
+[2025-04-22T17:14:17.215+0000] {subprocess.py:93} INFO - 	found org.xerial.snappy#snappy-java;1.1.10.1 in central
+[2025-04-22T17:14:17.246+0000] {subprocess.py:93} INFO - 	found org.slf4j#slf4j-api;2.0.6 in central
+[2025-04-22T17:14:17.305+0000] {subprocess.py:93} INFO - 	found org.apache.hadoop#hadoop-client-runtime;3.3.4 in central
+[2025-04-22T17:14:17.332+0000] {subprocess.py:93} INFO - 	found org.apache.hadoop#hadoop-client-api;3.3.4 in central
+[2025-04-22T17:14:17.385+0000] {subprocess.py:93} INFO - 	found commons-logging#commons-logging;1.1.3 in central
+[2025-04-22T17:14:17.411+0000] {subprocess.py:93} INFO - 	found com.google.code.findbugs#jsr305;3.0.0 in central
+[2025-04-22T17:14:17.441+0000] {subprocess.py:93} INFO - 	found org.apache.commons#commons-pool2;2.11.1 in central
+[2025-04-22T17:14:17.476+0000] {subprocess.py:93} INFO - 	found io.delta#delta-core_2.12;2.4.0 in central
+[2025-04-22T17:14:17.500+0000] {subprocess.py:93} INFO - 	found io.delta#delta-storage;2.4.0 in central
+[2025-04-22T17:14:17.522+0000] {subprocess.py:93} INFO - 	found org.antlr#antlr4-runtime;4.9.3 in central
+[2025-04-22T17:14:17.556+0000] {subprocess.py:93} INFO - 	found org.apache.hadoop#hadoop-aws;3.3.2 in central
+[2025-04-22T17:14:17.598+0000] {subprocess.py:93} INFO - 	found org.wildfly.openssl#wildfly-openssl;1.0.7.Final in central
+[2025-04-22T17:14:17.618+0000] {subprocess.py:93} INFO - 	found com.amazonaws#aws-java-sdk-bundle;1.12.261 in central
+[2025-04-22T17:14:17.648+0000] {subprocess.py:93} INFO - 	found org.postgresql#postgresql;42.5.1 in central
+[2025-04-22T17:14:17.673+0000] {subprocess.py:93} INFO - 	found org.checkerframework#checker-qual;3.5.0 in central
+[2025-04-22T17:14:17.721+0000] {subprocess.py:93} INFO - :: resolution report :: resolve 1147ms :: artifacts dl 29ms
+[2025-04-22T17:14:17.721+0000] {subprocess.py:93} INFO - 	:: modules in use:
+[2025-04-22T17:14:17.722+0000] {subprocess.py:93} INFO - 	com.amazonaws#aws-java-sdk-bundle;1.12.261 from central in [default]
+[2025-04-22T17:14:17.726+0000] {subprocess.py:93} INFO - 	com.google.code.findbugs#jsr305;3.0.0 from central in [default]
+[2025-04-22T17:14:17.727+0000] {subprocess.py:93} INFO - 	commons-logging#commons-logging;1.1.3 from central in [default]
+[2025-04-22T17:14:17.727+0000] {subprocess.py:93} INFO - 	io.delta#delta-core_2.12;2.4.0 from central in [default]
+[2025-04-22T17:14:17.727+0000] {subprocess.py:93} INFO - 	io.delta#delta-storage;2.4.0 from central in [default]
+[2025-04-22T17:14:17.727+0000] {subprocess.py:93} INFO - 	org.antlr#antlr4-runtime;4.9.3 from central in [default]
+[2025-04-22T17:14:17.727+0000] {subprocess.py:93} INFO - 	org.apache.commons#commons-pool2;2.11.1 from central in [default]
+[2025-04-22T17:14:17.727+0000] {subprocess.py:93} INFO - 	org.apache.hadoop#hadoop-aws;3.3.2 from central in [default]
+[2025-04-22T17:14:17.727+0000] {subprocess.py:93} INFO - 	org.apache.hadoop#hadoop-client-api;3.3.4 from central in [default]
+[2025-04-22T17:14:17.727+0000] {subprocess.py:93} INFO - 	org.apache.hadoop#hadoop-client-runtime;3.3.4 from central in [default]
+[2025-04-22T17:14:17.728+0000] {subprocess.py:93} INFO - 	org.apache.kafka#kafka-clients;3.3.2 from central in [default]
+[2025-04-22T17:14:17.728+0000] {subprocess.py:93} INFO - 	org.apache.spark#spark-sql-kafka-0-10_2.12;3.4.1 from central in [default]
+[2025-04-22T17:14:17.728+0000] {subprocess.py:93} INFO - 	org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.4.1 from central in [default]
+[2025-04-22T17:14:17.728+0000] {subprocess.py:93} INFO - 	org.checkerframework#checker-qual;3.5.0 from central in [default]
+[2025-04-22T17:14:17.728+0000] {subprocess.py:93} INFO - 	org.lz4#lz4-java;1.8.0 from central in [default]
+[2025-04-22T17:14:17.728+0000] {subprocess.py:93} INFO - 	org.postgresql#postgresql;42.5.1 from central in [default]
+[2025-04-22T17:14:17.728+0000] {subprocess.py:93} INFO - 	org.slf4j#slf4j-api;2.0.6 from central in [default]
+[2025-04-22T17:14:17.728+0000] {subprocess.py:93} INFO - 	org.wildfly.openssl#wildfly-openssl;1.0.7.Final from central in [default]
+[2025-04-22T17:14:17.728+0000] {subprocess.py:93} INFO - 	org.xerial.snappy#snappy-java;1.1.10.1 from central in [default]
+[2025-04-22T17:14:17.728+0000] {subprocess.py:93} INFO - 	:: evicted modules:
+[2025-04-22T17:14:17.729+0000] {subprocess.py:93} INFO - 	com.amazonaws#aws-java-sdk-bundle;1.11.1026 by [com.amazonaws#aws-java-sdk-bundle;1.12.261] in [default]
+[2025-04-22T17:14:17.729+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-04-22T17:14:17.729+0000] {subprocess.py:93} INFO - 	|                  |            modules            ||   artifacts   |
+[2025-04-22T17:14:17.729+0000] {subprocess.py:93} INFO - 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2025-04-22T17:14:17.729+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-04-22T17:14:17.729+0000] {subprocess.py:93} INFO - 	|      default     |   20  |   0   |   0   |   1   ||   19  |   0   |
+[2025-04-22T17:14:17.729+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-04-22T17:14:17.734+0000] {subprocess.py:93} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-421e371f-500b-47a0-a60e-f03a68f3d4da
+[2025-04-22T17:14:17.734+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-04-22T17:14:17.747+0000] {subprocess.py:93} INFO - 	0 artifacts copied, 19 already retrieved (0kB/13ms)
+[2025-04-22T17:14:18.075+0000] {subprocess.py:93} INFO - 25/04/22 17:14:18 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-04-22T17:14:18.406+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-04-22T17:14:18.407+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-04-22T17:14:33.583+0000] {subprocess.py:93} INFO - 25/04/22 17:14:33 WARN SQLConf: The SQL config 'spark.sql.execution.arrow.fallback.enabled' has been deprecated in Spark v3.0 and may be removed in the future. Use 'spark.sql.execution.arrow.pyspark.fallback.enabled' instead of it.
+[2025-04-22T17:14:33.587+0000] {subprocess.py:93} INFO - 25/04/22 17:14:33 WARN SQLConf: The SQL config 'spark.sql.execution.arrow.fallback.enabled' has been deprecated in Spark v3.0 and may be removed in the future. Use 'spark.sql.execution.arrow.pyspark.fallback.enabled' instead of it.
+[2025-04-22T17:14:33.589+0000] {subprocess.py:93} INFO - 25/04/22 17:14:33 WARN SQLConf: The SQL config 'spark.sql.execution.arrow.fallback.enabled' has been deprecated in Spark v3.0 and may be removed in the future. Use 'spark.sql.execution.arrow.pyspark.fallback.enabled' instead of it.
+[2025-04-22T17:14:44.341+0000] {subprocess.py:93} INFO - 25/04/22 17:14:44 WARN AdminClientConfig: These configurations '[key.deserializer, value.deserializer, enable.auto.commit, max.poll.records, auto.offset.reset]' were supplied but are not used yet.
+[2025-04-22T17:15:05.989+0000] {subprocess.py:93} INFO - [Stage 0:>                                                          (0 + 0) / 1][Stage 0:>                                                          (0 + 1) / 1][Stage 0:===========================================================(1 + 0) / 1]                                                                                25/04/22 17:15:05 WARN AdminClientConfig: These configurations '[key.deserializer, value.deserializer, enable.auto.commit, max.poll.records, auto.offset.reset]' were supplied but are not used yet.
+[2025-04-22T17:15:06.302+0000] {subprocess.py:93} INFO - 25/04/22 17:15:06 WARN AdminClientConfig: These configurations '[key.deserializer, value.deserializer, enable.auto.commit, max.poll.records, auto.offset.reset]' were supplied but are not used yet.
+[2025-04-22T17:15:26.178+0000] {subprocess.py:93} INFO - [Stage 1:>                                                          (0 + 0) / 1][Stage 1:>                                                          (0 + 1) / 1][Stage 1:>                  (0 + 1) / 1][Stage 2:>                  (0 + 1) / 1][Stage 1:>                                                          (0 + 1) / 1][Stage 4:>                                                          (0 + 1) / 1]                                                                                25/04/22 17:15:26 WARN AdminClientConfig: These configurations '[key.deserializer, value.deserializer, enable.auto.commit, max.poll.records, auto.offset.reset]' were supplied but are not used yet.
+[2025-04-22T17:15:26.272+0000] {subprocess.py:93} INFO - 25/04/22 17:15:26 WARN AdminClientConfig: These configurations '[key.deserializer, value.deserializer, enable.auto.commit, max.poll.records, auto.offset.reset]' were supplied but are not used yet.
+[2025-04-22T17:15:46.171+0000] {subprocess.py:93} INFO - [Stage 5:>                  (0 + 1) / 1][Stage 6:>                  (0 + 1) / 1][Stage 5:>                                                          (0 + 1) / 1]ERROR:root:Exception while sending command.
+[2025-04-22T17:15:46.186+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-04-22T17:15:46.186+0000] {subprocess.py:93} INFO -   File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 516, in send_command
+[2025-04-22T17:15:46.186+0000] {subprocess.py:93} INFO -     raise Py4JNetworkError("Answer from Java side is empty")
+[2025-04-22T17:15:46.187+0000] {subprocess.py:93} INFO - py4j.protocol.Py4JNetworkError: Answer from Java side is empty
+[2025-04-22T17:15:46.187+0000] {subprocess.py:93} INFO - 
+[2025-04-22T17:15:46.187+0000] {subprocess.py:93} INFO - During handling of the above exception, another exception occurred:
+[2025-04-22T17:15:46.187+0000] {subprocess.py:93} INFO - 
+[2025-04-22T17:15:46.187+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-04-22T17:15:46.187+0000] {subprocess.py:93} INFO -   File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1038, in send_command
+[2025-04-22T17:15:46.187+0000] {subprocess.py:93} INFO -     response = connection.send_command(command)
+[2025-04-22T17:15:46.187+0000] {subprocess.py:93} INFO -   File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/clientserver.py", line 539, in send_command
+[2025-04-22T17:15:46.187+0000] {subprocess.py:93} INFO -     raise Py4JNetworkError(
+[2025-04-22T17:15:46.188+0000] {subprocess.py:93} INFO - py4j.protocol.Py4JNetworkError: Error while sending or receiving
+[2025-04-22T17:15:46.188+0000] {subprocess.py:93} INFO - 2025-03-01 2025-03-08
+[2025-04-22T17:15:46.188+0000] {subprocess.py:93} INFO - Spark session initialized
+[2025-04-22T17:15:46.188+0000] {subprocess.py:93} INFO - +------+--------------------+--------------------+---+-------------+-----------+
+[2025-04-22T17:15:46.188+0000] {subprocess.py:93} INFO - |before|               after|              source| op|        ts_ms|transaction|
+[2025-04-22T17:15:46.188+0000] {subprocess.py:93} INFO - +------+--------------------+--------------------+---+-------------+-----------+
+[2025-04-22T17:15:46.188+0000] {subprocess.py:93} INFO - |  null|{1, user_000461, ...|{2.3.4.Final, pos...|  c|1745341450710|       null|
+[2025-04-22T17:15:46.188+0000] {subprocess.py:93} INFO - |  null|{2, user_000113, ...|{2.3.4.Final, pos...|  c|1745341450735|       null|
+[2025-04-22T17:15:46.189+0000] {subprocess.py:93} INFO - |  null|{3, user_000286, ...|{2.3.4.Final, pos...|  c|1745341450737|       null|
+[2025-04-22T17:15:46.189+0000] {subprocess.py:93} INFO - |  null|{4, user_000402, ...|{2.3.4.Final, pos...|  c|1745341450738|       null|
+[2025-04-22T17:15:46.189+0000] {subprocess.py:93} INFO - |  null|{5, user_000126, ...|{2.3.4.Final, pos...|  c|1745341450739|       null|
+[2025-04-22T17:15:46.189+0000] {subprocess.py:93} INFO - +------+--------------------+--------------------+---+-------------+-----------+
+[2025-04-22T17:15:46.189+0000] {subprocess.py:93} INFO - only showing top 5 rows
+[2025-04-22T17:15:46.189+0000] {subprocess.py:93} INFO - 
+[2025-04-22T17:15:46.189+0000] {subprocess.py:93} INFO - +---+-----------+--------------+------------------+-----------+---------------+-------------------+----------+
+[2025-04-22T17:15:46.189+0000] {subprocess.py:93} INFO - | op|    User ID|Transaction ID|            Amount|     Vendor|        Sources|               Time|      date|
+[2025-04-22T17:15:46.190+0000] {subprocess.py:93} INFO - +---+-----------+--------------+------------------+-----------+---------------+-------------------+----------+
+[2025-04-22T17:15:46.190+0000] {subprocess.py:93} INFO - |  c|user_000284|  103511393417| 236.2428420919406|     Travel|    Credit Card|2025-03-02 12:59:03|2025-03-02|
+[2025-04-22T17:15:46.190+0000] {subprocess.py:93} INFO - |  c|user_000461|  887242918791| 691.0975048741923|Electronics|Current Account|2025-03-02 16:53:36|2025-03-02|
+[2025-04-22T17:15:46.190+0000] {subprocess.py:93} INFO - |  c|user_000250|  922032812744| 883.1256511491597| Restaurant|Current Account|2025-03-02 17:55:15|2025-03-02|
+[2025-04-22T17:15:46.190+0000] {subprocess.py:93} INFO - |  c|user_000469|  646942374853| 716.2719387687761|   Clothing|Current Account|2025-03-02 16:32:22|2025-03-02|
+[2025-04-22T17:15:46.190+0000] {subprocess.py:93} INFO - |  c|user_000122|  822385246258|259.96542928948867|  Education|Current Account|2025-03-02 14:49:15|2025-03-02|
+[2025-04-22T17:15:46.190+0000] {subprocess.py:93} INFO - +---+-----------+--------------+------------------+-----------+---------------+-------------------+----------+
+[2025-04-22T17:15:46.190+0000] {subprocess.py:93} INFO - only showing top 5 rows
+[2025-04-22T17:15:46.190+0000] {subprocess.py:93} INFO - 
+[2025-04-22T17:15:46.766+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-04-22T17:15:46.766+0000] {subprocess.py:93} INFO -   File "/opt/***/external_scripts/2_calculate_features.py", line 141, in <module>
+[2025-04-22T17:15:46.767+0000] {subprocess.py:93} INFO -     distinct_dates = transaction_data.select("date").distinct().count()
+[2025-04-22T17:15:46.767+0000] {subprocess.py:93} INFO -   File "/opt/spark/python/pyspark/sql/dataframe.py", line 1193, in count
+[2025-04-22T17:15:46.767+0000] {subprocess.py:93} INFO -     return int(self._jdf.count())
+[2025-04-22T17:15:46.767+0000] {subprocess.py:93} INFO -   File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+[2025-04-22T17:15:46.767+0000] {subprocess.py:93} INFO -   File "/opt/spark/python/pyspark/errors/exceptions/captured.py", line 169, in deco
+[2025-04-22T17:15:46.767+0000] {subprocess.py:93} INFO -     return f(*a, **kw)
+[2025-04-22T17:15:46.767+0000] {subprocess.py:93} INFO -   File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 334, in get_return_value
+[2025-04-22T17:15:46.767+0000] {subprocess.py:93} INFO - py4j.protocol.Py4JError: An error occurred while calling o121.count
+[2025-04-22T17:15:47.897+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-04-22T17:15:48.372+0000] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-04-22T17:15:48.474+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=gen_lxw_fts, task_id=calculate_fts, execution_date=20250307T230000, start_date=20250422T171409, end_date=20250422T171548
+[2025-04-22T17:15:48.504+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 143 for task calculate_fts (Bash command failed. The command returned a non-zero exit code 1.; 3400)
+[2025-04-22T17:15:48.528+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-04-22T17:15:48.565+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

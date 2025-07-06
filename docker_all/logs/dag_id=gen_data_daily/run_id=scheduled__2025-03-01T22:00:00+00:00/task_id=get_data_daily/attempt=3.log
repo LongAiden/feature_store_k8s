@@ -1,0 +1,31 @@
+[2025-04-28T17:16:18.578+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: gen_data_daily.get_data_daily scheduled__2025-03-01T22:00:00+00:00 [queued]>
+[2025-04-28T17:16:18.591+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: gen_data_daily.get_data_daily scheduled__2025-03-01T22:00:00+00:00 [queued]>
+[2025-04-28T17:16:18.592+0000] {taskinstance.py:2171} INFO - Starting attempt 3 of 4
+[2025-04-28T17:16:18.613+0000] {taskinstance.py:2192} INFO - Executing <Task(BashOperator): get_data_daily> on 2025-03-01 22:00:00+00:00
+[2025-04-28T17:16:18.620+0000] {standard_task_runner.py:60} INFO - Started process 44603 to run task
+[2025-04-28T17:16:18.624+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'gen_data_daily', 'get_data_daily', 'scheduled__2025-03-01T22:00:00+00:00', '--job-id', '187', '--raw', '--subdir', 'DAGS_FOLDER/gen_data_daily.py', '--cfg-path', '/tmp/tmpf3vosfr7']
+[2025-04-28T17:16:18.625+0000] {standard_task_runner.py:88} INFO - Job 187: Subtask get_data_daily
+[2025-04-28T17:16:18.702+0000] {task_command.py:423} INFO - Running <TaskInstance: gen_data_daily.get_data_daily scheduled__2025-03-01T22:00:00+00:00 [running]> on host 45b38884c639
+[2025-04-28T17:16:18.766+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:207: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(key, self._deprecation_replacements[key]))
+
+[2025-04-28T17:16:18.807+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='longnv' AIRFLOW_CTX_DAG_ID='gen_data_daily' AIRFLOW_CTX_TASK_ID='get_data_daily' AIRFLOW_CTX_EXECUTION_DATE='2025-03-01T22:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-01T22:00:00+00:00'
+[2025-04-28T17:16:18.808+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-04-28T17:16:18.810+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        python /opt/***/external_scripts/step_1_2_get_transaction_data.py 2025-03-02\n        ']
+[2025-04-28T17:16:18.826+0000] {subprocess.py:86} INFO - Output:
+[2025-04-28T17:16:18.886+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-04-28T17:16:18.886+0000] {subprocess.py:93} INFO -   File "/opt/***/external_scripts/step_1_2_get_transaction_data.py", line 3, in <module>
+[2025-04-28T17:16:18.886+0000] {subprocess.py:93} INFO -     from scripts.utils import init_spark, get_logger
+[2025-04-28T17:16:18.887+0000] {subprocess.py:93} INFO - ModuleNotFoundError: No module named 'scripts.utils'
+[2025-04-28T17:16:18.889+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-04-28T17:16:18.905+0000] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-04-28T17:16:18.910+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=gen_data_daily, task_id=get_data_daily, execution_date=20250301T220000, start_date=20250428T171618, end_date=20250428T171618
+[2025-04-28T17:16:18.926+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 187 for task get_data_daily (Bash command failed. The command returned a non-zero exit code 1.; 44603)
+[2025-04-28T17:16:18.972+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-04-28T17:16:19.004+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

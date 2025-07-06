@@ -1,0 +1,10 @@
+2025-04-22 17:03:30,343 - __main__ - INFO - Kafka Bootstrap Servers: kafka:29092, CDC Transaction Topic: postgres.public.transaction_data
+2025-04-22 17:03:30,343 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data
+2025-04-22 17:17:37,083 - __main__ - INFO - Kafka Bootstrap Servers: kafka:29092, CDC Transaction Topic: postgres.public.transaction_data
+2025-04-22 17:17:37,100 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data
+2025-04-22 17:20:21,520 - __main__ - INFO - Distinct dates in the data: 8
+2025-04-28 18:22:30,559 - __main__ - INFO - Starting feature calculation from 2025-03-04 to 2025-03-11
+2025-04-28 18:22:30,569 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data
+2025-04-28 18:23:19,381 - __main__ - INFO - Distinct non-null dates in the data: 8
+2025-04-28 18:23:30,513 - __main__ - INFO - Data written to MinIO bucket: transaction-data/features
+2025-04-28 18:23:30,513 - __main__ - INFO - Feature calculation completed successfully.

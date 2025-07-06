@@ -1,0 +1,41 @@
+[2025-04-02T16:01:54.386+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: gen_data_daily.gen_data_daily scheduled__2025-03-01T22:00:00+00:00 [queued]>
+[2025-04-02T16:01:54.409+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: gen_data_daily.gen_data_daily scheduled__2025-03-01T22:00:00+00:00 [queued]>
+[2025-04-02T16:01:54.409+0000] {taskinstance.py:2171} INFO - Starting attempt 2 of 3
+[2025-04-02T16:01:54.429+0000] {taskinstance.py:2192} INFO - Executing <Task(BashOperator): gen_data_daily> on 2025-03-01 22:00:00+00:00
+[2025-04-02T16:01:54.439+0000] {standard_task_runner.py:60} INFO - Started process 117 to run task
+[2025-04-02T16:01:54.454+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'gen_data_daily', 'gen_data_daily', 'scheduled__2025-03-01T22:00:00+00:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/gen_data_daily.py', '--cfg-path', '/tmp/tmpnziqa9e3']
+[2025-04-02T16:01:54.458+0000] {standard_task_runner.py:88} INFO - Job 43: Subtask gen_data_daily
+[2025-04-02T16:01:54.624+0000] {task_command.py:423} INFO - Running <TaskInstance: gen_data_daily.gen_data_daily scheduled__2025-03-01T22:00:00+00:00 [running]> on host 4a8602fc40fd
+[2025-04-02T16:01:54.779+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:207: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(key, self._deprecation_replacements[key]))
+
+[2025-04-02T16:01:54.872+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='longnv' AIRFLOW_CTX_DAG_ID='gen_data_daily' AIRFLOW_CTX_TASK_ID='gen_data_daily' AIRFLOW_CTX_EXECUTION_DATE='2025-03-01T22:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-01T22:00:00+00:00'
+[2025-04-02T16:01:54.884+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-04-02T16:01:54.885+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        python /opt/***/external_scripts/1_gen_transaction_data.py 2025-03-02\n        ']
+[2025-04-02T16:01:54.920+0000] {subprocess.py:86} INFO - Output:
+[2025-04-02T16:01:56.933+0000] {subprocess.py:93} INFO - Successfully inserted 5000 rows into transaction_data table at 2025-03-02
+[2025-04-02T16:01:56.934+0000] {subprocess.py:93} INFO - Table contains 5000 rows
+[2025-04-02T16:01:56.934+0000] {subprocess.py:93} INFO - Data generation and insertion complete at 2025-03-02
+[2025-04-02T16:01:57.004+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-04-02T16:01:57.051+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=gen_data_daily, task_id=gen_data_daily, execution_date=20250301T220000, start_date=20250402T160154, end_date=20250402T160157
+[2025-04-02T16:01:57.122+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-04-02T16:01:57.141+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-04-28T17:09:26.162+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: gen_data_daily.gen_data_daily scheduled__2025-03-01T22:00:00+00:00 [queued]>
+[2025-04-28T17:09:26.185+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: gen_data_daily.gen_data_daily scheduled__2025-03-01T22:00:00+00:00 [queued]>
+[2025-04-28T17:09:26.185+0000] {taskinstance.py:2171} INFO - Starting attempt 2 of 3
+[2025-04-28T17:09:26.204+0000] {taskinstance.py:2192} INFO - Executing <Task(BashOperator): gen_data_daily> on 2025-03-01 22:00:00+00:00
+[2025-04-28T17:09:26.212+0000] {standard_task_runner.py:60} INFO - Started process 44479 to run task
+[2025-04-28T17:09:26.217+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'gen_data_daily', 'gen_data_daily', 'scheduled__2025-03-01T22:00:00+00:00', '--job-id', '184', '--raw', '--subdir', 'DAGS_FOLDER/gen_data_daily.py', '--cfg-path', '/tmp/tmp6v3vfz0e']
+[2025-04-28T17:09:26.218+0000] {standard_task_runner.py:88} INFO - Job 184: Subtask gen_data_daily
+[2025-04-28T17:09:26.293+0000] {task_command.py:423} INFO - Running <TaskInstance: gen_data_daily.gen_data_daily scheduled__2025-03-01T22:00:00+00:00 [running]> on host 45b38884c639
+[2025-04-28T17:09:26.356+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:207: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(key, self._deprecation_replacements[key]))
+
+[2025-04-28T17:09:26.399+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='longnv' AIRFLOW_CTX_DAG_ID='gen_data_daily' AIRFLOW_CTX_TASK_ID='gen_data_daily' AIRFLOW_CTX_EXECUTION_DATE='2025-03-01T22:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='2' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-01T22:00:00+00:00'
+[2025-04-28T17:09:26.401+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-04-28T17:09:26.402+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        python /opt/***/external_scripts/step_1_1_gen_transaction_data.py 2025-03-02\n        ']
+[2025-04-28T17:09:26.418+0000] {subprocess.py:86} INFO - Output:
+[2025-04-28T17:09:27.656+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-04-28T17:09:27.701+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=gen_data_daily, task_id=gen_data_daily, execution_date=20250301T220000, start_date=20250428T170926, end_date=20250428T170927
+[2025-04-28T17:09:27.764+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-04-28T17:09:27.810+0000] {taskinstance.py:3281} INFO - 1 downstream tasks scheduled from follow-on schedule check

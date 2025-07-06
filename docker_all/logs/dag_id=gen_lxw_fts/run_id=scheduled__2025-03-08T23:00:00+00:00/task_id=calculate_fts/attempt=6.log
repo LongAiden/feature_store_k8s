@@ -1,0 +1,213 @@
+[2025-04-22T17:01:57.090+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: gen_lxw_fts.calculate_fts scheduled__2025-03-08T23:00:00+00:00 [queued]>
+[2025-04-22T17:01:57.112+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: gen_lxw_fts.calculate_fts scheduled__2025-03-08T23:00:00+00:00 [queued]>
+[2025-04-22T17:01:57.112+0000] {taskinstance.py:2171} INFO - Starting attempt 6 of 7
+[2025-04-22T17:01:57.134+0000] {taskinstance.py:2192} INFO - Executing <Task(BashOperator): calculate_fts> on 2025-03-08 23:00:00+00:00
+[2025-04-22T17:01:57.141+0000] {standard_task_runner.py:60} INFO - Started process 968 to run task
+[2025-04-22T17:01:57.145+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'gen_lxw_fts', 'calculate_fts', 'scheduled__2025-03-08T23:00:00+00:00', '--job-id', '119', '--raw', '--subdir', 'DAGS_FOLDER/gen_lxw_fts.py', '--cfg-path', '/tmp/tmpit4u5mjz']
+[2025-04-22T17:01:57.146+0000] {standard_task_runner.py:88} INFO - Job 119: Subtask calculate_fts
+[2025-04-22T17:01:57.223+0000] {task_command.py:423} INFO - Running <TaskInstance: gen_lxw_fts.calculate_fts scheduled__2025-03-08T23:00:00+00:00 [running]> on host 45b38884c639
+[2025-04-22T17:01:57.385+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:207: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(key, self._deprecation_replacements[key]))
+
+[2025-04-22T17:01:57.485+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='longnv' AIRFLOW_CTX_DAG_ID='gen_lxw_fts' AIRFLOW_CTX_TASK_ID='calculate_fts' AIRFLOW_CTX_EXECUTION_DATE='2025-03-08T23:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='6' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-08T23:00:00+00:00'
+[2025-04-22T17:01:57.487+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-04-22T17:01:57.489+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        python /opt/***/external_scripts/2_calculate_features.py 2025-03-09\n        ']
+[2025-04-22T17:01:57.512+0000] {subprocess.py:86} INFO - Output:
+[2025-04-22T17:02:06.113+0000] {subprocess.py:93} INFO - :: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2025-04-22T17:02:06.309+0000] {subprocess.py:93} INFO - Ivy Default Cache set to: /home/***/.ivy2/cache
+[2025-04-22T17:02:06.311+0000] {subprocess.py:93} INFO - The jars for the packages stored in: /home/***/.ivy2/jars
+[2025-04-22T17:02:06.324+0000] {subprocess.py:93} INFO - org.apache.spark#spark-sql-kafka-0-10_2.12 added as a dependency
+[2025-04-22T17:02:06.324+0000] {subprocess.py:93} INFO - io.delta#delta-core_2.12 added as a dependency
+[2025-04-22T17:02:06.324+0000] {subprocess.py:93} INFO - org.apache.hadoop#hadoop-aws added as a dependency
+[2025-04-22T17:02:06.325+0000] {subprocess.py:93} INFO - com.amazonaws#aws-java-sdk-bundle added as a dependency
+[2025-04-22T17:02:06.325+0000] {subprocess.py:93} INFO - org.postgresql#postgresql added as a dependency
+[2025-04-22T17:02:06.325+0000] {subprocess.py:93} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-0e1eca45-2dc5-4c7a-9aa1-fee96e319ef0;1.0
+[2025-04-22T17:02:06.325+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-04-22T17:02:06.702+0000] {subprocess.py:93} INFO - 	found org.apache.spark#spark-sql-kafka-0-10_2.12;3.4.1 in central
+[2025-04-22T17:02:06.783+0000] {subprocess.py:93} INFO - 	found org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.4.1 in central
+[2025-04-22T17:02:06.827+0000] {subprocess.py:93} INFO - 	found org.apache.kafka#kafka-clients;3.3.2 in central
+[2025-04-22T17:02:06.872+0000] {subprocess.py:93} INFO - 	found org.lz4#lz4-java;1.8.0 in central
+[2025-04-22T17:02:06.893+0000] {subprocess.py:93} INFO - 	found org.xerial.snappy#snappy-java;1.1.10.1 in central
+[2025-04-22T17:02:06.934+0000] {subprocess.py:93} INFO - 	found org.slf4j#slf4j-api;2.0.6 in central
+[2025-04-22T17:02:06.977+0000] {subprocess.py:93} INFO - 	found org.apache.hadoop#hadoop-client-runtime;3.3.4 in central
+[2025-04-22T17:02:07.017+0000] {subprocess.py:93} INFO - 	found org.apache.hadoop#hadoop-client-api;3.3.4 in central
+[2025-04-22T17:02:07.056+0000] {subprocess.py:93} INFO - 	found commons-logging#commons-logging;1.1.3 in central
+[2025-04-22T17:02:07.091+0000] {subprocess.py:93} INFO - 	found com.google.code.findbugs#jsr305;3.0.0 in central
+[2025-04-22T17:02:07.110+0000] {subprocess.py:93} INFO - 	found org.apache.commons#commons-pool2;2.11.1 in central
+[2025-04-22T17:02:07.137+0000] {subprocess.py:93} INFO - 	found io.delta#delta-core_2.12;2.4.0 in central
+[2025-04-22T17:02:07.152+0000] {subprocess.py:93} INFO - 	found io.delta#delta-storage;2.4.0 in central
+[2025-04-22T17:02:07.169+0000] {subprocess.py:93} INFO - 	found org.antlr#antlr4-runtime;4.9.3 in central
+[2025-04-22T17:02:07.195+0000] {subprocess.py:93} INFO - 	found org.apache.hadoop#hadoop-aws;3.3.2 in central
+[2025-04-22T17:02:07.219+0000] {subprocess.py:93} INFO - 	found org.wildfly.openssl#wildfly-openssl;1.0.7.Final in central
+[2025-04-22T17:02:07.237+0000] {subprocess.py:93} INFO - 	found com.amazonaws#aws-java-sdk-bundle;1.12.261 in central
+[2025-04-22T17:02:07.253+0000] {subprocess.py:93} INFO - 	found org.postgresql#postgresql;42.5.1 in central
+[2025-04-22T17:02:07.274+0000] {subprocess.py:93} INFO - 	found org.checkerframework#checker-qual;3.5.0 in central
+[2025-04-22T17:02:07.332+0000] {subprocess.py:93} INFO - :: resolution report :: resolve 965ms :: artifacts dl 44ms
+[2025-04-22T17:02:07.333+0000] {subprocess.py:93} INFO - 	:: modules in use:
+[2025-04-22T17:02:07.333+0000] {subprocess.py:93} INFO - 	com.amazonaws#aws-java-sdk-bundle;1.12.261 from central in [default]
+[2025-04-22T17:02:07.333+0000] {subprocess.py:93} INFO - 	com.google.code.findbugs#jsr305;3.0.0 from central in [default]
+[2025-04-22T17:02:07.333+0000] {subprocess.py:93} INFO - 	commons-logging#commons-logging;1.1.3 from central in [default]
+[2025-04-22T17:02:07.333+0000] {subprocess.py:93} INFO - 	io.delta#delta-core_2.12;2.4.0 from central in [default]
+[2025-04-22T17:02:07.333+0000] {subprocess.py:93} INFO - 	io.delta#delta-storage;2.4.0 from central in [default]
+[2025-04-22T17:02:07.333+0000] {subprocess.py:93} INFO - 	org.antlr#antlr4-runtime;4.9.3 from central in [default]
+[2025-04-22T17:02:07.333+0000] {subprocess.py:93} INFO - 	org.apache.commons#commons-pool2;2.11.1 from central in [default]
+[2025-04-22T17:02:07.334+0000] {subprocess.py:93} INFO - 	org.apache.hadoop#hadoop-aws;3.3.2 from central in [default]
+[2025-04-22T17:02:07.334+0000] {subprocess.py:93} INFO - 	org.apache.hadoop#hadoop-client-api;3.3.4 from central in [default]
+[2025-04-22T17:02:07.334+0000] {subprocess.py:93} INFO - 	org.apache.hadoop#hadoop-client-runtime;3.3.4 from central in [default]
+[2025-04-22T17:02:07.334+0000] {subprocess.py:93} INFO - 	org.apache.kafka#kafka-clients;3.3.2 from central in [default]
+[2025-04-22T17:02:07.334+0000] {subprocess.py:93} INFO - 	org.apache.spark#spark-sql-kafka-0-10_2.12;3.4.1 from central in [default]
+[2025-04-22T17:02:07.335+0000] {subprocess.py:93} INFO - 	org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.4.1 from central in [default]
+[2025-04-22T17:02:07.335+0000] {subprocess.py:93} INFO - 	org.checkerframework#checker-qual;3.5.0 from central in [default]
+[2025-04-22T17:02:07.336+0000] {subprocess.py:93} INFO - 	org.lz4#lz4-java;1.8.0 from central in [default]
+[2025-04-22T17:02:07.336+0000] {subprocess.py:93} INFO - 	org.postgresql#postgresql;42.5.1 from central in [default]
+[2025-04-22T17:02:07.336+0000] {subprocess.py:93} INFO - 	org.slf4j#slf4j-api;2.0.6 from central in [default]
+[2025-04-22T17:02:07.336+0000] {subprocess.py:93} INFO - 	org.wildfly.openssl#wildfly-openssl;1.0.7.Final from central in [default]
+[2025-04-22T17:02:07.336+0000] {subprocess.py:93} INFO - 	org.xerial.snappy#snappy-java;1.1.10.1 from central in [default]
+[2025-04-22T17:02:07.336+0000] {subprocess.py:93} INFO - 	:: evicted modules:
+[2025-04-22T17:02:07.337+0000] {subprocess.py:93} INFO - 	com.amazonaws#aws-java-sdk-bundle;1.11.1026 by [com.amazonaws#aws-java-sdk-bundle;1.12.261] in [default]
+[2025-04-22T17:02:07.337+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-04-22T17:02:07.337+0000] {subprocess.py:93} INFO - 	|                  |            modules            ||   artifacts   |
+[2025-04-22T17:02:07.337+0000] {subprocess.py:93} INFO - 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2025-04-22T17:02:07.337+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-04-22T17:02:07.338+0000] {subprocess.py:93} INFO - 	|      default     |   20  |   0   |   0   |   1   ||   19  |   0   |
+[2025-04-22T17:02:07.338+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-04-22T17:02:07.345+0000] {subprocess.py:93} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-0e1eca45-2dc5-4c7a-9aa1-fee96e319ef0
+[2025-04-22T17:02:07.345+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-04-22T17:02:07.359+0000] {subprocess.py:93} INFO - 	0 artifacts copied, 19 already retrieved (0kB/14ms)
+[2025-04-22T17:02:08.117+0000] {subprocess.py:93} INFO - 25/04/22 17:02:08 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-04-22T17:02:08.816+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-04-22T17:02:08.816+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-04-22T17:02:32.707+0000] {subprocess.py:93} INFO - 25/04/22 17:02:32 WARN SQLConf: The SQL config 'spark.sql.execution.arrow.fallback.enabled' has been deprecated in Spark v3.0 and may be removed in the future. Use 'spark.sql.execution.arrow.pyspark.fallback.enabled' instead of it.
+[2025-04-22T17:02:32.718+0000] {subprocess.py:93} INFO - 25/04/22 17:02:32 WARN SQLConf: The SQL config 'spark.sql.execution.arrow.fallback.enabled' has been deprecated in Spark v3.0 and may be removed in the future. Use 'spark.sql.execution.arrow.pyspark.fallback.enabled' instead of it.
+[2025-04-22T17:02:32.718+0000] {subprocess.py:93} INFO - 25/04/22 17:02:32 WARN SQLConf: The SQL config 'spark.sql.execution.arrow.fallback.enabled' has been deprecated in Spark v3.0 and may be removed in the future. Use 'spark.sql.execution.arrow.pyspark.fallback.enabled' instead of it.
+[2025-04-22T17:02:39.172+0000] {subprocess.py:93} INFO - 25/04/22 17:02:39 WARN AdminClientConfig: These configurations '[key.deserializer, value.deserializer, enable.auto.commit, max.poll.records, auto.offset.reset]' were supplied but are not used yet.
+[2025-04-22T17:02:40.323+0000] {subprocess.py:93} INFO - 2025-03-02 2025-03-09
+[2025-04-22T17:02:40.323+0000] {subprocess.py:93} INFO - Spark session initialized
+[2025-04-22T17:02:40.384+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-04-22T17:02:40.384+0000] {subprocess.py:93} INFO -   File "/opt/***/external_scripts/2_calculate_features.py", line 113, in <module>
+[2025-04-22T17:02:40.384+0000] {subprocess.py:93} INFO -     cdc_df.show(5)
+[2025-04-22T17:02:40.385+0000] {subprocess.py:93} INFO -   File "/opt/spark/python/pyspark/sql/dataframe.py", line 899, in show
+[2025-04-22T17:02:40.385+0000] {subprocess.py:93} INFO -     print(self._jdf.showString(n, 20, vertical))
+[2025-04-22T17:02:40.385+0000] {subprocess.py:93} INFO -   File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/java_gateway.py", line 1322, in __call__
+[2025-04-22T17:02:40.385+0000] {subprocess.py:93} INFO -   File "/opt/spark/python/pyspark/errors/exceptions/captured.py", line 169, in deco
+[2025-04-22T17:02:40.385+0000] {subprocess.py:93} INFO -     return f(*a, **kw)
+[2025-04-22T17:02:40.385+0000] {subprocess.py:93} INFO -   File "/opt/spark/python/lib/py4j-0.10.9.7-src.zip/py4j/protocol.py", line 326, in get_return_value
+[2025-04-22T17:02:40.385+0000] {subprocess.py:93} INFO - py4j.protocol.Py4JJavaError: An error occurred while calling o70.showString.
+[2025-04-22T17:02:40.385+0000] {subprocess.py:93} INFO - : java.util.concurrent.ExecutionException: org.apache.kafka.common.errors.UnknownTopicOrPartitionException: This server does not host this topic-partition.
+[2025-04-22T17:02:40.386+0000] {subprocess.py:93} INFO - 	at java.base/java.util.concurrent.CompletableFuture.reportGet(CompletableFuture.java:395)
+[2025-04-22T17:02:40.386+0000] {subprocess.py:93} INFO - 	at java.base/java.util.concurrent.CompletableFuture.get(CompletableFuture.java:2005)
+[2025-04-22T17:02:40.386+0000] {subprocess.py:93} INFO - 	at org.apache.kafka.common.internals.KafkaFutureImpl.get(KafkaFutureImpl.java:165)
+[2025-04-22T17:02:40.386+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.kafka010.ConsumerStrategy.retrieveAllPartitions(ConsumerStrategy.scala:66)
+[2025-04-22T17:02:40.386+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.kafka010.ConsumerStrategy.retrieveAllPartitions$(ConsumerStrategy.scala:65)
+[2025-04-22T17:02:40.386+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.kafka010.SubscribeStrategy.retrieveAllPartitions(ConsumerStrategy.scala:102)
+[2025-04-22T17:02:40.386+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.kafka010.SubscribeStrategy.assignedTopicPartitions(ConsumerStrategy.scala:113)
+[2025-04-22T17:02:40.386+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.kafka010.KafkaOffsetReaderAdmin.fetchPartitionOffsets(KafkaOffsetReaderAdmin.scala:128)
+[2025-04-22T17:02:40.386+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.kafka010.KafkaOffsetReaderAdmin.getOffsetRangesFromUnresolvedOffsets(KafkaOffsetReaderAdmin.scala:374)
+[2025-04-22T17:02:40.386+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.kafka010.KafkaRelation.buildScan(KafkaRelation.scala:67)
+[2025-04-22T17:02:40.387+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.datasources.DataSourceStrategy$.apply(DataSourceStrategy.scala:345)
+[2025-04-22T17:02:40.387+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$1(QueryPlanner.scala:63)
+[2025-04-22T17:02:40.387+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:486)
+[2025-04-22T17:02:40.387+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:492)
+[2025-04-22T17:02:40.387+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:491)
+[2025-04-22T17:02:40.387+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+[2025-04-22T17:02:40.387+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:70)
+[2025-04-22T17:02:40.387+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+[2025-04-22T17:02:40.387+0000] {subprocess.py:93} INFO - 	at scala.collection.TraversableOnce$folder$1.apply(TraversableOnce.scala:196)
+[2025-04-22T17:02:40.388+0000] {subprocess.py:93} INFO - 	at scala.collection.TraversableOnce$folder$1.apply(TraversableOnce.scala:194)
+[2025-04-22T17:02:40.388+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator.foreach(Iterator.scala:943)
+[2025-04-22T17:02:40.388+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator.foreach$(Iterator.scala:943)
+[2025-04-22T17:02:40.388+0000] {subprocess.py:93} INFO - 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1431)
+[2025-04-22T17:02:40.388+0000] {subprocess.py:93} INFO - 	at scala.collection.TraversableOnce.foldLeft(TraversableOnce.scala:199)
+[2025-04-22T17:02:40.389+0000] {subprocess.py:93} INFO - 	at scala.collection.TraversableOnce.foldLeft$(TraversableOnce.scala:192)
+[2025-04-22T17:02:40.389+0000] {subprocess.py:93} INFO - 	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1431)
+[2025-04-22T17:02:40.389+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+[2025-04-22T17:02:40.389+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:486)
+[2025-04-22T17:02:40.390+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:492)
+[2025-04-22T17:02:40.390+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+[2025-04-22T17:02:40.390+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:70)
+[2025-04-22T17:02:40.390+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+[2025-04-22T17:02:40.390+0000] {subprocess.py:93} INFO - 	at scala.collection.TraversableOnce$folder$1.apply(TraversableOnce.scala:196)
+[2025-04-22T17:02:40.390+0000] {subprocess.py:93} INFO - 	at scala.collection.TraversableOnce$folder$1.apply(TraversableOnce.scala:194)
+[2025-04-22T17:02:40.390+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator.foreach(Iterator.scala:943)
+[2025-04-22T17:02:40.390+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator.foreach$(Iterator.scala:943)
+[2025-04-22T17:02:40.390+0000] {subprocess.py:93} INFO - 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1431)
+[2025-04-22T17:02:40.391+0000] {subprocess.py:93} INFO - 	at scala.collection.TraversableOnce.foldLeft(TraversableOnce.scala:199)
+[2025-04-22T17:02:40.391+0000] {subprocess.py:93} INFO - 	at scala.collection.TraversableOnce.foldLeft$(TraversableOnce.scala:192)
+[2025-04-22T17:02:40.391+0000] {subprocess.py:93} INFO - 	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1431)
+[2025-04-22T17:02:40.391+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+[2025-04-22T17:02:40.391+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:486)
+[2025-04-22T17:02:40.391+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:492)
+[2025-04-22T17:02:40.391+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+[2025-04-22T17:02:40.391+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:70)
+[2025-04-22T17:02:40.391+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$3(QueryPlanner.scala:78)
+[2025-04-22T17:02:40.392+0000] {subprocess.py:93} INFO - 	at scala.collection.TraversableOnce$folder$1.apply(TraversableOnce.scala:196)
+[2025-04-22T17:02:40.392+0000] {subprocess.py:93} INFO - 	at scala.collection.TraversableOnce$folder$1.apply(TraversableOnce.scala:194)
+[2025-04-22T17:02:40.392+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator.foreach(Iterator.scala:943)
+[2025-04-22T17:02:40.392+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator.foreach$(Iterator.scala:943)
+[2025-04-22T17:02:40.392+0000] {subprocess.py:93} INFO - 	at scala.collection.AbstractIterator.foreach(Iterator.scala:1431)
+[2025-04-22T17:02:40.392+0000] {subprocess.py:93} INFO - 	at scala.collection.TraversableOnce.foldLeft(TraversableOnce.scala:199)
+[2025-04-22T17:02:40.392+0000] {subprocess.py:93} INFO - 	at scala.collection.TraversableOnce.foldLeft$(TraversableOnce.scala:192)
+[2025-04-22T17:02:40.392+0000] {subprocess.py:93} INFO - 	at scala.collection.AbstractIterator.foldLeft(Iterator.scala:1431)
+[2025-04-22T17:02:40.392+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.planning.QueryPlanner.$anonfun$plan$2(QueryPlanner.scala:75)
+[2025-04-22T17:02:40.393+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator$$anon$11.nextCur(Iterator.scala:486)
+[2025-04-22T17:02:40.393+0000] {subprocess.py:93} INFO - 	at scala.collection.Iterator$$anon$11.hasNext(Iterator.scala:492)
+[2025-04-22T17:02:40.393+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.planning.QueryPlanner.plan(QueryPlanner.scala:93)
+[2025-04-22T17:02:40.393+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.SparkStrategies.plan(SparkStrategies.scala:70)
+[2025-04-22T17:02:40.393+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution$.createSparkPlan(QueryExecution.scala:476)
+[2025-04-22T17:02:40.393+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.$anonfun$sparkPlan$1(QueryExecution.scala:162)
+[2025-04-22T17:02:40.393+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:111)
+[2025-04-22T17:02:40.393+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:202)
+[2025-04-22T17:02:40.393+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:526)
+[2025-04-22T17:02:40.394+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:202)
+[2025-04-22T17:02:40.394+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:827)
+[2025-04-22T17:02:40.394+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:201)
+[2025-04-22T17:02:40.394+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.sparkPlan$lzycompute(QueryExecution.scala:162)
+[2025-04-22T17:02:40.394+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.sparkPlan(QueryExecution.scala:155)
+[2025-04-22T17:02:40.394+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executedPlan$1(QueryExecution.scala:175)
+[2025-04-22T17:02:40.394+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.catalyst.QueryPlanningTracker.measurePhase(QueryPlanningTracker.scala:111)
+[2025-04-22T17:02:40.394+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$2(QueryExecution.scala:202)
+[2025-04-22T17:02:40.394+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution$.withInternalError(QueryExecution.scala:526)
+[2025-04-22T17:02:40.395+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.$anonfun$executePhase$1(QueryExecution.scala:202)
+[2025-04-22T17:02:40.395+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:827)
+[2025-04-22T17:02:40.395+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.executePhase(QueryExecution.scala:201)
+[2025-04-22T17:02:40.395+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.executedPlan$lzycompute(QueryExecution.scala:175)
+[2025-04-22T17:02:40.395+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.executedPlan(QueryExecution.scala:168)
+[2025-04-22T17:02:40.395+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.simpleString(QueryExecution.scala:221)
+[2025-04-22T17:02:40.395+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.org$apache$spark$sql$execution$QueryExecution$$explainString(QueryExecution.scala:266)
+[2025-04-22T17:02:40.395+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.QueryExecution.explainString(QueryExecution.scala:235)
+[2025-04-22T17:02:40.395+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$6(SQLExecution.scala:112)
+[2025-04-22T17:02:40.396+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.SQLExecution$.withSQLConfPropagated(SQLExecution.scala:195)
+[2025-04-22T17:02:40.396+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.SQLExecution$.$anonfun$withNewExecutionId$1(SQLExecution.scala:103)
+[2025-04-22T17:02:40.396+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.SparkSession.withActive(SparkSession.scala:827)
+[2025-04-22T17:02:40.396+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.execution.SQLExecution$.withNewExecutionId(SQLExecution.scala:65)
+[2025-04-22T17:02:40.396+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.Dataset.withAction(Dataset.scala:4165)
+[2025-04-22T17:02:40.396+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.Dataset.head(Dataset.scala:3161)
+[2025-04-22T17:02:40.396+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.Dataset.take(Dataset.scala:3382)
+[2025-04-22T17:02:40.396+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.Dataset.getRows(Dataset.scala:284)
+[2025-04-22T17:02:40.396+0000] {subprocess.py:93} INFO - 	at org.apache.spark.sql.Dataset.showString(Dataset.scala:323)
+[2025-04-22T17:02:40.397+0000] {subprocess.py:93} INFO - 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+[2025-04-22T17:02:40.397+0000] {subprocess.py:93} INFO - 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+[2025-04-22T17:02:40.397+0000] {subprocess.py:93} INFO - 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+[2025-04-22T17:02:40.397+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+[2025-04-22T17:02:40.397+0000] {subprocess.py:93} INFO - 	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+[2025-04-22T17:02:40.397+0000] {subprocess.py:93} INFO - 	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+[2025-04-22T17:02:40.397+0000] {subprocess.py:93} INFO - 	at py4j.Gateway.invoke(Gateway.java:282)
+[2025-04-22T17:02:40.397+0000] {subprocess.py:93} INFO - 	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+[2025-04-22T17:02:40.397+0000] {subprocess.py:93} INFO - 	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+[2025-04-22T17:02:40.398+0000] {subprocess.py:93} INFO - 	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+[2025-04-22T17:02:40.398+0000] {subprocess.py:93} INFO - 	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+[2025-04-22T17:02:40.398+0000] {subprocess.py:93} INFO - 	at java.base/java.lang.Thread.run(Thread.java:829)
+[2025-04-22T17:02:40.398+0000] {subprocess.py:93} INFO - Caused by: org.apache.kafka.common.errors.UnknownTopicOrPartitionException: This server does not host this topic-partition.
+[2025-04-22T17:02:40.398+0000] {subprocess.py:93} INFO - 
+[2025-04-22T17:02:41.109+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-04-22T17:02:41.123+0000] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-04-22T17:02:41.149+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=gen_lxw_fts, task_id=calculate_fts, execution_date=20250308T230000, start_date=20250422T170157, end_date=20250422T170241
+[2025-04-22T17:02:41.164+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 119 for task calculate_fts (Bash command failed. The command returned a non-zero exit code 1.; 968)
+[2025-04-22T17:02:41.208+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-04-22T17:02:41.231+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

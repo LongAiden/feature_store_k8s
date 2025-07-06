@@ -1,0 +1,100 @@
+[2025-04-28T18:28:45.465+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: gen_lxw_fts.calculate_fts scheduled__2025-03-16T23:00:00+00:00 [queued]>
+[2025-04-28T18:28:45.475+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: gen_lxw_fts.calculate_fts scheduled__2025-03-16T23:00:00+00:00 [queued]>
+[2025-04-28T18:28:45.475+0000] {taskinstance.py:2171} INFO - Starting attempt 3 of 4
+[2025-04-28T18:28:45.488+0000] {taskinstance.py:2192} INFO - Executing <Task(BashOperator): calculate_fts> on 2025-03-16 23:00:00+00:00
+[2025-04-28T18:28:45.494+0000] {standard_task_runner.py:60} INFO - Started process 14435 to run task
+[2025-04-28T18:28:45.497+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'gen_lxw_fts', 'calculate_fts', 'scheduled__2025-03-16T23:00:00+00:00', '--job-id', '296', '--raw', '--subdir', 'DAGS_FOLDER/gen_lxw_fts.py', '--cfg-path', '/tmp/tmp1776ie9x']
+[2025-04-28T18:28:45.498+0000] {standard_task_runner.py:88} INFO - Job 296: Subtask calculate_fts
+[2025-04-28T18:28:45.569+0000] {task_command.py:423} INFO - Running <TaskInstance: gen_lxw_fts.calculate_fts scheduled__2025-03-16T23:00:00+00:00 [running]> on host 45b38884c639
+[2025-04-28T18:28:45.676+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:207: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(key, self._deprecation_replacements[key]))
+
+[2025-04-28T18:28:45.720+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='longnv' AIRFLOW_CTX_DAG_ID='gen_lxw_fts' AIRFLOW_CTX_TASK_ID='calculate_fts' AIRFLOW_CTX_EXECUTION_DATE='2025-03-16T23:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-16T23:00:00+00:00'
+[2025-04-28T18:28:45.722+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-04-28T18:28:45.723+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        python /opt/***/external_scripts/step_2_calculate_features.py 2025-03-17\n        ']
+[2025-04-28T18:28:45.736+0000] {subprocess.py:86} INFO - Output:
+[2025-04-28T18:28:53.718+0000] {subprocess.py:93} INFO - :: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2025-04-28T18:28:53.969+0000] {subprocess.py:93} INFO - Ivy Default Cache set to: /home/***/.ivy2/cache
+[2025-04-28T18:28:53.969+0000] {subprocess.py:93} INFO - The jars for the packages stored in: /home/***/.ivy2/jars
+[2025-04-28T18:28:53.976+0000] {subprocess.py:93} INFO - org.apache.spark#spark-sql-kafka-0-10_2.12 added as a dependency
+[2025-04-28T18:28:53.977+0000] {subprocess.py:93} INFO - io.delta#delta-core_2.12 added as a dependency
+[2025-04-28T18:28:53.977+0000] {subprocess.py:93} INFO - org.apache.hadoop#hadoop-aws added as a dependency
+[2025-04-28T18:28:53.977+0000] {subprocess.py:93} INFO - com.amazonaws#aws-java-sdk-bundle added as a dependency
+[2025-04-28T18:28:53.977+0000] {subprocess.py:93} INFO - org.postgresql#postgresql added as a dependency
+[2025-04-28T18:28:53.978+0000] {subprocess.py:93} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-b1db6df4-515d-4cc2-a561-50ec71f143a7;1.0
+[2025-04-28T18:28:53.978+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-04-28T18:28:54.283+0000] {subprocess.py:93} INFO - 	found org.apache.spark#spark-sql-kafka-0-10_2.12;3.4.1 in central
+[2025-04-28T18:28:54.400+0000] {subprocess.py:93} INFO - 	found org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.4.1 in central
+[2025-04-28T18:28:54.461+0000] {subprocess.py:93} INFO - 	found org.apache.kafka#kafka-clients;3.3.2 in central
+[2025-04-28T18:28:54.498+0000] {subprocess.py:93} INFO - 	found org.lz4#lz4-java;1.8.0 in central
+[2025-04-28T18:28:54.531+0000] {subprocess.py:93} INFO - 	found org.xerial.snappy#snappy-java;1.1.10.1 in central
+[2025-04-28T18:28:54.599+0000] {subprocess.py:93} INFO - 	found org.slf4j#slf4j-api;2.0.6 in central
+[2025-04-28T18:28:54.670+0000] {subprocess.py:93} INFO - 	found org.apache.hadoop#hadoop-client-runtime;3.3.4 in central
+[2025-04-28T18:28:54.690+0000] {subprocess.py:93} INFO - 	found org.apache.hadoop#hadoop-client-api;3.3.4 in central
+[2025-04-28T18:28:54.727+0000] {subprocess.py:93} INFO - 	found commons-logging#commons-logging;1.1.3 in central
+[2025-04-28T18:28:54.740+0000] {subprocess.py:93} INFO - 	found com.google.code.findbugs#jsr305;3.0.0 in central
+[2025-04-28T18:28:54.752+0000] {subprocess.py:93} INFO - 	found org.apache.commons#commons-pool2;2.11.1 in central
+[2025-04-28T18:28:54.765+0000] {subprocess.py:93} INFO - 	found io.delta#delta-core_2.12;2.4.0 in central
+[2025-04-28T18:28:54.777+0000] {subprocess.py:93} INFO - 	found io.delta#delta-storage;2.4.0 in central
+[2025-04-28T18:28:54.789+0000] {subprocess.py:93} INFO - 	found org.antlr#antlr4-runtime;4.9.3 in central
+[2025-04-28T18:28:54.806+0000] {subprocess.py:93} INFO - 	found org.apache.hadoop#hadoop-aws;3.3.2 in central
+[2025-04-28T18:28:54.828+0000] {subprocess.py:93} INFO - 	found org.wildfly.openssl#wildfly-openssl;1.0.7.Final in central
+[2025-04-28T18:28:54.843+0000] {subprocess.py:93} INFO - 	found com.amazonaws#aws-java-sdk-bundle;1.12.261 in central
+[2025-04-28T18:28:54.847+0000] {subprocess.py:93} INFO - 	found org.postgresql#postgresql;42.5.1 in central
+[2025-04-28T18:28:54.866+0000] {subprocess.py:93} INFO - 	found org.checkerframework#checker-qual;3.5.0 in central
+[2025-04-28T18:28:54.897+0000] {subprocess.py:93} INFO - :: resolution report :: resolve 899ms :: artifacts dl 20ms
+[2025-04-28T18:28:54.898+0000] {subprocess.py:93} INFO - 	:: modules in use:
+[2025-04-28T18:28:54.898+0000] {subprocess.py:93} INFO - 	com.amazonaws#aws-java-sdk-bundle;1.12.261 from central in [default]
+[2025-04-28T18:28:54.898+0000] {subprocess.py:93} INFO - 	com.google.code.findbugs#jsr305;3.0.0 from central in [default]
+[2025-04-28T18:28:54.898+0000] {subprocess.py:93} INFO - 	commons-logging#commons-logging;1.1.3 from central in [default]
+[2025-04-28T18:28:54.898+0000] {subprocess.py:93} INFO - 	io.delta#delta-core_2.12;2.4.0 from central in [default]
+[2025-04-28T18:28:54.899+0000] {subprocess.py:93} INFO - 	io.delta#delta-storage;2.4.0 from central in [default]
+[2025-04-28T18:28:54.899+0000] {subprocess.py:93} INFO - 	org.antlr#antlr4-runtime;4.9.3 from central in [default]
+[2025-04-28T18:28:54.899+0000] {subprocess.py:93} INFO - 	org.apache.commons#commons-pool2;2.11.1 from central in [default]
+[2025-04-28T18:28:54.899+0000] {subprocess.py:93} INFO - 	org.apache.hadoop#hadoop-aws;3.3.2 from central in [default]
+[2025-04-28T18:28:54.899+0000] {subprocess.py:93} INFO - 	org.apache.hadoop#hadoop-client-api;3.3.4 from central in [default]
+[2025-04-28T18:28:54.899+0000] {subprocess.py:93} INFO - 	org.apache.hadoop#hadoop-client-runtime;3.3.4 from central in [default]
+[2025-04-28T18:28:54.899+0000] {subprocess.py:93} INFO - 	org.apache.kafka#kafka-clients;3.3.2 from central in [default]
+[2025-04-28T18:28:54.899+0000] {subprocess.py:93} INFO - 	org.apache.spark#spark-sql-kafka-0-10_2.12;3.4.1 from central in [default]
+[2025-04-28T18:28:54.899+0000] {subprocess.py:93} INFO - 	org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.4.1 from central in [default]
+[2025-04-28T18:28:54.899+0000] {subprocess.py:93} INFO - 	org.checkerframework#checker-qual;3.5.0 from central in [default]
+[2025-04-28T18:28:54.899+0000] {subprocess.py:93} INFO - 	org.lz4#lz4-java;1.8.0 from central in [default]
+[2025-04-28T18:28:54.900+0000] {subprocess.py:93} INFO - 	org.postgresql#postgresql;42.5.1 from central in [default]
+[2025-04-28T18:28:54.900+0000] {subprocess.py:93} INFO - 	org.slf4j#slf4j-api;2.0.6 from central in [default]
+[2025-04-28T18:28:54.900+0000] {subprocess.py:93} INFO - 	org.wildfly.openssl#wildfly-openssl;1.0.7.Final from central in [default]
+[2025-04-28T18:28:54.900+0000] {subprocess.py:93} INFO - 	org.xerial.snappy#snappy-java;1.1.10.1 from central in [default]
+[2025-04-28T18:28:54.900+0000] {subprocess.py:93} INFO - 	:: evicted modules:
+[2025-04-28T18:28:54.900+0000] {subprocess.py:93} INFO - 	com.amazonaws#aws-java-sdk-bundle;1.11.1026 by [com.amazonaws#aws-java-sdk-bundle;1.12.261] in [default]
+[2025-04-28T18:28:54.900+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-04-28T18:28:54.900+0000] {subprocess.py:93} INFO - 	|                  |            modules            ||   artifacts   |
+[2025-04-28T18:28:54.900+0000] {subprocess.py:93} INFO - 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2025-04-28T18:28:54.900+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-04-28T18:28:54.900+0000] {subprocess.py:93} INFO - 	|      default     |   20  |   0   |   0   |   1   ||   19  |   0   |
+[2025-04-28T18:28:54.901+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-04-28T18:28:54.905+0000] {subprocess.py:93} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-b1db6df4-515d-4cc2-a561-50ec71f143a7
+[2025-04-28T18:28:54.906+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-04-28T18:28:54.917+0000] {subprocess.py:93} INFO - 	0 artifacts copied, 19 already retrieved (0kB/12ms)
+[2025-04-28T18:28:55.480+0000] {subprocess.py:93} INFO - 25/04/28 18:28:55 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-04-28T18:28:55.940+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-04-28T18:28:55.940+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-04-28T18:29:10.563+0000] {subprocess.py:93} INFO - 25/04/28 18:29:10 WARN SQLConf: The SQL config 'spark.sql.execution.arrow.fallback.enabled' has been deprecated in Spark v3.0 and may be removed in the future. Use 'spark.sql.execution.arrow.pyspark.fallback.enabled' instead of it.
+[2025-04-28T18:29:10.571+0000] {subprocess.py:93} INFO - 25/04/28 18:29:10 WARN SQLConf: The SQL config 'spark.sql.execution.arrow.fallback.enabled' has been deprecated in Spark v3.0 and may be removed in the future. Use 'spark.sql.execution.arrow.pyspark.fallback.enabled' instead of it.
+[2025-04-28T18:29:10.571+0000] {subprocess.py:93} INFO - 25/04/28 18:29:10 WARN SQLConf: The SQL config 'spark.sql.execution.arrow.fallback.enabled' has been deprecated in Spark v3.0 and may be removed in the future. Use 'spark.sql.execution.arrow.pyspark.fallback.enabled' instead of it.
+[2025-04-28T18:29:13.002+0000] {subprocess.py:93} INFO - 25/04/28 18:29:13 WARN MetricsConfig: Cannot locate configuration: tried hadoop-metrics2-s3a-file-system.properties,hadoop-metrics2.properties
+[2025-04-28T18:29:24.300+0000] {subprocess.py:93} INFO - [Stage 0:>                                                          (0 + 5) / 5][Stage 0:===============================================>           (4 + 1) / 5]                                                                                25/04/28 18:29:24 WARN package: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+[2025-04-28T18:29:44.959+0000] {subprocess.py:93} INFO - [Stage 1:>                                                          (0 + 5) / 5][Stage 3:=>                                                        (1 + 9) / 50][Stage 3:=========>                                                (8 + 9) / 50][Stage 3:=====================>                                   (19 + 6) / 50][Stage 3:===============================>                         (28 + 6) / 50][Stage 3:=====================================>                   (33 + 6) / 50][Stage 3:===============================================>         (42 + 6) / 50]                                                                                [Stage 5:=============>                                           (12 + 7) / 50][Stage 5:===================================>                     (31 + 6) / 50]                                                                                [Stage 9:>                                                          (0 + 6) / 6][Stage 9:=========>                                                 (1 + 5) / 6]                                                                                [Stage 17:>                                                         (0 + 6) / 6][Stage 17:===================>                                      (2 + 4) / 6]                                                                                [Stage 26:>                                                         (0 + 6) / 6][Stage 26:===================>                                      (2 + 4) / 6][Stage 31:>                                                         (0 + 1) / 1]                                                                                [Stage 34:====================================>                   (33 + 7) / 50][Stage 34:======================================================> (49 + 1) / 50]                                                                                [Stage 38:=======================>                                (21 + 6) / 50][Stage 38:=================================>                      (30 + 8) / 50][Stage 38:===============================================>        (42 + 6) / 50]                                                                                Spark session initialized
+[2025-04-28T18:29:44.972+0000] {subprocess.py:93} INFO - +-----------+--------------------+-----------------+------------------+------------------+-----------------+---------------+---------------+----------+
+[2025-04-28T18:29:44.975+0000] {subprocess.py:93} INFO - |    user_id|num_transactions_l1w| total_amount_l1w|    avg_amount_l1w|    min_amount_l1w|   max_amount_l1w|num_vendors_l1w|num_sources_l1w|      date|
+[2025-04-28T18:29:44.976+0000] {subprocess.py:93} INFO - +-----------+--------------------+-----------------+------------------+------------------+-----------------+---------------+---------------+----------+
+[2025-04-28T18:29:44.977+0000] {subprocess.py:93} INFO - |user_000424|                  70|35204.01587565745| 502.9145125093922|26.439271743691606|997.1229705370588|             13|              3|2025-03-17|
+[2025-04-28T18:29:44.978+0000] {subprocess.py:93} INFO - |user_000372|                  87|45225.77064329792| 519.8364441758381| 4.671838181168544|952.2970405921582|             14|              3|2025-03-17|
+[2025-04-28T18:29:44.978+0000] {subprocess.py:93} INFO - |user_000066|                  73|33378.81685001104| 457.2440664385074|27.962349500982196|956.5566428710928|             14|              3|2025-03-17|
+[2025-04-28T18:29:44.979+0000] {subprocess.py:93} INFO - |user_000113|                  76|35209.22787724306|463.27931417425077| 7.342535960164385|996.1775104035876|             13|              3|2025-03-17|
+[2025-04-28T18:29:44.979+0000] {subprocess.py:93} INFO - |user_000098|                  71|35151.21885775277|495.08758954581367| 6.813508588033019|997.5009673002633|             14|              3|2025-03-17|
+[2025-04-28T18:29:44.980+0000] {subprocess.py:93} INFO - +-----------+--------------------+-----------------+------------------+------------------+-----------------+---------------+---------------+----------+
+[2025-04-28T18:29:44.980+0000] {subprocess.py:93} INFO - only showing top 5 rows
+[2025-04-28T18:29:44.981+0000] {subprocess.py:93} INFO - 
+[2025-04-28T18:29:45.925+0000] {subprocess.py:97} INFO - Command exited with return code 0
+[2025-04-28T18:29:45.972+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=gen_lxw_fts, task_id=calculate_fts, execution_date=20250316T230000, start_date=20250428T182845, end_date=20250428T182945
+[2025-04-28T18:29:46.015+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-04-28T18:29:46.043+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

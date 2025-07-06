@@ -1,0 +1,107 @@
+[2025-04-19T16:26:25.860+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: gen_lxw_fts.mateiralize_fts scheduled__2025-03-17T23:00:00+00:00 [queued]>
+[2025-04-19T16:26:25.889+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: gen_lxw_fts.mateiralize_fts scheduled__2025-03-17T23:00:00+00:00 [queued]>
+[2025-04-19T16:26:25.889+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2025-04-19T16:26:25.924+0000] {taskinstance.py:2192} INFO - Executing <Task(BashOperator): mateiralize_fts> on 2025-03-17 23:00:00+00:00
+[2025-04-19T16:26:25.933+0000] {standard_task_runner.py:60} INFO - Started process 3488 to run task
+[2025-04-19T16:26:25.939+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'gen_lxw_fts', 'mateiralize_fts', 'scheduled__2025-03-17T23:00:00+00:00', '--job-id', '108', '--raw', '--subdir', 'DAGS_FOLDER/gen_lxw_fts.py', '--cfg-path', '/tmp/tmpynhhbke1']
+[2025-04-19T16:26:25.940+0000] {standard_task_runner.py:88} INFO - Job 108: Subtask mateiralize_fts
+[2025-04-19T16:26:26.012+0000] {task_command.py:423} INFO - Running <TaskInstance: gen_lxw_fts.mateiralize_fts scheduled__2025-03-17T23:00:00+00:00 [running]> on host 645cdcb765bc
+[2025-04-19T16:26:26.166+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='longnv' AIRFLOW_CTX_DAG_ID='gen_lxw_fts' AIRFLOW_CTX_TASK_ID='mateiralize_fts' AIRFLOW_CTX_EXECUTION_DATE='2025-03-17T23:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-17T23:00:00+00:00'
+[2025-04-19T16:26:26.167+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-04-19T16:26:26.168+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        python /opt/***/external_scripts/3_1_fs_register_table.py\n        ']
+[2025-04-19T16:26:26.203+0000] {subprocess.py:86} INFO - Output:
+[2025-04-19T16:26:43.374+0000] {subprocess.py:93} INFO - :: loading settings :: url = jar:file:/opt/spark/jars/ivy-2.5.1.jar!/org/apache/ivy/core/settings/ivysettings.xml
+[2025-04-19T16:26:43.731+0000] {subprocess.py:93} INFO - Ivy Default Cache set to: /home/***/.ivy2/cache
+[2025-04-19T16:26:43.733+0000] {subprocess.py:93} INFO - The jars for the packages stored in: /home/***/.ivy2/jars
+[2025-04-19T16:26:43.749+0000] {subprocess.py:93} INFO - org.apache.spark#spark-sql-kafka-0-10_2.12 added as a dependency
+[2025-04-19T16:26:43.751+0000] {subprocess.py:93} INFO - io.delta#delta-core_2.12 added as a dependency
+[2025-04-19T16:26:43.751+0000] {subprocess.py:93} INFO - org.apache.hadoop#hadoop-aws added as a dependency
+[2025-04-19T16:26:43.752+0000] {subprocess.py:93} INFO - com.amazonaws#aws-java-sdk-bundle added as a dependency
+[2025-04-19T16:26:43.752+0000] {subprocess.py:93} INFO - org.postgresql#postgresql added as a dependency
+[2025-04-19T16:26:43.754+0000] {subprocess.py:93} INFO - :: resolving dependencies :: org.apache.spark#spark-submit-parent-004cde94-423d-42db-8e93-fcaf85ac4e04;1.0
+[2025-04-19T16:26:43.757+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-04-19T16:26:44.226+0000] {subprocess.py:93} INFO - 	found org.apache.spark#spark-sql-kafka-0-10_2.12;3.4.1 in central
+[2025-04-19T16:26:44.421+0000] {subprocess.py:93} INFO - 	found org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.4.1 in central
+[2025-04-19T16:26:44.536+0000] {subprocess.py:93} INFO - 	found org.apache.kafka#kafka-clients;3.3.2 in central
+[2025-04-19T16:26:44.644+0000] {subprocess.py:93} INFO - 	found org.lz4#lz4-java;1.8.0 in central
+[2025-04-19T16:26:44.736+0000] {subprocess.py:93} INFO - 	found org.xerial.snappy#snappy-java;1.1.10.1 in central
+[2025-04-19T16:26:44.802+0000] {subprocess.py:93} INFO - 	found org.slf4j#slf4j-api;2.0.6 in central
+[2025-04-19T16:26:44.844+0000] {subprocess.py:93} INFO - 	found org.apache.hadoop#hadoop-client-runtime;3.3.4 in central
+[2025-04-19T16:26:44.891+0000] {subprocess.py:93} INFO - 	found org.apache.hadoop#hadoop-client-api;3.3.4 in central
+[2025-04-19T16:26:44.935+0000] {subprocess.py:93} INFO - 	found commons-logging#commons-logging;1.1.3 in central
+[2025-04-19T16:26:44.964+0000] {subprocess.py:93} INFO - 	found com.google.code.findbugs#jsr305;3.0.0 in central
+[2025-04-19T16:26:44.998+0000] {subprocess.py:93} INFO - 	found org.apache.commons#commons-pool2;2.11.1 in central
+[2025-04-19T16:26:45.019+0000] {subprocess.py:93} INFO - 	found io.delta#delta-core_2.12;2.4.0 in central
+[2025-04-19T16:26:45.048+0000] {subprocess.py:93} INFO - 	found io.delta#delta-storage;2.4.0 in central
+[2025-04-19T16:26:45.084+0000] {subprocess.py:93} INFO - 	found org.antlr#antlr4-runtime;4.9.3 in central
+[2025-04-19T16:26:45.118+0000] {subprocess.py:93} INFO - 	found org.apache.hadoop#hadoop-aws;3.3.2 in central
+[2025-04-19T16:26:45.182+0000] {subprocess.py:93} INFO - 	found org.wildfly.openssl#wildfly-openssl;1.0.7.Final in central
+[2025-04-19T16:26:45.202+0000] {subprocess.py:93} INFO - 	found com.amazonaws#aws-java-sdk-bundle;1.12.261 in central
+[2025-04-19T16:26:45.227+0000] {subprocess.py:93} INFO - 	found org.postgresql#postgresql;42.5.1 in central
+[2025-04-19T16:26:45.243+0000] {subprocess.py:93} INFO - 	found org.checkerframework#checker-qual;3.5.0 in central
+[2025-04-19T16:26:45.288+0000] {subprocess.py:93} INFO - :: resolution report :: resolve 1517ms :: artifacts dl 24ms
+[2025-04-19T16:26:45.289+0000] {subprocess.py:93} INFO - 	:: modules in use:
+[2025-04-19T16:26:45.289+0000] {subprocess.py:93} INFO - 	com.amazonaws#aws-java-sdk-bundle;1.12.261 from central in [default]
+[2025-04-19T16:26:45.290+0000] {subprocess.py:93} INFO - 	com.google.code.findbugs#jsr305;3.0.0 from central in [default]
+[2025-04-19T16:26:45.294+0000] {subprocess.py:93} INFO - 	commons-logging#commons-logging;1.1.3 from central in [default]
+[2025-04-19T16:26:45.295+0000] {subprocess.py:93} INFO - 	io.delta#delta-core_2.12;2.4.0 from central in [default]
+[2025-04-19T16:26:45.295+0000] {subprocess.py:93} INFO - 	io.delta#delta-storage;2.4.0 from central in [default]
+[2025-04-19T16:26:45.297+0000] {subprocess.py:93} INFO - 	org.antlr#antlr4-runtime;4.9.3 from central in [default]
+[2025-04-19T16:26:45.298+0000] {subprocess.py:93} INFO - 	org.apache.commons#commons-pool2;2.11.1 from central in [default]
+[2025-04-19T16:26:45.298+0000] {subprocess.py:93} INFO - 	org.apache.hadoop#hadoop-aws;3.3.2 from central in [default]
+[2025-04-19T16:26:45.298+0000] {subprocess.py:93} INFO - 	org.apache.hadoop#hadoop-client-api;3.3.4 from central in [default]
+[2025-04-19T16:26:45.298+0000] {subprocess.py:93} INFO - 	org.apache.hadoop#hadoop-client-runtime;3.3.4 from central in [default]
+[2025-04-19T16:26:45.299+0000] {subprocess.py:93} INFO - 	org.apache.kafka#kafka-clients;3.3.2 from central in [default]
+[2025-04-19T16:26:45.299+0000] {subprocess.py:93} INFO - 	org.apache.spark#spark-sql-kafka-0-10_2.12;3.4.1 from central in [default]
+[2025-04-19T16:26:45.300+0000] {subprocess.py:93} INFO - 	org.apache.spark#spark-token-provider-kafka-0-10_2.12;3.4.1 from central in [default]
+[2025-04-19T16:26:45.300+0000] {subprocess.py:93} INFO - 	org.checkerframework#checker-qual;3.5.0 from central in [default]
+[2025-04-19T16:26:45.301+0000] {subprocess.py:93} INFO - 	org.lz4#lz4-java;1.8.0 from central in [default]
+[2025-04-19T16:26:45.301+0000] {subprocess.py:93} INFO - 	org.postgresql#postgresql;42.5.1 from central in [default]
+[2025-04-19T16:26:45.301+0000] {subprocess.py:93} INFO - 	org.slf4j#slf4j-api;2.0.6 from central in [default]
+[2025-04-19T16:26:45.302+0000] {subprocess.py:93} INFO - 	org.wildfly.openssl#wildfly-openssl;1.0.7.Final from central in [default]
+[2025-04-19T16:26:45.302+0000] {subprocess.py:93} INFO - 	org.xerial.snappy#snappy-java;1.1.10.1 from central in [default]
+[2025-04-19T16:26:45.302+0000] {subprocess.py:93} INFO - 	:: evicted modules:
+[2025-04-19T16:26:45.303+0000] {subprocess.py:93} INFO - 	com.amazonaws#aws-java-sdk-bundle;1.11.1026 by [com.amazonaws#aws-java-sdk-bundle;1.12.261] in [default]
+[2025-04-19T16:26:45.303+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-04-19T16:26:45.304+0000] {subprocess.py:93} INFO - 	|                  |            modules            ||   artifacts   |
+[2025-04-19T16:26:45.305+0000] {subprocess.py:93} INFO - 	|       conf       | number| search|dwnlded|evicted|| number|dwnlded|
+[2025-04-19T16:26:45.306+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-04-19T16:26:45.306+0000] {subprocess.py:93} INFO - 	|      default     |   20  |   0   |   0   |   1   ||   19  |   0   |
+[2025-04-19T16:26:45.306+0000] {subprocess.py:93} INFO - 	---------------------------------------------------------------------
+[2025-04-19T16:26:45.320+0000] {subprocess.py:93} INFO - :: retrieving :: org.apache.spark#spark-submit-parent-004cde94-423d-42db-8e93-fcaf85ac4e04
+[2025-04-19T16:26:45.328+0000] {subprocess.py:93} INFO - 	confs: [default]
+[2025-04-19T16:26:45.342+0000] {subprocess.py:93} INFO - 	0 artifacts copied, 19 already retrieved (0kB/21ms)
+[2025-04-19T16:26:45.979+0000] {subprocess.py:93} INFO - 25/04/19 16:26:45 WARN NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[2025-04-19T16:26:46.607+0000] {subprocess.py:93} INFO - Setting default log level to "WARN".
+[2025-04-19T16:26:46.608+0000] {subprocess.py:93} INFO - To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+[2025-04-19T16:27:07.130+0000] {subprocess.py:93} INFO - 25/04/19 16:27:07 WARN SQLConf: The SQL config 'spark.sql.execution.arrow.fallback.enabled' has been deprecated in Spark v3.0 and may be removed in the future. Use 'spark.sql.execution.arrow.pyspark.fallback.enabled' instead of it.
+[2025-04-19T16:27:07.131+0000] {subprocess.py:93} INFO - 25/04/19 16:27:07 WARN SQLConf: The SQL config 'spark.sql.execution.arrow.fallback.enabled' has been deprecated in Spark v3.0 and may be removed in the future. Use 'spark.sql.execution.arrow.pyspark.fallback.enabled' instead of it.
+[2025-04-19T16:27:07.132+0000] {subprocess.py:93} INFO - 25/04/19 16:27:07 WARN SQLConf: The SQL config 'spark.sql.execution.arrow.fallback.enabled' has been deprecated in Spark v3.0 and may be removed in the future. Use 'spark.sql.execution.arrow.pyspark.fallback.enabled' instead of it.
+[2025-04-19T16:27:08.030+0000] {subprocess.py:93} INFO - /home/***/.local/lib/python3.8/site-packages/feast/infra/offline_stores/contrib/spark_offline_store/spark_source.py:67: RuntimeWarning: The spark data source API is an experimental feature in alpha development. This API is unstable and it could and most probably will be changed in the future.
+[2025-04-19T16:27:08.031+0000] {subprocess.py:93} INFO -   warnings.warn(
+[2025-04-19T16:27:08.032+0000] {subprocess.py:93} INFO - Feast is an open source project that collects anonymized error reporting and usage statistics. To opt out or learn more see https://docs.feast.dev/reference/usage
+[2025-04-19T16:27:08.032+0000] {subprocess.py:93} INFO - Spark session initialized
+[2025-04-19T16:27:08.717+0000] {subprocess.py:93} INFO - Traceback (most recent call last):
+[2025-04-19T16:27:08.718+0000] {subprocess.py:93} INFO -   File "/opt/***/external_scripts/3_1_fs_register_table.py", line 75, in <module>
+[2025-04-19T16:27:08.719+0000] {subprocess.py:93} INFO -     fs = FeatureStore('./feature_store')
+[2025-04-19T16:27:08.727+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/feast/usage.py", line 362, in wrapper
+[2025-04-19T16:27:08.740+0000] {subprocess.py:93} INFO -     raise exc.with_traceback(traceback)
+[2025-04-19T16:27:08.740+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/feast/usage.py", line 348, in wrapper
+[2025-04-19T16:27:08.741+0000] {subprocess.py:93} INFO -     return func(*args, **kwargs)
+[2025-04-19T16:27:08.741+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/feast/feature_store.py", line 154, in __init__
+[2025-04-19T16:27:08.741+0000] {subprocess.py:93} INFO -     self.config = load_repo_config(
+[2025-04-19T16:27:08.741+0000] {subprocess.py:93} INFO -   File "/home/***/.local/lib/python3.8/site-packages/feast/repo_config.py", line 535, in load_repo_config
+[2025-04-19T16:27:08.747+0000] {subprocess.py:93} INFO -     with open(config_path) as f:
+[2025-04-19T16:27:08.749+0000] {subprocess.py:93} INFO - FileNotFoundError: [Errno 2] No such file or directory: 'feature_store/feature_store.yaml'
+[2025-04-19T16:27:10.419+0000] {subprocess.py:97} INFO - Command exited with return code 1
+[2025-04-19T16:27:10.456+0000] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 1.
+[2025-04-19T16:27:10.500+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=gen_lxw_fts, task_id=mateiralize_fts, execution_date=20250317T230000, start_date=20250419T162625, end_date=20250419T162710
+[2025-04-19T16:27:10.580+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 108 for task mateiralize_fts (Bash command failed. The command returned a non-zero exit code 1.; 3488)
+[2025-04-19T16:27:10.605+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-04-19T16:27:10.690+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

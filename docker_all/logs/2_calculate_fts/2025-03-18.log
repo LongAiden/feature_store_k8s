@@ -1,0 +1,28 @@
+2025-04-19 15:46:26,396 - __main__ - INFO - Kafka Bootstrap Servers: kafka:29092, CDC Transaction Topic: postgres.public.transaction_data
+2025-04-19 15:46:26,396 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data
+2025-04-19 16:03:31,922 - __main__ - INFO - Kafka Bootstrap Servers: kafka:29092, CDC Transaction Topic: postgres.public.transaction_data
+2025-04-19 16:03:31,924 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data
+2025-04-19 16:05:49,630 - __main__ - INFO - Distinct dates in the data: 7
+2025-04-19 16:20:42,867 - __main__ - INFO - Kafka Bootstrap Servers: kafka:29092, CDC Transaction Topic: postgres.public.transaction_data
+2025-04-19 16:20:42,869 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data
+2025-04-19 16:21:53,014 - __main__ - INFO - Distinct dates in the data: 7
+2025-04-19 16:24:18,230 - __main__ - INFO - Kafka Bootstrap Servers: kafka:29092, CDC Transaction Topic: postgres.public.transaction_data
+2025-04-19 16:24:18,230 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data
+2025-04-19 16:25:39,063 - __main__ - INFO - Distinct dates in the data: 7
+2025-04-19 16:26:22,205 - __main__ - INFO - Data written to MinIO bucket: transaction-data/features
+2025-04-19 16:26:22,205 - __main__ - INFO - Feature calculation completed successfully.
+2025-04-22 17:30:12,630 - __main__ - INFO - Kafka Bootstrap Servers: kafka:29092, CDC Transaction Topic: postgres.public.transaction_data
+2025-04-22 17:30:12,643 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data
+2025-04-22 17:31:11,469 - __main__ - INFO - Distinct non-null dates in the data: 7
+2025-04-22 17:31:45,947 - __main__ - INFO - Data written to MinIO bucket: transaction-data/features
+2025-04-22 17:31:45,965 - __main__ - INFO - Feature calculation completed successfully.
+2025-04-22 17:40:57,532 - __main__ - INFO - Kafka Bootstrap Servers: kafka:29092, CDC Transaction Topic: postgres.public.transaction_data
+2025-04-22 17:40:57,556 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data
+2025-04-22 17:42:05,399 - __main__ - INFO - Distinct non-null dates in the data: 7
+2025-04-22 17:42:54,600 - __main__ - INFO - Data written to MinIO bucket: transaction-data/features
+2025-04-22 17:42:54,600 - __main__ - INFO - Feature calculation completed successfully.
+2025-04-28 18:29:48,992 - __main__ - INFO - Starting feature calculation from 2025-03-11 to 2025-03-18
+2025-04-28 18:29:48,996 - __main__ - INFO - MinIO Endpoint: minio:9000, MinIO Bucket: transaction-data
+2025-04-28 18:30:31,718 - __main__ - INFO - Distinct non-null dates in the data: 8
+2025-04-28 18:30:44,485 - __main__ - INFO - Data written to MinIO bucket: transaction-data/features
+2025-04-28 18:30:44,485 - __main__ - INFO - Feature calculation completed successfully.

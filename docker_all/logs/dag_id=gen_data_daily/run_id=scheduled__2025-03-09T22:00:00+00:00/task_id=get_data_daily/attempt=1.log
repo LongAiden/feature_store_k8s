@@ -1,0 +1,28 @@
+[2025-04-28T17:09:12.648+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: gen_data_daily.get_data_daily scheduled__2025-03-09T22:00:00+00:00 [queued]>
+[2025-04-28T17:09:12.672+0000] {taskinstance.py:1957} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: gen_data_daily.get_data_daily scheduled__2025-03-09T22:00:00+00:00 [queued]>
+[2025-04-28T17:09:12.673+0000] {taskinstance.py:2171} INFO - Starting attempt 1 of 2
+[2025-04-28T17:09:12.698+0000] {taskinstance.py:2192} INFO - Executing <Task(BashOperator): get_data_daily> on 2025-03-09 22:00:00+00:00
+[2025-04-28T17:09:12.706+0000] {standard_task_runner.py:60} INFO - Started process 44444 to run task
+[2025-04-28T17:09:12.710+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'gen_data_daily', 'get_data_daily', 'scheduled__2025-03-09T22:00:00+00:00', '--job-id', '175', '--raw', '--subdir', 'DAGS_FOLDER/gen_data_daily.py', '--cfg-path', '/tmp/tmpb_35ewo6']
+[2025-04-28T17:09:12.712+0000] {standard_task_runner.py:88} INFO - Job 175: Subtask get_data_daily
+[2025-04-28T17:09:12.791+0000] {task_command.py:423} INFO - Running <TaskInstance: gen_data_daily.get_data_daily scheduled__2025-03-09T22:00:00+00:00 [running]> on host 45b38884c639
+[2025-04-28T17:09:12.857+0000] {warnings.py:109} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:207: AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+  warnings.warn(_create_deprecation_warning(key, self._deprecation_replacements[key]))
+
+[2025-04-28T17:09:12.910+0000] {taskinstance.py:2481} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='longnv' AIRFLOW_CTX_DAG_ID='gen_data_daily' AIRFLOW_CTX_TASK_ID='get_data_daily' AIRFLOW_CTX_EXECUTION_DATE='2025-03-09T22:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-03-09T22:00:00+00:00'
+[2025-04-28T17:09:12.912+0000] {subprocess.py:63} INFO - Tmp dir root location: /tmp
+[2025-04-28T17:09:12.913+0000] {subprocess.py:75} INFO - Running command: ['/usr/bin/bash', '-c', '\n        python /opt/***/external_scripts/step_1_2_gen_transaction_data.py 2025-03-10\n        ']
+[2025-04-28T17:09:12.927+0000] {subprocess.py:86} INFO - Output:
+[2025-04-28T17:09:12.965+0000] {subprocess.py:93} INFO - python: can't open file '/opt/***/external_scripts/step_1_2_gen_transaction_data.py': [Errno 2] No such file or directory
+[2025-04-28T17:09:12.970+0000] {subprocess.py:97} INFO - Command exited with return code 2
+[2025-04-28T17:09:12.985+0000] {taskinstance.py:2699} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/bash.py", line 212, in execute
+    raise AirflowException(
+airflow.exceptions.AirflowException: Bash command failed. The command returned a non-zero exit code 2.
+[2025-04-28T17:09:12.990+0000] {taskinstance.py:1138} INFO - Marking task as UP_FOR_RETRY. dag_id=gen_data_daily, task_id=get_data_daily, execution_date=20250309T220000, start_date=20250428T170912, end_date=20250428T170912
+[2025-04-28T17:09:13.007+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 175 for task get_data_daily (Bash command failed. The command returned a non-zero exit code 2.; 44444)
+[2025-04-28T17:09:13.057+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-04-28T17:09:13.308+0000] {taskinstance.py:3281} INFO - 0 downstream tasks scheduled from follow-on schedule check

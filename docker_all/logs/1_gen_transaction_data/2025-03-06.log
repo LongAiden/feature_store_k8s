@@ -1,0 +1,6 @@
+2025-04-22 17:04:27,423 - __main__ - INFO - Successfully inserted 5000 rows into transaction_data table at 2025-03-06
+2025-04-22 17:04:27,430 - __main__ - INFO - Checking table transaction_data contains 25000 rows
+2025-04-22 17:04:27,431 - __main__ - INFO - Data generation and insertion complete at 2025-03-06
+2025-04-28 17:08:43,950 - __main__ - INFO - Successfully inserted 5000 rows into transaction_data table at 2025-03-06
+2025-04-28 17:08:43,969 - __main__ - INFO - Checking table transaction_data contains 25000 rows
+2025-04-28 17:08:43,970 - __main__ - INFO - Data generation and insertion complete at 2025-03-06

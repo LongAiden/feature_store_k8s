@@ -1,0 +1,69 @@
+2025-04-19 16:26:34,914 - __main__ - INFO - Loading environment variables from: /opt/airflow/external_scripts/.env
+2025-04-19 16:26:34,916 - __main__ - INFO - Using MinIO Endpoint: localhost:9010
+2025-04-19 16:26:34,916 - __main__ - INFO - Using MinIO Bucket: transaction-data
+2025-04-19 16:26:34,916 - __main__ - INFO - Expecting Delta table data at: s3a://transaction-data/features/
+2025-04-19 16:33:09,925 - __main__ - INFO - Loading environment variables from: /opt/airflow/external_scripts/.env
+2025-04-19 16:33:09,945 - __main__ - INFO - Using MinIO Endpoint: localhost:9010
+2025-04-19 16:33:09,945 - __main__ - INFO - Using MinIO Bucket: transaction-data
+2025-04-19 16:33:09,945 - __main__ - INFO - Expecting Delta table data at: s3a://transaction-data/features/
+2025-04-19 16:33:29,143 - __main__ - INFO - FeatureStore object created.
+2025-04-19 16:33:29,143 - __main__ - INFO - Applying feature definitions...
+2025-04-19 16:33:41,257 - __main__ - INFO - Feature registry updated at: /tmp/feature_store / 'data' / 'registry.db'
+2025-04-19 16:33:53,735 - __main__ - INFO - Materialization complete.
+2025-04-19 16:33:53,735 - __main__ - INFO - 
+Feature store setup process finished.
+2025-04-19 16:33:53,735 - __main__ - INFO - Online store configured at: /tmp/feature_store / 'data' / 'online_store.db'
+2025-04-19 16:43:20,637 - __main__ - INFO - Loading environment variables from: /opt/airflow/external_scripts/.env
+2025-04-19 16:43:20,640 - __main__ - INFO - Using MinIO Endpoint: localhost:9010
+2025-04-19 16:43:20,640 - __main__ - INFO - Using MinIO Bucket: transaction-data
+2025-04-19 16:43:20,640 - __main__ - INFO - Expecting Delta table data at: s3a://transaction-data/features/
+2025-04-19 16:43:46,021 - __main__ - INFO - FeatureStore object created.
+2025-04-19 16:43:46,021 - __main__ - INFO - Applying feature definitions...
+2025-04-19 16:44:01,477 - __main__ - INFO - Feature registry updated at: /tmp/feature_store / 'data' / 'registry.db'
+2025-04-19 16:44:11,908 - __main__ - INFO - Materialization complete.
+2025-04-19 16:44:11,915 - __main__ - INFO - 
+Feature store setup process finished.
+2025-04-19 16:44:11,915 - __main__ - INFO - Online store configured at: /tmp/feature_store / 'data' / 'online_store.db'
+2025-04-19 17:18:54,034 - __main__ - INFO - Loading environment variables from: /opt/airflow/external_scripts/.env
+2025-04-19 17:18:54,037 - __main__ - INFO - Using MinIO Endpoint: localhost:9010
+2025-04-19 17:18:54,037 - __main__ - INFO - Using MinIO Bucket: transaction-data
+2025-04-19 17:18:54,037 - __main__ - INFO - Expecting Delta table data at: s3a://transaction-data/features/
+2025-04-19 17:19:23,351 - __main__ - INFO - FeatureStore object created.
+2025-04-19 17:19:23,352 - __main__ - INFO - Applying feature definitions...
+2025-04-19 17:19:39,830 - __main__ - INFO - Feature registry updated at: /opt/airflow/feature_store / 'data' / 'registry.db'
+2025-04-19 17:19:51,810 - __main__ - INFO - Materialization complete.
+2025-04-19 17:19:51,814 - __main__ - INFO - 
+Feature store setup process finished.
+2025-04-19 17:19:51,814 - __main__ - INFO - Online store configured at: /opt/airflow/feature_store / 'data' / 'online_store.db'
+2025-04-28 18:14:55,143 - __main__ - INFO - Loading environment variables from: /opt/airflow/external_scripts/.env
+2025-04-28 18:14:55,154 - __main__ - INFO - Using MinIO Endpoint: localhost:9010
+2025-04-28 18:14:55,154 - __main__ - INFO - Using MinIO Bucket: transaction-data
+2025-04-28 18:14:55,155 - __main__ - INFO - Expecting Delta table data at: s3a://transaction-data/features/
+2025-04-28 18:15:27,926 - __main__ - INFO - FeatureStore object created.
+2025-04-28 18:15:27,926 - __main__ - INFO - Applying feature definitions...
+2025-04-28 18:17:57,066 - __main__ - INFO - Loading environment variables from: /opt/airflow/external_scripts/.env
+2025-04-28 18:17:57,069 - __main__ - INFO - Using MinIO Endpoint: localhost:9010
+2025-04-28 18:17:57,069 - __main__ - INFO - Using MinIO Bucket: transaction-data
+2025-04-28 18:17:57,069 - __main__ - INFO - Expecting Delta table data at: s3a://transaction-data/features/
+2025-04-28 18:18:23,549 - __main__ - INFO - Loading environment variables from: /opt/airflow/external_scripts/.env
+2025-04-28 18:18:23,552 - __main__ - INFO - Using MinIO Endpoint: localhost:9010
+2025-04-28 18:18:23,552 - __main__ - INFO - Using MinIO Bucket: transaction-data
+2025-04-28 18:18:23,552 - __main__ - INFO - Expecting Delta table data at: s3a://transaction-data/features/
+2025-04-28 18:18:40,635 - __main__ - INFO - FeatureStore object created.
+2025-04-28 18:18:40,636 - __main__ - INFO - Applying feature definitions...
+2025-04-28 18:18:53,660 - __main__ - INFO - Feature registry updated at: /opt/airflow/feature_store / 'data' / 'registry.db'
+2025-04-28 18:19:04,556 - __main__ - INFO - Materialization complete.
+2025-04-28 18:19:04,556 - __main__ - INFO - 
+Feature store setup process finished.
+2025-04-28 18:19:04,556 - __main__ - INFO - Online store configured at: /opt/airflow/feature_store / 'data' / 'online_store.db'
+2025-04-28 18:30:52,674 - __main__ - INFO - Loading environment variables from: /opt/airflow/external_scripts/.env
+2025-04-28 18:30:52,686 - __main__ - INFO - Using MinIO Endpoint: localhost:9010
+2025-04-28 18:30:52,686 - __main__ - INFO - Using MinIO Bucket: transaction-data
+2025-04-28 18:30:52,686 - __main__ - INFO - Expecting Delta table data at: s3a://transaction-data/features/
+2025-04-28 18:31:18,769 - __main__ - INFO - FeatureStore object created.
+2025-04-28 18:31:18,769 - __main__ - INFO - Applying feature definitions...
+2025-04-28 18:31:37,338 - __main__ - INFO - Feature registry updated at: /opt/airflow/feature_store / 'data' / 'registry.db'
+2025-04-28 18:31:47,209 - __main__ - INFO - Materialization complete.
+2025-04-28 18:31:47,212 - __main__ - INFO - 
+Feature store setup process finished.
+2025-04-28 18:31:47,212 - __main__ - INFO - Online store configured at: /opt/airflow/feature_store / 'data' / 'online_store.db'

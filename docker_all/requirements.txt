@@ -1,0 +1,9 @@
+# Common Airflow dependencies
+sqlalchemy
+psycopg2-binary
+pandas
+python-dotenv==1.0.0
+# Providers for interacting with external systems
+apache-airflow-providers-cncf-kubernetes~=7.0 # For KubernetesExecutor/KubernetesPodOperator
+# General utility libraries often used in DAGs
+numpy==1.24.3
