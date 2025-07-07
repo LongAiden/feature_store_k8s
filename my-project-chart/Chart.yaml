@@ -1,24 +1,61 @@
+# ./k8s-dataflow-project/Chart.yaml
 apiVersion: v2
-name: my-project-chart
-description: A Helm chart for Kubernetes
-
-# A chart can be either an 'application' or a 'library' chart.
-#
-# Application charts are a collection of templates that can be packaged into versioned archives
-# to be deployed.
-#
-# Library charts provide useful utilities or functions for the chart developer. They're included as
-# a dependency of application charts to inject those utilities and functions into the rendering
-# pipeline. Library charts do not define any templates and therefore cannot be deployed.
+name: k8s-dataflow-project
+description: A Helm chart for deploying the transaction dataflow PoC on Kubernetes.
 type: application
+version: 0.2.0 # Incremented version for new features
+appVersion: "1.1.0" # Incremented app version
 
-# This is the chart version. This version number should be incremented each time you make changes
-# to the chart and its templates, including the app version.
-# Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.0
+dependencies:
+  # --- CI/CD ---
+  - name: jenkins
+    version: "4.9.2" # Using the official Jenkins chart
+    repository: "https://charts.jenkins.io"
+    alias: jenkins
 
-# This is the version number of the application being deployed. This version number should be
-# incremented each time you make changes to the application. Versions are not expected to
-# follow Semantic Versioning. They should reflect the version the application is using.
-# It is recommended to use it with quotes.
-appVersion: "1.16.0"
+  # --- Metrics & Monitoring ---
+  - name: grafana
+    version: "8.3.4" # Using the official Grafana chart
+    repository: "https://grafana.github.io/helm-charts"
+    alias: grafana
+
+  - name: influxdb2
+    # This chart deploys InfluxDB v2.x
+    version: "2.3.1"
+    repository: "https://helm.influxdata.com/"
+    # We use a simpler alias for easier reference in values.yaml
+    alias: influxdb
+
+  # --- Existing Data & Messaging Services ---
+  - name: minio
+    version: "14.6.1"
+    repository: "https://charts.bitnami.com/bitnami"
+    alias: minio
+
+  - name: kafka
+    version: "29.1.0"
+    repository: "https://charts.bitnami.com/bitnami"
+    alias: kafka
+
+  - name: redis
+    version: "19.1.0"
+    repository: "https://charts.bitnami.com/bitnami"
+    alias: redis
+
+  # --- Your Custom Local Sub-chart ---
+  - name: hive-metastore
+    version: "0.1.0"
+    repository: "file://charts/hive-metastore"
+    alias: hiveMetastore
+
+  - name: postgresql
+    version: "15.5.4"
+    repository: "https://charts.bitnami.com/bitnami"
+    alias: hivePostgresql # Database for Hive Metastore
+    condition: hiveMetastore.database.create
+
+  # --- Custom Local Sub-chart ---
+  - name: hive-metastore
+    version: "0.1.0"
+    repository: "file://charts/hive-metastore"
+    alias: hiveMetastore

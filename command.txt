@@ -1,0 +1,14 @@
+# Add the Bitnami repository, which contains charts for MinIO, Kafka,
+# PostgreSQL, and Redis.
+helm repo add bitnami https://charts.bitnami.com/bitnami
+
+# Add the Debezium repository for the Debezium chart.
+helm repo add debezium https://debezium.io/helm-charts/
+
+# Add the other repositories for your existing services (if not already added).
+helm repo add jenkins https://charts.jenkins.io
+helm repo add influxdata https://helm.influxdata.com/
+helm repo add grafana https://grafana.github.io/helm-charts
+
+# After adding all new repositories, refresh your local chart index.
+helm repo update
