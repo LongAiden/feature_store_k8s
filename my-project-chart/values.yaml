@@ -1,62 +1,290 @@
-# ./k8s-dataflow-project/Chart.yaml
+# ===================================================================
+# Improved values.yaml for K8s Data Platform
+# ===================================================================
 
-apiVersion: v2
-name: k8s-dataflow-project
-description: A Helm chart for deploying the transaction dataflow PoC on Kubernetes.
-type: application
-version: 0.2.0 # Incremented version for new features
-appVersion: "1.1.0" # Incremented app version
+# Global settings for the release
+global:
+  # Define your image registry globally to easily switch between dev and prod
+  imageRegistry: "docker.io" # Or your private registry (e.g., gcr.io, your-harbor.io)
 
-dependencies:
-  # --- CI/CD ---
-  - name: jenkins
-    version: "4.9.2" # Using the official Jenkins chart
-    repository: "https://charts.jenkins.io"
-    alias: jenkins
+# -------------------------------------------------------------------
+# Airflow Configuration (Celery Executor)
+# -------------------------------------------------------------------
+airflow:
+  image:
+    # IMPORTANT: Point to your custom-built Airflow image repository
+    repository: my-data-team/custom-airflow
+    tag: "latest"
+    pullPolicy: IfNotPresent
 
-  # --- Metrics & Monitoring ---
-  - name: grafana
-    version: "8.3.4" # Using the official Grafana chart
-    repository: "https://grafana.github.io/helm-charts"
-    alias: grafana
+  # --- Secrets should be managed outside of values.yaml ---
+  # Generate these secrets and create a Kubernetes secret from them.
+  # Example: kubectl create secret generic airflow-secrets \
+  #   --from-literal=fernet-key=$(python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())") \
+  #   --from-literal=webserver-secret-key=$(openssl rand -hex 30)
+  fernetKey:
+    existingSecret: "airflow-secrets"
+    key: "fernet-key"
+  webserverSecretKey:
+    existingSecret: "airflow-secrets"
+    key: "webserver-secret-key"
 
-  - name: influxdb2
-    # This chart deploys InfluxDB v2.x
-    version: "2.3.1"
-    repository: "https://helm.influxdata.com/"
-    # We use a simpler alias for easier reference in values.yaml
-    alias: influxdb
+  uid: 50000
 
-  # --- Existing Data & Messaging Services ---
-  - name: minio
-    version: "14.6.1"
-    repository: "https://charts.bitnami.com/bitnami"
-    alias: minio
+  # --- Simplified environment variables ---
+  env:
+    # These are templated in the official chart using other values.
+    # No need to repeat them here unless you need to override.
+    - name: AIRFLOW__CORE__EXECUTOR
+      value: "CeleryExecutor"
+    # Example of adding a custom env var
+    - name: MY_CUSTOM_ENV
+      value: "my_value"
 
-  - name: kafka
-    version: "29.1.0"
-    repository: "https://charts.bitnami.com/bitnami"
-    alias: kafka
+  # --- Auto-generate Kubernetes connection for KubernetesPodOperator ---
+  connections:
+    - conn_id: kubernetes_default
+      conn_type: kubernetes
+      extra: '{"in_cluster":true,"namespace":"{{ .Release.Namespace }}"}'
 
-  - name: redis
-    version: "19.1.0"
-    repository: "https://charts.bitnami.com/bitnami"
-    alias: redis
+  # --- Mount a shared scripts volume ---
+  extraVolumes:
+    - name: scripts-volume
+      persistentVolumeClaim:
+        claimName: "{{ .Release.Name }}-scripts-pvc"
+  extraVolumeMounts:
+    - name: scripts-volume
+      mountPath: /opt/airflow/scripts # Match the path used in docker-compose for consistency
+      readOnly: false
 
-  # --- Your Custom Local Sub-chart ---
-  - name: hive-metastore
-    version: "0.1.0"
-    repository: "file://charts/hive-metastore"
-    alias: hiveMetastore
+# -------------------------------------------------------------------
+# Spark Standalone Cluster Configuration
+# -------------------------------------------------------------------
+spark:
+  enabled: true
+  image:
+    repository: my-data-team/custom-spark
+    tag: "latest"
+    pullPolicy: IfNotPresent
 
-  - name: postgresql
-    version: "15.5.4"
-    repository: "https://charts.bitnami.com/bitnami"
-    alias: hivePostgresql # Database for Hive Metastore
-    condition: hiveMetastore.database.create
+  master:
+    replicas: 1
+  worker:
+    replicas: 2 # At least 2 workers are recommended
+  
+  # --- This is the correct way to add JAR packages to Spark ---
+  # It populates the spark-defaults.conf file.
+  properties: |
+    spark.jars.packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1
+    # Note: Debezium JARs are NOT needed here. Spark reads from Kafka,
+    # it doesn't perform the CDC itself.
+    spark.hadoop.fs.s3a.endpoint http://{{ .Release.Name }}-minio:9000
+    spark.hadoop.fs.s3a.access.key minioadmin
+    spark.hadoop.fs.s3a.secret.key minio-password # Use secrets in production
+    spark.hadoop.fs.s3a.path.style.access true
+    spark.sql.catalogImplementation hive
+    spark.sql.hive.metastore.uris thrift://{{ .Release.Name }}-hive-metastore:9083
 
-  # --- Custom Local Sub-chart ---
-  - name: hive-metastore
-    version: "0.1.0"
-    repository: "file://charts/hive-metastore"
-    alias: hiveMetastore
+# -------------------------------------------------------------------
+# --- Data Streaming & CDC ---
+# -------------------------------------------------------------------
+kafkaConnect:
+  # Set enabled to true if using the bitnami/kafka chart which includes this
+  enabled: true
+
+  # --- Point to your custom-built image ---
+  image:
+    registry: "{{ .Values.global.imageRegistry }}"
+    repository: "my-data-team/kafka-connect-debezium"
+    tag: "1.0.0"
+    pullPolicy: IfNotPresent
+
+  bootstrapServers: "PLAINTEXT://{{ .Release.Name }}-kafka:9092"
+
+  # --- Define your Debezium connector ---
+  # This will create a KafkaConnector resource if the chart supports it,
+  # or you may need to apply it as a separate manifest.
+  connectors:
+    postgres-cdc: # The name of the connector
+      connector.class: "io.debezium.connector.postgresql.PostgresConnector"
+      tasks.max: "1"
+      database.hostname: "{{ .Release.Name }}-airflow-postgresql" # Connect to the Airflow DB
+      database.port: "5432"
+      database.user: "airflow"
+      # --- BEST PRACTICE: Use a secret for the password ---
+      database.password:
+        valueFrom:
+          secretKeyRef:
+            name: "{{ .Release.Name }}-airflow-postgresql" # The secret created by the postgresql chart
+            key: password
+      database.dbname: "airflow"
+      database.server.name: "airflowdb" # A logical name for the source server
+      topic.prefix: "cdc" # All topics will be prefixed with 'cdc'
+      plugin.name: "pgoutput"
+      table.include.list: "public.dag_run,public.task_instance" # Example tables to watch
+      decimal.handling.mode: "double"
+      tombstones.on.delete: "false"
+
+# -------------------------------------------------------------------
+# CI/CD - Jenkins (Example from your file)
+# -------------------------------------------------------------------
+jenkins:
+  controller:
+    persistence:
+      size: "10Gi"
+    service:
+      type: NodePort
+    # Use existingSecret for production
+    admin:
+      user: "admin"
+      password: "your-secure-jenkins-password-here"
+    installPlugins:
+      - kubernetes:4156.v83c1383dc5a_d
+      - workflow-aggregator:596.v802b_b_4fd69b_d
+      - git:6.0.0
+      - configuration-as-code:1781.v04542759a_1b_3
+
+# -------------------------------------------------------------------
+# Metrics & Monitoring
+# -------------------------------------------------------------------
+grafana:
+  adminPassword: "your-secure-grafana-password" # Use existingSecret for production
+  persistence:
+    enabled: true
+    size: 5Gi
+  # --- CORRECT way to configure InfluxDB datasource with secret token ---
+  datasources:
+    datasources.yaml:
+      apiVersion: 1
+      datasources:
+      - name: InfluxDB
+        type: influxdb
+        url: http://{{ .Release.Name }}-influxdb:8086
+        access: proxy
+        isDefault: true
+        jsonData:
+          version: "Flux"
+          organization: "my-org"
+          defaultBucket: "my-bucket"
+        # Reference the secret created by the InfluxDB chart
+        secureJsonData:
+          token:
+            valueFrom:
+              secretKeyRef:
+                name: "{{ .Release.Name }}-influxdb-auth"
+                key: token
+
+influxdb:
+  auth:
+    admin:
+      user: "influx-admin"
+      # The chart will create a secret with a random password if not set
+  config:
+    org: "my-org"
+    bucket: "my-bucket"
+    retention_period: "720h" # 30 days retention
+
+# -------------------------------------------------------------------
+# Minio (S3-compatible Object Storage)
+# -------------------------------------------------------------------
+minio:
+  auth:
+    # Use existingSecret in production
+    rootUser: "minioadmin"
+    rootPassword: "minio-password"
+  persistence:
+    size: 20Gi
+
+# -------------------------------------------------------------------
+# Kafka Cluster (Using Bitnami chart conventions)
+# -------------------------------------------------------------------
+kafka:
+  replicaCount: 1 # For production, use 3
+  zookeeper:
+    replicaCount: 1 # For production, use 3
+  # In-cluster listener
+  listeners:
+    client:
+      protocol: PLAINTEXT
+  advertisedListeners:
+    - "PLAINTEXT://{{ .Release.Name }}-kafka:9092"
+
+# -------------------------------------------------------------------
+# PostgreSQL Database for Airflow (Sub-chart of Airflow)
+# -------------------------------------------------------------------
+airflowPostgresql:
+  enabled: true
+  auth:
+    database: "airflow"
+    username: "airflow"
+    password: "airflow" # Use existingSecret in production
+  primary:
+    persistence:
+      size: 8Gi
+
+# -------------------------------------------------------------------
+# Hive Metastore and its Database
+# -------------------------------------------------------------------
+hiveMetastore:
+  database:
+    create: true
+    type: "postgres"
+    host: "{{ .Release.Name }}-hive-postgresql"
+    port: 5432
+    user: "hive"
+    password: "hive" # Use existingSecret in production
+    dbName: "metastore"
+  s3:
+    endpoint: "http://{{ .Release.Name }}-minio:9000"
+    accessKey: "minioadmin"
+    secretKey: "minio-password" # Use existingSecret in production
+
+hivePostgresql:
+  auth:
+    database: "metastore"
+    username: "hive"
+    password: "hive" # Use existingSecret in production
+  primary:
+    persistence:
+      size: 5Gi
+
+ingress:
+  enabled: true
+  # Optional: Specify your Ingress Controller class if needed
+  className: "nginx"
+  # Optional: Common annotations for all ingress rules
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    # Add other annotations like cert-manager, etc.
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+
+  hosts:
+    - host: grafana.your-domain.com
+      service:
+        # NOTE: The service name must match the service created by the Grafana sub-chart.
+        # This is typically "{{ .Release.Name }}-grafana"
+        name: k8s-dataflow-project-grafana
+        port: 80
+      tls:
+        enabled: true
+        secretName: grafana-tls-secret # K8s secret containing the TLS cert for grafana.your-domain.com
+
+    - host: minio.your-domain.com
+      service:
+        # NOTE: The service name for MinIO Console/UI.
+        # This is typically "{{ .Release.Name }}-minio"
+        name: k8s-dataflow-project-minio
+        port: 9001 # Port for the MinIO UI, not the API port
+      tls:
+        enabled: true
+        secretName: minio-tls-secret
+
+    - host: influxdb.your-domain.com
+      service:
+        # NOTE: The service name for the InfluxDB UI.
+        # This is typically "{{ .Release.Name }}-influxdb"
+        name: k8s-dataflow-project-influxdb
+        port: 8086
+      # This service has TLS disabled in this example
+      tls:
+        enabled: true

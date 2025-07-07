@@ -13,31 +13,35 @@ spec:
   {{- with .Values.ingress.className }}
   ingressClassName: {{ . }}
   {{- end }}
-  {{- if .Values.ingress.tls }}
+  {{- /* This section dynamically builds the TLS configuration */}}
+  {{- $hasTls := false }}
+  {{- range .Values.ingress.hosts }}
+    {{- if and .tls .tls.enabled }}
+      {{- $hasTls = true }}
+    {{- end }}
+  {{- end }}
+  {{- if $hasTls }}
   tls:
-    {{- range .Values.ingress.tls }}
+    {{- range .Values.ingress.hosts }}
+    {{- if and .tls .tls.enabled }}
     - hosts:
-        {{- range .hosts }}
-        - {{ . | quote }}
-        {{- end }}
-      secretName: {{ .secretName }}
+        - {{ .host | quote }}
+      secretName: {{ .tls.secretName }}
+    {{- end }}
     {{- end }}
   {{- end }}
   rules:
+    {{- /* This section creates a rule for each host defined in values.yaml */}}
     {{- range .Values.ingress.hosts }}
     - host: {{ .host | quote }}
       http:
         paths:
-          {{- range .paths }}
-          - path: {{ .path }}
-            {{- with .pathType }}
-            pathType: {{ . }}
-            {{- end }}
+          - path: {{ .path | default "/" }}
+            pathType: {{ .pathType | default "Prefix" }}
             backend:
               service:
-                name: {{ include "my-project-chart.fullname" $ }}
+                name: {{ .service.name }}
                 port:
-                  number: {{ $.Values.service.port }}
-          {{- end }}
+                  number: {{ .service.port }}
     {{- end }}
 {{- end }}
