@@ -89,7 +89,8 @@ spark:
 # --- Data Streaming & CDC ---
 # -------------------------------------------------------------------
 kafkaConnect:
-  # Set enabled to true if using the bitnami/kafka chart which includes this
+  # Set enabled to true if using the bitnami/kafka chart which includes this,
+  # or if you have a separate kafka-connect chart.
   enabled: true
 
   # --- Point to your custom-built image ---
@@ -108,15 +109,15 @@ kafkaConnect:
     postgres-cdc: # The name of the connector
       connector.class: "io.debezium.connector.postgresql.PostgresConnector"
       tasks.max: "1"
-      database.hostname: "{{ .Release.Name }}-airflow-postgresql" # Connect to the Airflow DB
+      database.hostname: "{{ .Release.Name }}-airflowPostgresql" # Connect to the Airflow DB
       database.port: "5432"
       database.user: "airflow"
       # --- BEST PRACTICE: Use a secret for the password ---
       database.password:
         valueFrom:
           secretKeyRef:
-            name: "{{ .Release.Name }}-airflow-postgresql" # The secret created by the postgresql chart
-            key: password
+            name: "{{ .Release.Name }}-airflowPostgresql" # The secret created by the postgresql chart (with alias)
+            key: postgres-password # Bitnami PostgreSQL chart uses 'postgres-password' for the main secret key
       database.dbname: "airflow"
       database.server.name: "airflowdb" # A logical name for the source server
       topic.prefix: "cdc" # All topics will be prefixed with 'cdc'
@@ -172,7 +173,7 @@ grafana:
             valueFrom:
               secretKeyRef:
                 name: "{{ .Release.Name }}-influxdb-auth"
-                key: token
+                key: token # Key name for the token within the secret
 
 influxdb:
   auth:
@@ -262,8 +263,8 @@ ingress:
     - host: grafana.your-domain.com
       service:
         # NOTE: The service name must match the service created by the Grafana sub-chart.
-        # This is typically "{{ .Release.Name }}-grafana"
-        name: k8s-dataflow-project-grafana
+        # This is typically "{{ .Release.Name }}-<alias>"
+        name: "{{ .Release.Name }}-grafana" # Corrected service name
         port: 80
       tls:
         enabled: true
@@ -272,8 +273,8 @@ ingress:
     - host: minio.your-domain.com
       service:
         # NOTE: The service name for MinIO Console/UI.
-        # This is typically "{{ .Release.Name }}-minio"
-        name: k8s-dataflow-project-minio
+        # This is typically "{{ .Release.Name }}-<alias>"
+        name: "{{ .Release.Name }}-minio" # Corrected service name
         port: 9001 # Port for the MinIO UI, not the API port
       tls:
         enabled: true
@@ -282,9 +283,8 @@ ingress:
     - host: influxdb.your-domain.com
       service:
         # NOTE: The service name for the InfluxDB UI.
-        # This is typically "{{ .Release.Name }}-influxdb"
-        name: k8s-dataflow-project-influxdb
+        # This is typically "{{ .Release.Name }}-<alias>"
+        name: "{{ .Release.Name }}-influxdb" # Corrected service name
         port: 8086
-      # This service has TLS disabled in this example
       tls:
         enabled: true

@@ -36,13 +36,15 @@ dependencies:
     version: "29.1.0"
     repository: "https://charts.bitnami.com/bitnami"
     alias: kafka
+    # Condition to enable Kafka Connect if Kafka is enabled
+    # condition: kafka.enabled
 
   - name: redis
     version: "19.1.0"
     repository: "https://charts.bitnami.com/bitnami"
     alias: redis
 
-  # --- Your Custom Local Sub-chart ---
+  # --- Custom Local Sub-charts ---
   - name: hive-metastore
     version: "0.1.0"
     repository: "file://charts/hive-metastore"
@@ -52,10 +54,10 @@ dependencies:
     version: "15.5.4"
     repository: "https://charts.bitnami.com/bitnami"
     alias: hivePostgresql # Database for Hive Metastore
-    condition: hiveMetastore.database.create
+    condition: hiveMetastore.database.create # Only install if Hive Metastore needs it
 
-  # --- Custom Local Sub-chart ---
-  - name: hive-metastore
-    version: "0.1.0"
-    repository: "file://charts/hive-metastore"
-    alias: hiveMetastore
+  - name: postgresql
+    version: "15.5.4"
+    repository: "https://charts.bitnami.com/bitnami"
+    alias: airflowPostgresql # Database for Airflow
+    condition: airflowPostgresql.enabled # Only install if enabled in values.yaml
