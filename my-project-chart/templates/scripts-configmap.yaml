@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Release.Name }}-scripts-cm
+  labels:
+    {{- include "your-chart-name.labels" . | nindent 4 }} # Replace with your chart's label helper if you have one
+data:
+{{- (.Files.Glob "scripts/*").AsConfig | nindent 2 }}

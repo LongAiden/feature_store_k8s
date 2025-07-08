@@ -1,21 +1,17 @@
-# Use a specific, version-pinned Bitnami Spark image as the base.
-# This ensures repeatable builds.
 FROM bitnami/spark:3.4.1-debian-11-r88
 
-# --- Metadata ---
-LABEL maintainer="Your Name"
 LABEL description="Custom Spark image with pre-installed Python libraries and JARs for Kafka, Delta Lake, and S3."
 
 # --- Environment Variables for Versions ---
-# Easier to update versions here in one place.
 ENV DELTA_VERSION="2.4.0"
 ENV KAFKA_VERSION="3.4.1"
 ENV HADOOP_AWS_VERSION="3.3.4"
 ENV AWS_JAVA_SDK_VERSION="1.12.511"
 
-# --- Installation ---
-# Switch to root to install dependencies.
 USER root
+
+# Copy the Python requirements file into the image
+COPY spark_requirement.txt /tmp/requirements.txt
 
 # Combine all installations into a single RUN command to reduce image layers.
 RUN \
@@ -39,21 +35,6 @@ RUN \
     wget -P /opt/bitnami/spark/jars/ https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-bundle/${AWS_JAVA_SDK_VERSION}/aws-java-sdk-bundle-${AWS_JAVA_SDK_VERSION}.jar && \
     \
     # Step 3: Install Python dependencies using pip.
-    # We create a temporary requirements.txt to keep the command clean.
-    echo " \
-        python-dotenv==1.0.0 \
-        numpy \
-        pandas \
-        nltk==3.8.1 \
-        kafka-python==2.0.2 \
-        minio==7.1.16 \
-        delta-spark==2.4.0 \
-        confluent-kafka==2.3.0 \
-        sqlalchemy \
-        psycopg2-binary \
-        feast==0.36.0 \
-        feast-spark \
-    " > /tmp/requirements.txt && \
     pip install --no-cache-dir --upgrade pip && \
     pip install --no-cache-dir -r /tmp/requirements.txt && \
     \

@@ -36,15 +36,19 @@ dependencies:
     version: "29.1.0"
     repository: "https://charts.bitnami.com/bitnami"
     alias: kafka
-    # Condition to enable Kafka Connect if Kafka is enabled
-    # condition: kafka.enabled
+    condition: kafka.enabled
+
+  - name: kafka-ui
+    version: "0.11.2" 
+    repository: "https://charts.bitnami.com/bitnami"
+    alias: kafkaUI
+    condition: kafkaUI.enabled 
 
   - name: redis
     version: "19.1.0"
     repository: "https://charts.bitnami.com/bitnami"
     alias: redis
 
-  # --- Custom Local Sub-charts ---
   - name: hive-metastore
     version: "0.1.0"
     repository: "file://charts/hive-metastore"

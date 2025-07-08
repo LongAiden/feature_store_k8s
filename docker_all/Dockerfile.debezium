@@ -1,21 +1,59 @@
-# Use the official Debezium base image. It includes Kafka Connect.
-# Using a specific version tag is better than 'latest' for production.
+# Multi-stage build to handle connector download more reliably
+FROM maven:3.8-openjdk-11 AS builder
+
+# Download and verify the connector
+RUN mkdir -p /tmp/connector && \
+    cd /tmp/connector && \
+    # Try multiple download sources with verification
+    (curl -sSL --fail "https://api.hub.confluent.io/api/plugins/confluentinc/kafka-connect-s3/versions/10.7.5/package" \
+        -o "kafka-connect-s3.zip" || \
+     curl -sSL --fail "https://packages.confluent.io/maven/io/confluent/kafka-connect-s3/10.7.5/kafka-connect-s3-10.7.5.zip" \
+        -o "kafka-connect-s3.zip" || \
+     echo "Download failed, building minimal connector structure") && \
+    # Verify the zip file if it exists
+    if [ -f "kafka-connect-s3.zip" ]; then \
+        file kafka-connect-s3.zip && \
+        unzip -t kafka-connect-s3.zip && \
+        unzip kafka-connect-s3.zip -d /tmp/plugins/; \
+    else \
+        # Fallback: create directory structure and download individual JARs
+        mkdir -p /tmp/plugins/confluentinc-kafka-connect-s3 && \
+        cd /tmp/plugins/confluentinc-kafka-connect-s3 && \
+        # Download the main connector JAR from Maven Central
+        curl -sSL "https://repo1.maven.org/maven2/io/confluent/kafka-connect-s3/10.7.5/kafka-connect-s3-10.7.5.jar" \
+            -o "kafka-connect-s3-10.7.5.jar" && \
+        # Download required dependencies
+        curl -sSL "https://repo1.maven.org/maven2/io/confluent/kafka-connect-storage-common/10.7.5/kafka-connect-storage-common-10.7.5.jar" \
+            -o "kafka-connect-storage-common-10.7.5.jar" && \
+        curl -sSL "https://repo1.maven.org/maven2/io/confluent/kafka-connect-storage-core/10.7.5/kafka-connect-storage-core-10.7.5.jar" \
+            -o "kafka-connect-storage-core-10.7.5.jar" && \
+        curl -sSL "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-s3/1.12.261/aws-java-sdk-s3-1.12.261.jar" \
+            -o "aws-java-sdk-s3-1.12.261.jar" && \
+        curl -sSL "https://repo1.maven.org/maven2/com/amazonaws/aws-java-sdk-core/1.12.261/aws-java-sdk-core-1.12.261.jar" \
+            -o "aws-java-sdk-core-1.12.261.jar"; \
+    fi
+
+# Main image
 FROM debezium/connect:2.3
+LABEL description="Custom Debezium Kafka Connect image with Confluent S3 Sink Connector."
 
-# --- Best Practice: Add additional connectors if needed ---
-# Although the base image includes the PostgreSQL connector, this section
-# demonstrates how you would add other connectors, like the S3 sink connector.
-# This makes your image a versatile data hub.
-
-# Switch to root to install tools and change permissions
+# Switch to root to install and setup
 USER root
 
-# Example: Installing the Confluent S3 Sink Connector
-# Find connectors on Confluent Hub: https://www.confluent.io/hub/
-# We are downloading and unzipping it into the required 'plugins' directory.
-RUN curl -sSL --location "https://d1i4a15mxbxib1.cloudfront.net/api/plugins/confluentinc/kafka-connect-s3/versions/10.7.5/confluentinc-kafka-connect-s3-10.7.5.zip" --output "/kafka/plugins/kafka-connect-s3.zip" \
- && unzip "/kafka/plugins/kafka-connect-s3.zip" -d "/kafka/plugins/" \
- && rm "/kafka/plugins/kafka-connect-s3.zip"
+# Copy the connector from builder stage
+COPY --from=builder /tmp/plugins/ /kafka/plugins/
+
+# Set proper permissions
+RUN chown -R 1001:1001 /kafka/plugins && \
+    # Verify the connector was installed
+    ls -la /kafka/plugins/ && \
+    find /kafka/plugins/ -name "*.jar" | head -5
 
 # Switch back to the default Kafka user
 USER 1001
+
+# Expose the default Kafka Connect port
+EXPOSE 8083
+
+# The base image already has the correct CMD, but being explicit:
+CMD ["/docker-entrypoint.sh", "start"]

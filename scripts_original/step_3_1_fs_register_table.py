@@ -1,6 +1,6 @@
 import os
 from pathlib import Path
-from scripts.utils import init_spark, get_logger
+from scripts_original.utils import init_spark, get_logger
 from datetime import timedelta, datetime
 from feast import Entity, FeatureView, FeatureStore, Field
 from feast.types import Int64, Float32

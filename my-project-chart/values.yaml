@@ -1,8 +1,3 @@
-# ===================================================================
-# Improved values.yaml for K8s Data Platform
-# ===================================================================
-
-# Global settings for the release
 global:
   # Define your image registry globally to easily switch between dev and prod
   imageRegistry: "docker.io" # Or your private registry (e.g., gcr.io, your-harbor.io)
@@ -13,15 +8,10 @@ global:
 airflow:
   image:
     # IMPORTANT: Point to your custom-built Airflow image repository
-    repository: my-data-team/custom-airflow
+    repository: adrienlong/airflow
     tag: "latest"
     pullPolicy: IfNotPresent
 
-  # --- Secrets should be managed outside of values.yaml ---
-  # Generate these secrets and create a Kubernetes secret from them.
-  # Example: kubectl create secret generic airflow-secrets \
-  #   --from-literal=fernet-key=$(python -c "from cryptography.fernet import Fernet; print(Fernet.generate_key().decode())") \
-  #   --from-literal=webserver-secret-key=$(openssl rand -hex 30)
   fernetKey:
     existingSecret: "airflow-secrets"
     key: "fernet-key"
@@ -31,10 +21,8 @@ airflow:
 
   uid: 50000
 
-  # --- Simplified environment variables ---
   env:
-    # These are templated in the official chart using other values.
-    # No need to repeat them here unless you need to override.
+
     - name: AIRFLOW__CORE__EXECUTOR
       value: "CeleryExecutor"
     # Example of adding a custom env var
@@ -57,23 +45,84 @@ airflow:
       mountPath: /opt/airflow/scripts # Match the path used in docker-compose for consistency
       readOnly: false
 
+  webserver:
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 1Gi
+      limits:
+        cpu: 2000m
+        memory: 2Gi
+  scheduler:
+    resources:
+      requests:
+        cpu: 250m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+  worker: # Or webserver, scheduler, etc.
+    resources:
+      requests:
+        cpu: 500m
+        memory: 1Gi
+      limits:
+        cpu: 1000m
+        memory: 2Gi
+  triggerer:
+    resources:
+      requests:
+        cpu: 250m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+  init:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+  cli:
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+
 # -------------------------------------------------------------------
 # Spark Standalone Cluster Configuration
 # -------------------------------------------------------------------
 spark:
   enabled: true
   image:
-    repository: my-data-team/custom-spark
+    repository: adrienlong/spark
     tag: "latest"
     pullPolicy: IfNotPresent
 
   master:
     replicas: 1
+    resources:
+      requests:
+        cpu: 500m
+        memory: 1Gi
+      limits:
+        cpu: 1000m
+        memory: 2Gi
   worker:
-    replicas: 2 # At least 2 workers are recommended
-  
-  # --- This is the correct way to add JAR packages to Spark ---
-  # It populates the spark-defaults.conf file.
+    replicas: 1 # At least 2 workers are recommended
+    resources:
+      requests:
+        cpu: 1000m
+        memory: 2Gi
+      limits:
+        cpu: 2000m
+        memory: 4Gi
+
   properties: |
     spark.jars.packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1
     # Note: Debezium JARs are NOT needed here. Spark reads from Kafka,
@@ -84,27 +133,38 @@ spark:
     spark.hadoop.fs.s3a.path.style.access true
     spark.sql.catalogImplementation hive
     spark.sql.hive.metastore.uris thrift://{{ .Release.Name }}-hive-metastore:9083
-
+  
+  s3Credentials:
+  accessKey:
+    valueFrom:
+      secretKeyRef:
+        name: "minio-credentials" # Reference the MinIO credentials secret
+        key: "root-user" # Key for the MinIO root username
+  secretKey:
+    valueFrom:
+      secretKeyRef:
+        name: "minio-credentials" # Reference the MinIO credentials secret
+        key: "root-password" # Key for the MinIO root password
 # -------------------------------------------------------------------
 # --- Data Streaming & CDC ---
 # -------------------------------------------------------------------
-kafkaConnect:
-  # Set enabled to true if using the bitnami/kafka chart which includes this,
-  # or if you have a separate kafka-connect chart.
+kafkaConnect:  
   enabled: true
 
   # --- Point to your custom-built image ---
   image:
     registry: "{{ .Values.global.imageRegistry }}"
-    repository: "my-data-team/kafka-connect-debezium"
+    repository: "adrienlong/debezium"
     tag: "1.0.0"
     pullPolicy: IfNotPresent
 
   bootstrapServers: "PLAINTEXT://{{ .Release.Name }}-kafka:9092"
 
-  # --- Define your Debezium connector ---
-  # This will create a KafkaConnector resource if the chart supports it,
-  # or you may need to apply it as a separate manifest.
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+  
   connectors:
     postgres-cdc: # The name of the connector
       connector.class: "io.debezium.connector.postgresql.PostgresConnector"
@@ -112,19 +172,30 @@ kafkaConnect:
       database.hostname: "{{ .Release.Name }}-airflowPostgresql" # Connect to the Airflow DB
       database.port: "5432"
       database.user: "airflow"
-      # --- BEST PRACTICE: Use a secret for the password ---
+      
       database.password:
         valueFrom:
           secretKeyRef:
-            name: "{{ .Release.Name }}-airflowPostgresql" # The secret created by the postgresql chart (with alias)
-            key: postgres-password # Bitnami PostgreSQL chart uses 'postgres-password' for the main secret key
+            name: "airflow-postgresql-secret"
+            key: postgresql-password
       database.dbname: "airflow"
-      database.server.name: "airflowdb" # A logical name for the source server
-      topic.prefix: "cdc" # All topics will be prefixed with 'cdc'
+      database.server.name: "dbserver1"
       plugin.name: "pgoutput"
-      table.include.list: "public.dag_run,public.task_instance" # Example tables to watch
-      decimal.handling.mode: "double"
+      slot.name: "debezium_slot"
+      publication.name: "debezium_publication"
+      database.history.kafka.bootstrap.servers: "PLAINTEXT://{{ .Release.Name }}-kafka:9092"
+      database.history.kafka.topic: "dbhistory.postgres"
+      table.include.list: "public.transaction_data"
+      topic.prefix: "postgres"
+      schema.history.internal.kafka.bootstrap.servers: "PLAINTEXT://{{ .Release.Name }}-kafka:9092"
+      schema.history.internal.kafka.topic: "schema-changes.postgres"
+      decimal.handling.mode: "string"
+      heartbeat.interval.ms: "5000"
       tombstones.on.delete: "false"
+      topic.creation.default.retention.ms: "86400000"
+      topic.creation.default.replication.factor: "1"
+      max.batch.size: "1024"
+      max.queue.size: "4096"
 
 # -------------------------------------------------------------------
 # CI/CD - Jenkins (Example from your file)
@@ -138,22 +209,43 @@ jenkins:
     # Use existingSecret for production
     admin:
       user: "admin"
-      password: "your-secure-jenkins-password-here"
+      password:
+        valueFrom:
+          secretKeyRef:
+            name: "jenkins-admin-secret" # Name of your Kubernetes secret
+            key: "admin-password" # Key within the secret for the admin password
     installPlugins:
       - kubernetes:4156.v83c1383dc5a_d
       - workflow-aggregator:596.v802b_b_4fd69b_d
       - git:6.0.0
       - configuration-as-code:1781.v04542759a_1b_3
+        resources: # Jenkins controller resources
+
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: 1000m
+      memory: 2Gi
+
 
 # -------------------------------------------------------------------
 # Metrics & Monitoring
 # -------------------------------------------------------------------
 grafana:
-  adminPassword: "your-secure-grafana-password" # Use existingSecret for production
+  adminPassword: "your-secure-grafana-password"
   persistence:
     enabled: true
     size: 5Gi
-  # --- CORRECT way to configure InfluxDB datasource with secret token ---
+
+  resources: # Grafana resources
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 250m
+      memory: 512Mi
+
   datasources:
     datasources.yaml:
       apiVersion: 1
@@ -184,17 +276,41 @@ influxdb:
     org: "my-org"
     bucket: "my-bucket"
     retention_period: "720h" # 30 days retention
+  resources: # InfluxDB resources
+    requests:
+      cpu: 250m
+      memory: 512Mi
+    limits:
+      cpu: 500m
+      memory: 1Gi
+
 
 # -------------------------------------------------------------------
 # Minio (S3-compatible Object Storage)
 # -------------------------------------------------------------------
 minio:
   auth:
-    # Use existingSecret in production
-    rootUser: "minioadmin"
-    rootPassword: "minio-password"
+    rootUser:
+      valueFrom:
+        secretKeyRef:
+          name: "minio-credentials" # Reference the secret
+          key: "root-user" # Key for the MinIO root username
+    rootPassword:
+      valueFrom:
+        secretKeyRef:
+          name: "minio-credentials" # Reference the secret
+          key: "root-password" # Key for the MinIO root password
+
   persistence:
     size: 20Gi
+
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
 
 # -------------------------------------------------------------------
 # Kafka Cluster (Using Bitnami chart conventions)
@@ -203,12 +319,53 @@ kafka:
   replicaCount: 1 # For production, use 3
   zookeeper:
     replicaCount: 1 # For production, use 3
-  # In-cluster listener
+    resources:
+      requests:
+        cpu: 100m
+        memory: 128Mi
+      limits:
+        cpu: 250m
+        memory: 256Mi
+  resources:
+    requests:
+      cpu: 500m
+      memory: 512Mi
+    limits:
+      cpu: 1000m
+      memory: 1Gi
+
   listeners:
     client:
       protocol: PLAINTEXT
   advertisedListeners:
     - "PLAINTEXT://{{ .Release.Name }}-kafka:9092"
+
+# -------------------------------------------------------------------
+# KafKa UI
+# -------------------------------------------------------------------
+kafkaUI:
+  enabled: true
+  image:
+    # Use the image specified in docker-airflow.yaml
+    registry: docker.io
+    repository: provectuslabs/kafka-ui
+    tag: latest
+    pullPolicy: IfNotPresent
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 250m
+      memory: 256Mi
+  # Map docker-compose environment variables to Bitnami Kafka UI chart config
+  config:
+    clusters:
+      - name: local
+        bootstrapServers: "PLAINTEXT://{{ .Release.Name }}-kafka:9092"
+
+  auth:
+    enabled: false
 
 # -------------------------------------------------------------------
 # PostgreSQL Database for Airflow (Sub-chart of Airflow)
@@ -218,10 +375,22 @@ airflowPostgresql:
   auth:
     database: "airflow"
     username: "airflow"
-    password: "airflow" # Use existingSecret in production
+    password:
+      valueFrom:
+        secretKeyRef:
+          name: "airflow-postgresql-secret"
+          key: "postgresql-password"
   primary:
     persistence:
       size: 8Gi
+    resources: # Mapped from postgres in docker-compose
+      requests:
+        cpu: 250m
+        memory: 256Mi
+      limits:
+        cpu: 500m
+        memory: 512Mi
+
 
 # -------------------------------------------------------------------
 # Hive Metastore and its Database
@@ -237,54 +406,70 @@ hiveMetastore:
     dbName: "metastore"
   s3:
     endpoint: "http://{{ .Release.Name }}-minio:9000"
-    accessKey: "minioadmin"
-    secretKey: "minio-password" # Use existingSecret in production
-
+    accessKey:
+      valueFrom:
+        secretKeyRef:
+          name: "hive-metastore-s3-secret" # Name of your Kubernetes secret
+          key: "access-key" # Key within the secret for the access key
+    secretKey:
+      valueFrom:
+        secretKeyRef:
+          name: "hive-metastore-s3-secret" # Name of your Kubernetes secret
+          key: "secret-key" # Key within the secret for the secret key
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
 hivePostgresql:
   auth:
     database: "metastore"
     username: "hive"
-    password: "hive" # Use existingSecret in production
+    password:
+      valueFrom:
+        secretKeyRef:
+          name: "hive-metastore-db-secret" 
+          key: "db-password"
   primary:
     persistence:
       size: 5Gi
 
 ingress:
   enabled: true
-  # Optional: Specify your Ingress Controller class if needed
   className: "nginx"
-  # Optional: Common annotations for all ingress rules
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
-    # Add other annotations like cert-manager, etc.
-    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
 
   hosts:
-    - host: grafana.your-domain.com
+    - host: grafana.fsk8s.com
       service:
-        # NOTE: The service name must match the service created by the Grafana sub-chart.
-        # This is typically "{{ .Release.Name }}-<alias>"
         name: "{{ .Release.Name }}-grafana" # Corrected service name
         port: 80
       tls:
         enabled: true
-        secretName: grafana-tls-secret # K8s secret containing the TLS cert for grafana.your-domain.com
+        secretName: grafana-tls-secret
 
-    - host: minio.your-domain.com
+    - host: minio.fsk8s.com
       service:
-        # NOTE: The service name for MinIO Console/UI.
-        # This is typically "{{ .Release.Name }}-<alias>"
-        name: "{{ .Release.Name }}-minio" # Corrected service name
+        name: "{{ .Release.Name }}-minio" 
         port: 9001 # Port for the MinIO UI, not the API port
       tls:
         enabled: true
         secretName: minio-tls-secret
 
-    - host: influxdb.your-domain.com
+    - host: kafka.fsk8s.com
       service:
-        # NOTE: The service name for the InfluxDB UI.
-        # This is typically "{{ .Release.Name }}-<alias>"
-        name: "{{ .Release.Name }}-influxdb" # Corrected service name
+        name: "{{ .Release.Name }}-kafka-ui" 
+        port: 8080
+      tls:
+        enabled: true
+        secretName: kafka-tls-secret
+
+    - host: influxdb.fsk8s.com
+      service:
+        name: "{{ .Release.Name }}-influxdb"
         port: 8086
       tls:
         enabled: true

@@ -1,0 +1,12 @@
+python-dotenv==1.0.0
+numpy
+pandas
+nltk==3.8.1
+kafka-python==2.0.2
+minio==7.1.16
+delta-spark==2.4.0
+confluent-kafka==2.3.0
+sqlalchemy
+psycopg2-binary
+feast==0.36.0
+feast-spark
