@@ -1,0 +1,38 @@
+# templates/spark-pvc.yaml
+{{- if .Values.spark.persistence.scripts.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "k8s-dataflow-project.fullname" . }}-scripts-pvc # This name is referenced in spark.extraVolumes
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "k8s-dataflow-project.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - {{ .Values.spark.persistence.scripts.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.spark.persistence.scripts.size }}
+  {{- if .Values.spark.persistence.scripts.storageClass }}
+  storageClassName: {{ .Values.spark.persistence.scripts.storageClass }}
+  {{- end }}
+{{- end }}
+---
+{{- if .Values.spark.persistence.warehouse.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "k8s-dataflow-project.fullname" . }}-warehouse-pvc
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "k8s-dataflow-project.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - {{ .Values.spark.persistence.warehouse.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.spark.persistence.warehouse.size }}
+  {{- if .Values.spark.persistence.warehouse.storageClass }}
+  storageClassName: {{ .Values.spark.persistence.warehouse.storageClass }}
+  {{- end }}
+{{- end }}

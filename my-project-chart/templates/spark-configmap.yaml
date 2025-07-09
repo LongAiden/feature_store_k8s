@@ -1,0 +1,87 @@
+# templates/spark-configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "k8s-dataflow-project.fullname" . }}-spark-config
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "k8s-dataflow-project.labels" . | nindent 4 }}
+data:
+  spark-defaults.conf: |
+    # S3/MinIO Configuration
+    spark.hadoop.fs.s3a.endpoint={{ .Values.spark.s3.endpoint }}
+    spark.hadoop.fs.s3a.access.key={{ .Values.spark.s3.accessKey }}
+    spark.hadoop.fs.s3a.secret.key={{ .Values.spark.s3.secretKey }}
+    spark.hadoop.fs.s3a.path.style.access=true
+    spark.hadoop.fs.s3a.impl=org.apache.hadoop.fs.s3a.S3AFileSystem
+    spark.hadoop.fs.s3a.connection.ssl.enabled=false
+    
+    # Hive Metastore Configuration
+    spark.sql.catalogImplementation=hive
+    spark.sql.hive.metastore.uris={{ .Values.spark.hive.metastoreUri }}
+    spark.sql.warehouse.dir={{ .Values.spark.warehouse.dir }}
+    
+    # Kubernetes Configuration
+    spark.kubernetes.namespace={{ .Release.Namespace }}
+    spark.kubernetes.authenticate.driver.serviceAccountName={{ include "k8s-dataflow-project.fullname" . }}-spark
+    spark.kubernetes.container.image={{ .Values.spark.image.repository }}:{{ .Values.spark.image.tag }}
+    spark.kubernetes.driver.podTemplateFile=/opt/spark/conf/driver-pod-template.yaml
+    spark.kubernetes.executor.podTemplateFile=/opt/spark/conf/executor-pod-template.yaml
+    
+    # Performance Tuning
+    spark.serializer=org.apache.spark.serializer.KryoSerializer
+    spark.sql.adaptive.enabled=true
+    spark.sql.adaptive.coalescePartitions.enabled=true
+    
+  driver-pod-template.yaml: |
+    apiVersion: v1
+    kind: Pod
+    spec:
+      serviceAccountName: {{ include "k8s-dataflow-project.fullname" . }}-spark
+      containers:
+      - name: spark-kubernetes-driver
+        volumeMounts:
+        - name: scripts-volume
+          mountPath: /opt/spark/scripts
+          readOnly: true
+        - name: spark-config
+          mountPath: /opt/spark/conf/spark-defaults.conf
+          subPath: spark-defaults.conf
+          readOnly: true
+        {{- if .Values.spark.resources.driver }}
+        resources:
+          {{- toYaml .Values.spark.resources.driver | nindent 10 }}
+        {{- end }}
+      volumes:
+      - name: scripts-volume
+        persistentVolumeClaim:
+          claimName: {{ include "k8s-dataflow-project.fullname" . }}-scripts-pvc
+      - name: spark-config
+        configMap:
+          name: {{ include "k8s-dataflow-project.fullname" . }}-spark-config
+          
+  executor-pod-template.yaml: |
+    apiVersion: v1
+    kind: Pod
+    spec:
+      containers:
+      - name: spark-kubernetes-executor
+        volumeMounts:
+        - name: scripts-volume
+          mountPath: /path/scripts
+          readOnly: true
+        - name: spark-config
+          mountPath: /opt/spark/conf/spark-defaults.conf
+          subPath: spark-defaults.conf
+          readOnly: true
+        {{- if .Values.spark.resources.executor }}
+        resources:
+          {{- toYaml .Values.spark.resources.executor | nindent 10 }}
+        {{- end }}
+      volumes:
+      - name: scripts-volume
+        persistentVolumeClaim:
+          claimName: {{ include "k8s-dataflow-project.fullname" . }}-scripts-pvc
+      - name: spark-config
+        configMap:
+          name: {{ include "k8s-dataflow-project.fullname" . }}-spark-config

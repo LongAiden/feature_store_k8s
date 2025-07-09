@@ -1,0 +1,36 @@
+# templates/spark-rbac.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: {{ include "k8s-dataflow-project.fullname" . }}-spark
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "k8s-dataflow-project.labels" . | nindent 4 }}
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "k8s-dataflow-project.fullname" . }}-spark-driver
+rules:
+- apiGroups: [""]
+  resources: ["pods", "services", "configmaps"]
+  verbs: ["create", "get", "list", "watch", "delete"]
+- apiGroups: [""]
+  resources: ["pods/log"]
+  verbs: ["get", "list"]
+- apiGroups: ["apps"]
+  resources: ["deployments"]
+  verbs: ["get", "list", "watch"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "k8s-dataflow-project.fullname" . }}-spark-driver
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "k8s-dataflow-project.fullname" . }}-spark-driver
+subjects:
+- kind: ServiceAccount
+  name: {{ include "k8s-dataflow-project.fullname" . }}-spark
+  namespace: {{ .Release.Namespace }}

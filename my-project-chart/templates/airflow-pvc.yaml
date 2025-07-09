@@ -1,0 +1,18 @@
+{{- if .Values.airflow.persistence.scripts.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "k8s-dataflow-project.fullname" . }}-airflow-scripts-pvc
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "k8s-dataflow-project.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - {{ .Values.airflow.persistence.scripts.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.airflow.persistence.scripts.size }}
+  {{- if .Values.airflow.persistence.scripts.storageClass }}
+  storageClassName: {{ .Values.airflow.persistence.scripts.storageClass }}
+  {{- end }}
+{{- end }}

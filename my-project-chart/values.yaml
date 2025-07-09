@@ -1,5 +1,4 @@
 global:
-  # Define your image registry globally to easily switch between dev and prod
   imageRegistry: "docker.io" # Or your private registry (e.g., gcr.io, your-harbor.io)
 
 # -------------------------------------------------------------------
@@ -22,12 +21,21 @@ airflow:
   uid: 50000
 
   env:
-
     - name: AIRFLOW__CORE__EXECUTOR
       value: "CeleryExecutor"
-    # Example of adding a custom env var
-    - name: MY_CUSTOM_ENV
-      value: "my_value"
+    - name: AIRFLOW_DB_HOST
+      value: "{{ .Release.Name }}-airflowPostgresql"
+    - name: AIRFLOW_DB_PORT
+      value: "5432"
+    - name: AIRFLOW_DB_USER
+      value: "airflow"
+    - name: AIRFLOW_DB_NAME
+      value: "airflow"
+    - name: AIRFLOW_DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          name: "airflow-postgresql-secret"
+          key: postgresql-password
 
   # --- Auto-generate Kubernetes connection for KubernetesPodOperator ---
   connections:
@@ -35,15 +43,21 @@ airflow:
       conn_type: kubernetes
       extra: '{"in_cluster":true,"namespace":"{{ .Release.Namespace }}"}'
 
-  # --- Mount a shared scripts volume ---
   extraVolumes:
     - name: scripts-volume
       persistentVolumeClaim:
-        claimName: "{{ .Release.Name }}-scripts-pvc"
+        # Reference the PVC created by templates/airflow-pvc.yaml
+        claimName: "{{ include "k8s-dataflow-project.fullname" . }}-airflow-scripts-pvc"
   extraVolumeMounts:
     - name: scripts-volume
       mountPath: /opt/airflow/scripts # Match the path used in docker-compose for consistency
       readOnly: false
+
+  persistence:
+    scripts:
+      enabled: true
+      accessMode: ReadWriteMany # Or ReadWriteOnce, depending on your storage
+      size: 5Gi
 
   webserver:
     resources:
@@ -61,14 +75,14 @@ airflow:
       limits:
         cpu: 500m
         memory: 512Mi
-  worker: # Or webserver, scheduler, etc.
-    resources:
-      requests:
-        cpu: 500m
-        memory: 1Gi
-      limits:
-        cpu: 1000m
-        memory: 2Gi
+  worker:
+  resources:
+    requests:
+      cpu: 500m
+      memory: 1Gi
+    limits:
+      cpu: 1000m
+      memory: 2Gi
   triggerer:
     resources:
       requests:
@@ -103,6 +117,27 @@ spark:
     repository: adrienlong/spark
     tag: "latest"
     pullPolicy: IfNotPresent
+  
+  extraVolumes:
+    - name: scripts-volume
+      persistentVolumeClaim:
+        # Reference the PVC created by templates/spark-pvc.yaml for scripts
+        claimName: "{{ include "k8s-dataflow-project.fullname" . }}-scripts-pvc"
+  extraVolumeMounts:
+    - name: scripts-volume
+      mountPath: /opt/spark/scripts # Consistent path for Spark scripts
+      readOnly: false
+
+  persistence:
+    scripts:
+      enabled: true
+      accessMode: ReadWriteMany # Or ReadWriteOnce, depending on your storage
+      size: 5Gi
+      # storageClass: "your-storage-class"
+    warehouse: # For Spark SQL/Hive warehouse
+      enabled: true
+      accessMode: ReadWriteMany
+      size: 10Gi
 
   master:
     replicas: 1
@@ -125,33 +160,27 @@ spark:
 
   properties: |
     spark.jars.packages org.apache.spark:spark-sql-kafka-0-10_2.12:3.4.1
-    # Note: Debezium JARs are NOT needed here. Spark reads from Kafka,
-    # it doesn't perform the CDC itself.
     spark.hadoop.fs.s3a.endpoint http://{{ .Release.Name }}-minio:9000
-    spark.hadoop.fs.s3a.access.key minioadmin
-    spark.hadoop.fs.s3a.secret.key minio-password # Use secrets in production
     spark.hadoop.fs.s3a.path.style.access true
     spark.sql.catalogImplementation hive
     spark.sql.hive.metastore.uris thrift://{{ .Release.Name }}-hive-metastore:9083
   
   s3Credentials:
-  accessKey:
-    valueFrom:
-      secretKeyRef:
-        name: "minio-credentials" # Reference the MinIO credentials secret
-        key: "root-user" # Key for the MinIO root username
-  secretKey:
-    valueFrom:
-      secretKeyRef:
-        name: "minio-credentials" # Reference the MinIO credentials secret
-        key: "root-password" # Key for the MinIO root password
+    accessKey:
+      valueFrom:
+        secretKeyRef:
+          name: "minio-credentials" # Reference the MinIO credentials secret
+          key: "root-user" # Key for the MinIO root username
+    secretKey:
+      valueFrom:
+        secretKeyRef:
+          name: "minio-credentials" # Reference the MinIO credentials secret
+          key: "root-password" # Key for the MinIO root password
 # -------------------------------------------------------------------
 # --- Data Streaming & CDC ---
 # -------------------------------------------------------------------
-kafkaConnect:  
+kafkaConnect:
   enabled: true
-
-  # --- Point to your custom-built image ---
   image:
     registry: "{{ .Values.global.imageRegistry }}"
     repository: "adrienlong/debezium"
@@ -194,6 +223,7 @@ kafkaConnect:
       tombstones.on.delete: "false"
       topic.creation.default.retention.ms: "86400000"
       topic.creation.default.replication.factor: "1"
+      topic.creation.default.partitions: "1"
       max.batch.size: "1024"
       max.queue.size: "4096"
 
@@ -219,8 +249,7 @@ jenkins:
       - workflow-aggregator:596.v802b_b_4fd69b_d
       - git:6.0.0
       - configuration-as-code:1781.v04542759a_1b_3
-        resources: # Jenkins controller resources
-
+  resources: # Jenkins controller resources
     requests:
       cpu: 500m
       memory: 1Gi
@@ -228,12 +257,15 @@ jenkins:
       cpu: 1000m
       memory: 2Gi
 
-
 # -------------------------------------------------------------------
 # Metrics & Monitoring
 # -------------------------------------------------------------------
 grafana:
-  adminPassword: "your-secure-grafana-password"
+  adminPassword: # Moved to secret reference
+    valueFrom:
+      secretKeyRef:
+        name: "grafana-admin-secret"
+        key: "admin-password"
   persistence:
     enabled: true
     size: 5Gi
@@ -402,7 +434,11 @@ hiveMetastore:
     host: "{{ .Release.Name }}-hive-postgresql"
     port: 5432
     user: "hive"
-    password: "hive" # Use existingSecret in production
+    password: # Moved to secret reference
+      valueFrom:
+        secretKeyRef:
+          name: "hive-metastore-db-secret" # Matches the secret for hivePostgresql
+          key: "db-password"
     dbName: "metastore"
   s3:
     endpoint: "http://{{ .Release.Name }}-minio:9000"
@@ -473,3 +509,4 @@ ingress:
         port: 8086
       tls:
         enabled: true
+        secretName: influxdb-tls-secret
