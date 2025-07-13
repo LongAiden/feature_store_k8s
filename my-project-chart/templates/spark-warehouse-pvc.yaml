@@ -1,0 +1,17 @@
+{{- if and .Values.spark.enabled .Values.spark.persistence.warehouse.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ include "k8s-dataflow-project.fullname" . }}-spark-warehouse-pvc
+  labels:
+    {{- include "k8s-dataflow-project.labels" . | nindent 4 }}
+spec:
+  accessModes:
+    - {{ .Values.spark.persistence.warehouse.accessMode }}
+  resources:
+    requests:
+      storage: {{ .Values.spark.persistence.warehouse.size }}
+  {{- if .Values.spark.persistence.warehouse.storageClass }}
+  storageClassName: {{ .Values.spark.persistence.warehouse.storageClass }}
+  {{- end }}
+{{- end }}

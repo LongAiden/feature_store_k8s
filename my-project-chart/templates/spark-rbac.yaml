@@ -1,36 +1,44 @@
-# templates/spark-rbac.yaml
+{{- if .Values.spark.enabled }}
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: {{ include "k8s-dataflow-project.fullname" . }}-spark
-  namespace: {{ .Release.Namespace }}
+  name: {{ .Values.spark.serviceAccountName }}
+  namespace: {{ .Release.Namespace }} # Service Account is namespaced
   labels:
     {{- include "k8s-dataflow-project.labels" . | nindent 4 }}
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
-  name: {{ include "k8s-dataflow-project.fullname" . }}-spark-driver
+  name: {{ include "k8s-dataflow-project.fullname" . }}-spark-driver-cluster-role # Changed to ClusterRole name
+  labels:
+    {{- include "k8s-dataflow-project.labels" . | nindent 4 }}
 rules:
-- apiGroups: [""]
-  resources: ["pods", "services", "configmaps"]
-  verbs: ["create", "get", "list", "watch", "delete"]
+- apiGroups: [""] # "" indicates the core API group
+  resources: ["pods", "services", "configmaps", "events"] # Added events for better visibility
+  verbs: ["create", "get", "list", "watch", "delete", "patch"]
 - apiGroups: [""]
   resources: ["pods/log"]
-  verbs: ["get", "list"]
+  verbs: ["get", "list", "watch"]
+- apiGroups: ["batch"]
+  resources: ["jobs"]
+  verbs: ["create", "get", "list", "watch", "delete"]
 - apiGroups: ["apps"]
-  resources: ["deployments"]
+  resources: ["deployments", "statefulsets", "replicasets"]
   verbs: ["get", "list", "watch"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
-  name: {{ include "k8s-dataflow-project.fullname" . }}-spark-driver
+  name: {{ include "k8s-dataflow-project.fullname" . }}-spark-driver-cluster-rolebinding # Changed to ClusterRoleBinding name
+  labels:
+    {{- include "k8s-dataflow-project.labels" . | nindent 4 }}
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: ClusterRole
-  name: {{ include "k8s-dataflow-project.fullname" . }}-spark-driver
+  name: {{ include "k8s-dataflow-project.fullname" . }}-spark-driver-cluster-role # Reference the ClusterRole
 subjects:
 - kind: ServiceAccount
-  name: {{ include "k8s-dataflow-project.fullname" . }}-spark
-  namespace: {{ .Release.Namespace }}
+  name: {{ .Values.spark.serviceAccountName }}
+  namespace: {{ .Release.Namespace }} # Service Account is namespaced
+{{- end }}

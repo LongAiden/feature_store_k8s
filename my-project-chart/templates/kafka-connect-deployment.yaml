@@ -1,0 +1,58 @@
+{{- if .Values.kafkaConnect.enabled }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "k8s-dataflow-project.fullname" . }}-kafka-connect
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "k8s-dataflow-project.labels" . | nindent 4 }}
+    app.kubernetes.io/component: kafka-connect
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      {{- include "k8s-dataflow-project.selectorLabels" . | nindent 6 }}
+      app.kubernetes.io/component: kafka-connect
+  template:
+    metadata:
+      labels:
+        {{- include "k8s-dataflow-project.selectorLabels" . | nindent 8 }}
+        app.kubernetes.io/component: kafka-connect
+    spec:
+      containers:
+      - name: kafka-connect
+        image: {{ .Values.kafkaConnect.image.registry }}/{{ .Values.kafkaConnect.image.repository }}:{{ .Values.kafkaConnect.image.tag }}
+        imagePullPolicy: {{ .Values.kafkaConnect.image.pullPolicy }}
+        ports:
+        - containerPort: 8083
+        env:
+        - name: BOOTSTRAP_SERVERS
+          value: {{ .Values.kafkaConnect.bootstrapServers | quote }}
+        - name: GROUP_ID
+          value: "connect-cluster"
+        - name: CONFIG_STORAGE_TOPIC
+          value: "connect-configs"
+        - name: OFFSET_STORAGE_TOPIC
+          value: "connect-offsets"
+        - name: STATUS_STORAGE_TOPIC
+          value: "connect-status"
+        resources:
+          {{- toYaml .Values.kafkaConnect.resources | nindent 10 }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "k8s-dataflow-project.fullname" . }}-kafka-connect
+  namespace: {{ .Release.Namespace }}
+  labels:
+    {{- include "k8s-dataflow-project.labels" . | nindent 4 }}
+    app.kubernetes.io/component: kafka-connect
+spec:
+  selector:
+    {{- include "k8s-dataflow-project.selectorLabels" . | nindent 4 }}
+    app.kubernetes.io/component: kafka-connect
+  ports:
+  - port: 8083
+    targetPort: 8083
+    protocol: TCP
+{{- end }}

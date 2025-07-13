@@ -1,47 +1,40 @@
-{{- if .Values.ingress.enabled -}}
+{{- if .Values.ingress.enabled }}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{ include "my-project-chart.fullname" . }}
+  name: {{ include "k8s-dataflow-project.fullname" . }}-ingress
+  namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "my-project-chart.labels" . | nindent 4 }}
+    {{- include "k8s-dataflow-project.labels" . | nindent 4 }}
   {{- with .Values.ingress.annotations }}
   annotations:
     {{- toYaml . | nindent 4 }}
   {{- end }}
 spec:
-  {{- with .Values.ingress.className }}
-  ingressClassName: {{ . }}
+  {{- if .Values.ingress.className }}
+  ingressClassName: {{ .Values.ingress.className }}
   {{- end }}
-  {{- /* This section dynamically builds the TLS configuration */}}
-  {{- $hasTls := false }}
-  {{- range .Values.ingress.hosts }}
-    {{- if and .tls .tls.enabled }}
-      {{- $hasTls = true }}
-    {{- end }}
-  {{- end }}
-  {{- if $hasTls }}
+  {{- if .Values.ingress.tls }}
   tls:
     {{- range .Values.ingress.hosts }}
-    {{- if and .tls .tls.enabled }}
+    {{- if .tls.enabled }}
     - hosts:
-        - {{ .host | quote }}
+        - {{ .host }}
       secretName: {{ .tls.secretName }}
     {{- end }}
     {{- end }}
   {{- end }}
   rules:
-    {{- /* This section creates a rule for each host defined in values.yaml */}}
     {{- range .Values.ingress.hosts }}
-    - host: {{ .host | quote }}
+    - host: {{ .host }}
       http:
         paths:
-          - path: {{ .path | default "/" }}
-            pathType: {{ .pathType | default "Prefix" }}
-            backend:
-              service:
-                name: {{ .service.name }}
-                port:
-                  number: {{ .service.port }}
+        - path: {{ .path }}
+          pathType: {{ .pathType }}
+          backend:
+            service:
+              name: {{ .service.name }}
+              port:
+                number: {{ .service.port }}
     {{- end }}
 {{- end }}
