@@ -1,0 +1,13 @@
+# .gitignore
+# Draft git ignore
+
+# Local secrets and setup scripts
+create-dataflow-secrets.sh
+scripts_original/
+docker_all/
+
+# IDE and OS files
+.idea/
+.vscode/
+*.swp
+.DS_Store
