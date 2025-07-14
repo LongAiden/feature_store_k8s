@@ -2,7 +2,7 @@
 # Draft git ignore
 
 # Local secrets and setup scripts
-create-dataflow-secrets.sh
+./my-project-chart/create-dataflow-secrets.sh
 scripts_original/
 docker_all/
 

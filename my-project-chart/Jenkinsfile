@@ -1,0 +1,112 @@
+pipeline {
+    agent {
+        kubernetes {
+            yaml '''
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: docker
+    image: docker:20.10.17
+    command:
+    - cat
+    tty: true
+    volumeMounts:
+    - name: dockersock
+      mountPath: /var/run/docker.sock
+  - name: helm
+    image: alpine/helm:3.10.0
+    command:
+    - cat
+    tty: true
+  volumes:
+  - name: dockersock
+    hostPath:
+      path: /var/run/docker.sock
+'''
+            defaultContainer 'helm'
+        }
+    }
+
+    environment {
+        // --- Configuration ---
+        // Change these to your actual registry and image names
+        DOCKER_REGISTRY       = "adrienlong" 
+        DOCKER_IMAGE_NAME     = "airflow" // The image we are building
+        HELM_RELEASE_NAME     = "my-dataflow"
+        CHART_PATH            = "./my-project-chart"
+        KUBE_NAMESPACE        = "default"
+        // Use Jenkins build number for unique tags
+        DOCKER_IMAGE_TAG      = "build-${env.BUILD_NUMBER}"
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+
+        stage('Check for Dockerfile Changes') {
+            steps {
+                script {
+                    // Check if any files inside the 'dockerfiles/' directory have changed in the last commit
+                    def dockerfileChanges = sh(script: "git diff --name-only HEAD~1 HEAD | grep 'dockerfiles/' || true", returnStdout: true).trim()
+                    if (dockerfileChanges.isEmpty()) {
+                        echo "No changes in dockerfiles/. Skipping Docker build."
+                        env.SKIP_DOCKER_BUILD = "true"
+                    } else {
+                        echo "Changes detected in: \n${dockerfileChanges}"
+                        env.SKIP_DOCKER_BUILD = "false"
+                    }
+                }
+            }
+        }
+
+        stage('Build and Push Docker Image') {
+            // Only run if changes were detected in the previous stage
+            when {
+                expression { env.SKIP_DOCKER_BUILD == 'false' }
+            }
+            steps {
+                container('docker') {
+                    // NOTE: 'dockerhub-credentials' must be configured in Jenkins as a Username/Password credential
+                    withCredentials([usernamePassword(credentialsId: 'dockerhub-credentials', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
+                        sh "docker login -u ${DOCKER_USER} -p ${DOCKER_PASS}"
+                        // Build the image. Assumes a Dockerfile at dockerfiles/airflow/Dockerfile
+                        sh "docker build -t ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG} ./dockerfiles/airflow"
+                        // Push the new image
+                        sh "docker push ${DOCKER_REGISTRY}/${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}"
+                    }
+                }
+            }
+        }
+
+        stage('Deploy with Helm') {
+            steps {
+                container('helm') {
+                    script {
+                        // NOTE: 'kube-config' must be configured in Jenkins as a Secret File credential
+                        withKubeconfig([credentialsId: 'kube-config']) {
+                            sh """
+                                helm upgrade --install ${HELM_RELEASE_NAME} ${CHART_PATH} \\
+                                --namespace ${KUBE_NAMESPACE} \\
+                                --create-namespace \\
+                                --wait \\
+                                # If an image was built, update the image tag for the relevant service
+                                ${env.SKIP_DOCKER_BUILD == 'false' ? "--set airflow.image.tag=${DOCKER_IMAGE_TAG}" : ""}
+                            """
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline finished.'
+            cleanWs()
+        }
+    }
+}
