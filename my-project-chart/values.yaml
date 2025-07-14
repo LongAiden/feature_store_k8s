@@ -459,6 +459,7 @@ hiveMetastore:
     limits:
       cpu: 500m
       memory: 512Mi
+      
 hivePostgresql:
   auth:
     database: "metastore"
