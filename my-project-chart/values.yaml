@@ -62,51 +62,51 @@ airflow:
   webserver:
     resources:
       requests:
-        cpu: 1000m
-        memory: 1Gi
+        cpu: 500m # Was 1000m, reduced for overall fit
+        memory: 768Mi # Was 1Gi, slight reduction
       limits:
-        cpu: 2000m
-        memory: 2Gi
+        cpu: 1000m
+        memory: 1.5Gi
   scheduler:
     resources:
       requests:
-        cpu: 250m
-        memory: 256Mi
+        cpu: 250m # Keep as is, scheduler can be busy
+        memory: 512Mi # Increased for stability, was 256Mi
       limits:
         cpu: 500m
-        memory: 512Mi
+        memory: 1Gi
   worker:
-  resources:
-    requests:
-      cpu: 500m
-      memory: 1Gi
-    limits:
-      cpu: 1000m
-      memory: 2Gi
+    resources:
+      requests:
+        cpu: 750m # Was 500m, increased if you expect heavy task execution
+        memory: 1.5Gi # Was 1Gi, increased as workers can be memory-intensive
+      limits:
+        cpu: 1500m
+        memory: 3Gi
   triggerer:
     resources:
       requests:
-        cpu: 250m
-        memory: 256Mi
+        cpu: 150m # Was 250m, reduced
+        memory: 256Mi # Keep as is
       limits:
-        cpu: 500m
+        cpu: 300m
         memory: 512Mi
   init:
     resources:
       requests:
+        cpu: 50m # Was 100m, reduced
+        memory: 64Mi # Was 128Mi, reduced
+      limits:
         cpu: 100m
         memory: 128Mi
-      limits:
-        cpu: 250m
-        memory: 256Mi
   cli:
     resources:
       requests:
+        cpu: 50m # Was 100m, reduced
+        memory: 64Mi # Was 128Mi, reduced
+      limits:
         cpu: 100m
         memory: 128Mi
-      limits:
-        cpu: 250m
-        memory: 256Mi
 
 # -------------------------------------------------------------------
 # Spark Standalone Cluster Configuration
@@ -143,19 +143,19 @@ spark:
     replicas: 1
     resources:
       requests:
+        cpu: 250m # Was 500m, reduced
+        memory: 512Mi # Was 1Gi, reduced
+      limits:
         cpu: 500m
         memory: 1Gi
-      limits:
-        cpu: 1000m
-        memory: 2Gi
   worker:
-    replicas: 1 # At least 2 workers are recommended
+    replicas: 1 # At least 2 workers are recommended, but for 6 cores, 1 is safer
     resources:
       requests:
-        cpu: 1000m
-        memory: 2Gi
+        cpu: 1000m # Keep high, Spark workers are core processing units
+        memory: 2Gi # Keep high, Spark workers are memory-intensive
       limits:
-        cpu: 2000m
+        cpu: 2000m # Allow burst to 2 cores
         memory: 4Gi
 
   properties: |
@@ -191,8 +191,11 @@ kafkaConnect:
 
   resources:
     requests:
+      cpu: 250m # Was 500m, reduced
+      memory: 512Mi # Keep as is, Debezium can use this
+    limits:
       cpu: 500m
-      memory: 512Mi
+      memory: 1Gi
   
   connectors:
     postgres-cdc: # The name of the connector
@@ -272,11 +275,11 @@ grafana:
 
   resources: # Grafana resources
     requests:
-      cpu: 100m
-      memory: 256Mi
+      cpu: 50m # Was 100m, reduced. Grafana is usually light until you open many dashboards.
+      memory: 128Mi # Was 256Mi, reduced.
     limits:
-      cpu: 250m
-      memory: 512Mi
+      cpu: 150m
+      memory: 256Mi
 
   datasources:
     datasources.yaml:
@@ -308,13 +311,13 @@ influxdb:
     org: "my-org"
     bucket: "my-bucket"
     retention_period: "720h" # 30 days retention
-  resources: # InfluxDB resources
+  resources: 
     requests:
-      cpu: 250m
-      memory: 512Mi
+      cpu: 150m 
+      memory: 384Mi
     limits:
-      cpu: 500m
-      memory: 1Gi
+      cpu: 300m
+      memory: 768Mi
 
 
 # -------------------------------------------------------------------
@@ -454,10 +457,10 @@ hiveMetastore:
           key: "secret-key" # Key within the secret for the secret key
   resources:
     requests:
-      cpu: 250m
-      memory: 256Mi
+      cpu: 150m 
+      memory: 256Mi 
     limits:
-      cpu: 500m
+      cpu: 300m
       memory: 512Mi
       
 hivePostgresql:
